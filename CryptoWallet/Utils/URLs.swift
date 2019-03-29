@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+enum URLs {
+    static let baseUrl = "https://api.trustwallet.com"
+    static let cmcAPIUrl = "https://graphs2.coinmarketcap.com/currencies"
+    static let transactionAPI = baseUrl + "/ethereum/transactions"
+    static let tokenPriceAPI = baseUrl + "/prices"
+    static let tokenInfoAPI = baseUrl + "/v2/tokens"
+    static let assetMarketAPI = baseUrl + "/tickers"
+}

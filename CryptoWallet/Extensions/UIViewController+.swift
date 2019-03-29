@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIViewController {
-    func showAlertView(title: String?, message: String?, cancelButton: String?, otherButtons: [String]? = nil, type: UIAlertController.Style = .alert, cancelAction: (() -> Void)? = nil, otherAction: ((Int) -> Void)? = nil) {
-        let alertViewController = UIAlertController(title: title ?? Constants.appName.rawValue ,
+    func showAlertView(title: String = Constants.appName, message: String?, cancelButton: String?, otherButtons: [String]? = nil, type: UIAlertController.Style = .alert, cancelAction: (() -> Void)? = nil, otherAction: ((Int) -> Void)? = nil) {
+        let alertViewController = UIAlertController(title: title,
                                                     message: message,
                                                     preferredStyle: .alert)
         
