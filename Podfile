@@ -11,4 +11,5 @@ target 'CryptoWallet' do
   pod 'web3swift'
   pod 'SwiftLint'
   pod 'Then'
+  pod 'Reusable'
 end

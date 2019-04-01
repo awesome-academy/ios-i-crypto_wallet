@@ -10,13 +10,15 @@ import UIKit
 import Then
 
 final class LoginViewController: UIViewController {
-    @IBOutlet private weak var createButton: UIButton!
-    @IBOutlet private weak var recoverButton: UIButton!
+    @IBOutlet private weak var createWalletButton: UIButton!
+    @IBOutlet private weak var recoverWalletButton: UIButton!
+    @IBOutlet private weak var importGuideLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createButton.borderButton(cornerRadius: 5, borderWidth: 2, borderColor: UIColor.darkGray.cgColor)
-        recoverButton.borderButton(cornerRadius: 5, borderWidth: 2, borderColor: UIColor.darkGray.cgColor)
+        [createWalletButton, recoverWalletButton].forEach { (button) in
+            button?.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,9 +31,9 @@ final class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction private func createButtonClick(_ sender: Any) {
+    @IBAction private func createWalletTapped(_ sender: Any) {
     }
     
-    @IBAction private func recoverButtonClick(_ sender: Any) {
+    @IBAction private func recoverWalletTapped(_ sender: Any) {
     }
 }

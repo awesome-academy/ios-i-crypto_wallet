@@ -8,12 +8,15 @@
 
 import Foundation
 import UIKit
+import Then
 
 extension UIButton {
-    func borderButton(cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: CGColor?) {
-        self.layer.borderColor = borderColor
-        self.layer.borderWidth = borderWidth
-        self.layer.cornerRadius = cornerRadius
-        self.clipsToBounds = true
+    func setBorder(cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: UIColor) {
+        _ = self.then {
+            $0.layer.cornerRadius = cornerRadius
+            $0.layer.borderColor = borderColor.cgColor
+            $0.layer.borderWidth = borderWidth
+            $0.clipsToBounds = true
+        }
     }
 }
