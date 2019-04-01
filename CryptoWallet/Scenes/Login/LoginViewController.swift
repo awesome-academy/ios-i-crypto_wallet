@@ -16,24 +16,23 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        [createWalletButton, recoverWalletButton].forEach { (button) in
-            button?.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
-        }
+        configView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        hideNavigationBar()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+    @IBAction private func handleCreateWalletTapped(_ sender: Any) {
     }
     
-    @IBAction private func createWalletTapped(_ sender: Any) {
+    @IBAction private func handleRecoverWalletTapped(_ sender: Any) {
     }
     
-    @IBAction private func recoverWalletTapped(_ sender: Any) {
+    private func configView() {
+        [createWalletButton, recoverWalletButton].forEach {
+            $0.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
+        }
     }
 }
