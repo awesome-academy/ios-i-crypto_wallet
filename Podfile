@@ -10,5 +10,5 @@ target 'CryptoWallet' do
   pod 'Alamofire'
   pod 'web3swift'
   pod 'SwiftLint'
-
+  pod 'Then'
 end
