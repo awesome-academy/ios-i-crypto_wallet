@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum Constants: String {
-    case appName = "CryptoWallet"
+enum Constants {
+    static let appName = "CryptoWallet"
 }
