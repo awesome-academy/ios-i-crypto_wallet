@@ -21,7 +21,7 @@ final class BackupNoticeViewController: UIViewController {
         let backupNewWalletController = BackupNewWalletViewController.instantiate()
         navigationController?.pushViewController(backupNewWalletController, animated: true)
     }
-    
+
     private func configView() {
         let backupLaterBarButton = UIBarButtonItem(title: "Backup later",
                                                    style: .done,
