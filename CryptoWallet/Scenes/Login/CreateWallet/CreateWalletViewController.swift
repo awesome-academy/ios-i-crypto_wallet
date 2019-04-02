@@ -10,8 +10,22 @@ import UIKit
 import Reusable
 
 final class CreateWalletViewController: UIViewController {
+    @IBOutlet weak var walletNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        configView()
+    }
+    
+    @IBAction private func handleCreateWalletTapped(_ sender: Any) {
+    }
+    
+    private func configView() {
+        [walletNameTextField, passwordTextField, repeatPasswordTextField].forEach {
+            $0?.underlined(height: 1, color: .gray)
+        }
     }
 }
 
