@@ -12,4 +12,5 @@ target 'CryptoWallet' do
   pod 'SwiftLint'
   pod 'Then'
   pod 'Reusable'
+	pod 'Valet'
 end

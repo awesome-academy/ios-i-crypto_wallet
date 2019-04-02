@@ -114,7 +114,7 @@ Own Ethereum Wallet</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZb-fF-uEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2162" y="720"/>
+            <point key="canvasLocation" x="-2162" y="696"/>
         </scene>
         <!--Recover Wallet View Controller-->
         <scene sceneID="Iwc-YO-Kjq">
@@ -129,7 +129,7 @@ Own Ethereum Wallet</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqi-jw-N6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-964" y="118"/>
+            <point key="canvasLocation" x="-1218" y="111"/>
         </scene>
         <!--Create Wallet View Controller-->
         <scene sceneID="NFT-Bu-KMf">
@@ -211,7 +211,22 @@ Own Ethereum Wallet</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-kY-4LT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-964" y="-615"/>
+            <point key="canvasLocation" x="-1217" y="-617"/>
+        </scene>
+        <!--Backup Notice View Controller-->
+        <scene sceneID="4g2-uy-U6h">
+            <objects>
+                <viewController storyboardIdentifier="BackupNoticeViewController" id="QBZ-R7-Ba7" customClass="BackupNoticeViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DYD-5m-Ni9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UVT-RD-qcc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXu-Wp-Mxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="-618"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3lV-TW-XmM">
@@ -230,7 +245,7 @@ Own Ethereum Wallet</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXb-Nv-6JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-351"/>
+            <point key="canvasLocation" x="2980" y="-194"/>
         </scene>
         <!--Wallet-->
         <scene sceneID="LWo-OV-YxR">
@@ -240,7 +255,7 @@ Own Ethereum Wallet</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbZ-Sc-eM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-448"/>
+            <point key="canvasLocation" x="4389" y="-482"/>
         </scene>
         <!--Setting-->
         <scene sceneID="59b-VS-7Ae">
@@ -250,7 +265,7 @@ Own Ethereum Wallet</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psp-Ml-tH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="-244"/>
+            <point key="canvasLocation" x="4394" y="-13"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgV-DQ-Mom">

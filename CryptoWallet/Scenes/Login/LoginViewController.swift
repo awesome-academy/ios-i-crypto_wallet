@@ -46,7 +46,7 @@ final class LoginViewController: UIViewController {
     
     private func configView() {
         [createWalletButton, recoverWalletButton].forEach {
-            $0?.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
+            $0.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
         }
         let tapImportGuideLabel = UITapGestureRecognizer().then {
             $0.addTarget(self, action: #selector(handleShowGuideTapped(_:)))
