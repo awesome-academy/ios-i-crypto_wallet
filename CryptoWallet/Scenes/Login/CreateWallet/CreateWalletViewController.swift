@@ -10,9 +10,9 @@ import UIKit
 import Reusable
 
 final class CreateWalletViewController: UIViewController {
-    @IBOutlet weak var walletNameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet private weak var walletNameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var repeatPasswordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
