@@ -12,6 +12,9 @@
 		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
 		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
 		A7506BEB225219D4002B6EFA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BEA225219D4002B6EFA /* UIView+.swift */; };
+		A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B97F2252EE7D00AE8BA4 /* RecoverWalletViewController.swift */; };
+		A767B9822252EE9600AE8BA4 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */; };
+		A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9842252F18300AE8BA4 /* GuideViewController.swift */; };
 		A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77C2251A04B001A0F43 /* Transaction.swift */; };
 		A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77E2251A206001A0F43 /* ContractOperation.swift */; };
 		A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7802251A338001A0F43 /* ContractTransaction.swift */; };
@@ -41,6 +44,9 @@
 		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A7506BE122520AE8002B6EFA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		A7506BEA225219D4002B6EFA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		A767B97F2252EE7D00AE8BA4 /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
+		A767B9842252F18300AE8BA4 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		A77CE77C2251A04B001A0F43 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A77CE77E2251A206001A0F43 /* ContractOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOperation.swift; sourceTree = "<group>"; };
 		A77CE7802251A338001A0F43 /* ContractTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTransaction.swift; sourceTree = "<group>"; };
@@ -105,9 +111,35 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		A767B97D2252EE5A00AE8BA4 /* CreateWallet */ = {
+			isa = PBXGroup;
+			children = (
+				A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */,
+			);
+			path = CreateWallet;
+			sourceTree = "<group>";
+		};
+		A767B97E2252EE6600AE8BA4 /* RecoverWallet */ = {
+			isa = PBXGroup;
+			children = (
+				A767B97F2252EE7D00AE8BA4 /* RecoverWalletViewController.swift */,
+			);
+			path = RecoverWallet;
+			sourceTree = "<group>";
+		};
+		A767B9832252F15D00AE8BA4 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				A767B9842252F18300AE8BA4 /* GuideViewController.swift */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		A77CE7842251CDF3001A0F43 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A767B97E2252EE6600AE8BA4 /* RecoverWallet */,
+				A767B97D2252EE5A00AE8BA4 /* CreateWallet */,
 				A77CE7852251CE0F001A0F43 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -200,6 +232,7 @@
 		A7FA8F67224DBD6D00952E4D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A767B9832252F15D00AE8BA4 /* Guide */,
 				A7506BE0225203A4002B6EFA /* Storyboards */,
 				A77CE7842251CDF3001A0F43 /* Login */,
 				A7FA8F80224E059600952E4D /* Setting */,
@@ -464,6 +497,7 @@
 			files = (
 				A7FA8F75224DBE3500952E4D /* URLs.swift in Sources */,
 				A782CD1B224E0CCF00718C29 /* TokenPrice.swift in Sources */,
+				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,
 				A7FA8F82224E05AD00952E4D /* WalletViewController.swift in Sources */,
@@ -475,8 +509,10 @@
 				A7FA8F4D224DBC5700952E4D /* AppDelegate.swift in Sources */,
 				A7FA8F6F224DBDD200952E4D /* BaseModel.swift in Sources */,
 				A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */,
+				A767B9822252EE9600AE8BA4 /* CreateWalletViewController.swift in Sources */,
 				A77CE7862251CE0F001A0F43 /* LoginViewController.swift in Sources */,
 				A7506BEB225219D4002B6EFA /* UIView+.swift in Sources */,
+				A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */,
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,
