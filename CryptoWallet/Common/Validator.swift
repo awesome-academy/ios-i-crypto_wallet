@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import Validator
 
 protocol ValidatorConvertible {
-    func validated(_ value: String) throws -> String
+    func validated(_ value: String) -> ValidationResult
+    func validatedEquality(_ firstValue: String, _ secondValue: String) -> ValidationResult
 }
 
 enum ValidatorType {
     case password
 }
 
-enum VaildatorFactory {
+enum ValidatorFactory {
     static func validatorFor(type: ValidatorType) -> ValidatorConvertible {
         switch type {
         case .password:
@@ -26,19 +28,15 @@ enum VaildatorFactory {
 }
 
 final class PasswordValidator: ValidatorConvertible {
-    func validated(_ value: String) throws -> String {
-        do {
-            if try NSRegularExpression(pattern: RegularExpressions.passwordExpression,
-                                       options: .caseInsensitive).firstMatch(in: value,
-                                                                             options: [],
-                                                                             range: NSRange(location: 0,
-                                                                                            length: value.count))
-                == nil {
-                throw ValidationErrors.invalidPassword
-            }
-        } catch {
-            throw ValidationErrors.invalidPassword
-        }
-        return value
+    func validatedEquality(_ firstValue: String, _ secondValue: String) -> ValidationResult {
+        let comfirmPasswordRule = ValidationRuleEquality(dynamicTarget: { return secondValue },
+                                                         error: ValidationErrors.notSamePassword)
+        return firstValue.validate(rule: comfirmPasswordRule)
+    }
+    
+    func validated(_ value: String) -> ValidationResult {
+        let passwordRule = ValidationRulePattern(pattern: "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,16}$",
+                                                 error: ValidationErrors.invalidPassword)
+        return value.validate(rule: passwordRule)
     }
 }

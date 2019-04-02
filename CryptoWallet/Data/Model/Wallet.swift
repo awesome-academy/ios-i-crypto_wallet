@@ -12,14 +12,7 @@ struct Wallet {
     var walletName = ""
     var walletAddress = ""
     var keyData: Data?
-    var isHierarchicalDeterministic  = false
-    
-    init(walletName: String, walletAddress: String, keyData: Data, isHierarchicalDeterministic: Bool) {
-        self.walletName = walletName
-        self.walletAddress = walletAddress
-        self.keyData = keyData
-        self.isHierarchicalDeterministic = isHierarchicalDeterministic
-    }
+    var isHierarchicalDeterministic = false
 }
 
 extension Wallet: Equatable {

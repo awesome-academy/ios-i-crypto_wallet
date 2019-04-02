@@ -10,28 +10,35 @@ import Foundation
 
 enum ValidationErrors: Error {
     case invalidPassword
-    
-    var localizedDescription: String {
+    case notSamePassword
+    case emptyPassword
+}
+
+extension ValidationErrors: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .invalidPassword:
             return """
-            Invalid password! Password must be greater or equal 8 characters
-            and contain at least 1 uppercase word, 1 lowercase word,
-            1 number and 1 special word.
+            Invalid password! Passwords must be between 8 and 16 characters long,
+            contain at least one capital letter, a number, and a special character.
             """
+        case .notSamePassword:
+            return "Repeat password does not match password."
+        case .emptyPassword:
+            return "Password is empty"
         }
     }
 }
 
 enum EthereumInteractionErrors: Error {
-    enum walletCreatingErrors: Error {
-        case cantCreateWallet
-        
-        var localizedDescription: String {
-            switch self {
-            case .cantCreateWallet:
-                return "Error while creating wallet!"
-            }
+    case cantCreateWallet
+}
+
+extension EthereumInteractionErrors: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .cantCreateWallet:
+            return "Error while creating wallet!"
         }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 
 final class BackupNoticeViewController: UIViewController {
-    internal var wallet: Wallet?
+    var wallet: Wallet?
     
     override func viewDidLoad() {
         super.viewDidLoad()

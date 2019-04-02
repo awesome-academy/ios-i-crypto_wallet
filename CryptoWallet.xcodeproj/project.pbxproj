@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04F78AC6A30124B206223B7A /* Pods_CryptoWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF0CCEB00594DFA82848476 /* Pods_CryptoWallet.framework */; };
+		6E17FF07C2582172785CD918 /* Pods_CryptoWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */; };
 		A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDC2251FEA0002B6EFA /* Setting.storyboard */; };
 		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
 		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
@@ -26,7 +26,6 @@
 		A782CD1F224E19C900718C29 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1E224E19C900718C29 /* Contract.swift */; };
 		A7D183D422530E91009C2EE9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D322530E91009C2EE9 /* Validator.swift */; };
 		A7D183D622531A89009C2EE9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D522531A89009C2EE9 /* Errors.swift */; };
-		A7D183D822533029009C2EE9 /* RegularExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D722533029009C2EE9 /* RegularExpressions.swift */; };
 		A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */; };
 		A7D183DD22533B56009C2EE9 /* EthereumInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183DC22533B56009C2EE9 /* EthereumInteraction.swift */; };
 		A7D183E122534024009C2EE9 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183E022534024009C2EE9 /* Wallet.swift */; };
@@ -45,7 +44,7 @@
 
 /* Begin PBXFileReference section */
 		4B40CF0298545506788AC780 /* Pods-CryptoWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.debug.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.debug.xcconfig"; sourceTree = "<group>"; };
-		6AF0CCEB00594DFA82848476 /* Pods_CryptoWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.release.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.release.xcconfig"; sourceTree = "<group>"; };
 		A7506BDC2251FEA0002B6EFA /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
@@ -65,7 +64,6 @@
 		A782CD1E224E19C900718C29 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		A7D183D322530E91009C2EE9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		A7D183D522531A89009C2EE9 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		A7D183D722533029009C2EE9 /* RegularExpressions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpressions.swift; sourceTree = "<group>"; };
 		A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupNoticeViewController.swift; sourceTree = "<group>"; };
 		A7D183DC22533B56009C2EE9 /* EthereumInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumInteraction.swift; sourceTree = "<group>"; };
 		A7D183E022534024009C2EE9 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
@@ -89,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F78AC6A30124B206223B7A /* Pods_CryptoWallet.framework in Frameworks */,
+				6E17FF07C2582172785CD918 /* Pods_CryptoWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +97,7 @@
 		16C4741992DD3A9B56E48E91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6AF0CCEB00594DFA82848476 /* Pods_CryptoWallet.framework */,
+				9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -273,7 +271,6 @@
 				A7FA8F74224DBE3500952E4D /* URLs.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
-				A7D183D722533029009C2EE9 /* RegularExpressions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -450,6 +447,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
@@ -471,6 +469,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRLP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/scrypt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Web3swift.framework",
@@ -529,7 +528,6 @@
 				A7FA8F75224DBE3500952E4D /* URLs.swift in Sources */,
 				A782CD1B224E0CCF00718C29 /* TokenPrice.swift in Sources */,
 				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
-				A7D183D822533029009C2EE9 /* RegularExpressions.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,

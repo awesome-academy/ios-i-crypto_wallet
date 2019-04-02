@@ -21,15 +21,16 @@ enum EthereumInteraction {
                                                 language: .english,
                                                 prefixPath: "m/44'/60'/0'/0",
                                                 aesMode: "aes-128-cbc"), let wallet = keystore else {
-            throw EthereumInteractionErrors.walletCreatingErrors.cantCreateWallet
+            throw EthereumInteractionErrors.cantCreateWallet
         }
-        guard let keyData = try? JSONEncoder().encode(wallet.keystoreParams) else {
-            throw EthereumInteractionErrors.walletCreatingErrors.cantCreateWallet
+        guard let keyData = try? JSONEncoder().encode(wallet.keystoreParams),
+            let address = wallet.addresses?.first?.address else {
+            throw EthereumInteractionErrors.cantCreateWallet
         }
-        guard let address = wallet.addresses?.first?.address else {
-            throw EthereumInteractionErrors.walletCreatingErrors.cantCreateWallet
-        }
-        let hdWallet = Wallet(walletName: name, walletAddress: address, keyData: keyData, isHierarchicalDeterministic: true)
+        let hdWallet = Wallet(walletName: name,
+                              walletAddress: address,
+                              keyData: keyData,
+                              isHierarchicalDeterministic: true)
         return (hdWallet, unwrapped)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Validator
 
 extension UITextField {
     func underlined(height: CGFloat, color: UIColor) {
@@ -17,13 +18,5 @@ extension UITextField {
         }
         layer.addSublayer(underline)
         layer.masksToBounds = true
-    }
-    
-    func validatedText(validationType: ValidatorType) throws -> String {
-        let validator = VaildatorFactory.validatorFor(type: validationType)
-        guard let text = self.text else {
-            return ""
-        }
-        return try validator.validated(text)
     }
 }

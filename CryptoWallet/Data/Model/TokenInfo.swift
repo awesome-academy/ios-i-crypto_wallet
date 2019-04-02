@@ -8,7 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import Web3swift
 
 final class TokenInfo: BaseModel {
     var balance = 0.0

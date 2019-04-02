@@ -9,6 +9,7 @@
 import UIKit
 import Reusable
 import Valet
+import Web3swift
 
 final class CreateWalletViewController: UIViewController {
     @IBOutlet private weak var walletNameTextField: UITextField!
@@ -39,7 +40,7 @@ final class CreateWalletViewController: UIViewController {
                 }
                 navigationController?.pushViewController(backupNoticeController, animated: true)
             } catch {
-                
+                showErrorAlert(message: error.localizedDescription)
             }
         }
     }
@@ -51,34 +52,35 @@ final class CreateWalletViewController: UIViewController {
     }
     
     private func validate() -> Bool {
-        do {
-            validatedPassword = try passwordTextField.validatedText(validationType: .password)
+        let validator = ValidatorFactory.validatorFor(type: .password)
+        guard let password = passwordTextField.text, let repeatPassword = repeatPasswordTextField.text else {
+            showErrorAlert(message: ValidationErrors.emptyPassword.localizedDescription)
+            return false
+        }
+        switch validator.validated(password) {
+        case .valid:
             passwordTextField.do {
                 $0.underlined(height: 1, color: .lightGray)
             }
-            if validatedPassword == repeatPasswordTextField.text {
+            switch validator.validatedEquality(password, repeatPassword) {
+            case .valid:
                 repeatPasswordTextField.do {
                     $0.underlined(height: 1, color: .lightGray)
                 }
+                validatedPassword = password
                 return true
-            } else {
-                showErrorAlert(message: "Repeat password is not match password!")
+            case .invalid(let errors):
                 repeatPasswordTextField.do {
                     $0.underlined(height: 1, color: .red)
                 }
+                showErrorAlert(message: errors.first?.localizedDescription)
                 return false
             }
-        } catch ValidationErrors.invalidPassword {
-            showErrorAlert(message: ValidationErrors.invalidPassword.localizedDescription)
+        case .invalid(let errors):
             passwordTextField.do {
                 $0.underlined(height: 1, color: .red)
             }
-            return false
-        } catch {
-            showErrorAlert(message: error.localizedDescription)
-            passwordTextField.do {
-                $0.underlined(height: 1, color: .red)
-            }
+            showErrorAlert(message: errors.first?.localizedDescription)
             return false
         }
     }
