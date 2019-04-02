@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		04F78AC6A30124B206223B7A /* Pods_CryptoWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF0CCEB00594DFA82848476 /* Pods_CryptoWallet.framework */; };
+		A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDC2251FEA0002B6EFA /* Setting.storyboard */; };
+		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
+		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
+		A7506BEB225219D4002B6EFA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BEA225219D4002B6EFA /* UIView+.swift */; };
 		A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77C2251A04B001A0F43 /* Transaction.swift */; };
 		A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77E2251A206001A0F43 /* ContractOperation.swift */; };
 		A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7802251A338001A0F43 /* ContractTransaction.swift */; };
 		A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7822251AD14001A0F43 /* AssetMarket.swift */; };
+		A77CE7862251CE0F001A0F43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7852251CE0F001A0F43 /* LoginViewController.swift */; };
 		A782CD1B224E0CCF00718C29 /* TokenPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1A224E0CCF00718C29 /* TokenPrice.swift */; };
 		A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1C224E15A200718C29 /* TokenInfo.swift */; };
 		A782CD1F224E19C900718C29 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1E224E19C900718C29 /* Contract.swift */; };
@@ -32,10 +37,15 @@
 		4B40CF0298545506788AC780 /* Pods-CryptoWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.debug.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		6AF0CCEB00594DFA82848476 /* Pods_CryptoWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.release.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.release.xcconfig"; sourceTree = "<group>"; };
+		A7506BDC2251FEA0002B6EFA /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
+		A7506BE122520AE8002B6EFA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		A7506BEA225219D4002B6EFA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		A77CE77C2251A04B001A0F43 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A77CE77E2251A206001A0F43 /* ContractOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOperation.swift; sourceTree = "<group>"; };
 		A77CE7802251A338001A0F43 /* ContractTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTransaction.swift; sourceTree = "<group>"; };
 		A77CE7822251AD14001A0F43 /* AssetMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetMarket.swift; sourceTree = "<group>"; };
+		A77CE7852251CE0F001A0F43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A782CD1A224E0CCF00718C29 /* TokenPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPrice.swift; sourceTree = "<group>"; };
 		A782CD1C224E15A200718C29 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
 		A782CD1E224E19C900718C29 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
@@ -81,6 +91,26 @@
 				9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A7506BE0225203A4002B6EFA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */,
+				A7506BDC2251FEA0002B6EFA /* Setting.storyboard */,
+				A7FA8F50224DBC5700952E4D /* Main.storyboard */,
+				A7FA8F58224DBC5700952E4D /* LaunchScreen.storyboard */,
+				A7506BE122520AE8002B6EFA /* Storyboards.swift */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A77CE7842251CDF3001A0F43 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A77CE7852251CE0F001A0F43 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		A7FA8F40224DBC5700952E4D = {
@@ -147,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FA8F78224DBE7800952E4D /* UIViewController+.swift */,
+				A7506BEA225219D4002B6EFA /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,10 +200,10 @@
 		A7FA8F67224DBD6D00952E4D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A7506BE0225203A4002B6EFA /* Storyboards */,
+				A77CE7842251CDF3001A0F43 /* Login */,
 				A7FA8F80224E059600952E4D /* Setting */,
 				A7FA8F7F224E057100952E4D /* Wallet */,
-				A7FA8F50224DBC5700952E4D /* Main.storyboard */,
-				A7FA8F58224DBC5700952E4D /* LaunchScreen.storyboard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -325,8 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FA8F5A224DBC5700952E4D /* LaunchScreen.storyboard in Resources */,
+				A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */,
 				A7FA8F57224DBC5700952E4D /* Assets.xcassets in Resources */,
 				A7FA8F52224DBC5700952E4D /* Main.storyboard in Resources */,
+				A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,8 +383,10 @@
 				"${BUILT_PRODUCTS_DIR}/EthereumAddress/EthereumAddress.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
@@ -368,8 +403,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EthereumAddress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRLP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/scrypt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Web3swift.framework",
@@ -430,6 +467,7 @@
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,
 				A7FA8F82224E05AD00952E4D /* WalletViewController.swift in Sources */,
+				A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */,
 				A7FA8F84224E05DD00952E4D /* SettingViewController.swift in Sources */,
 				A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
@@ -437,6 +475,8 @@
 				A7FA8F4D224DBC5700952E4D /* AppDelegate.swift in Sources */,
 				A7FA8F6F224DBDD200952E4D /* BaseModel.swift in Sources */,
 				A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */,
+				A77CE7862251CE0F001A0F43 /* LoginViewController.swift in Sources */,
+				A7506BEB225219D4002B6EFA /* UIView+.swift in Sources */,
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,

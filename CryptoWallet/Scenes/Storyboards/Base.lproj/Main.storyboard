@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vDx-Oa-Ehg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="1wt-JF-dtl">
+            <objects>
+                <viewController storyboardIdentifier="LoginCtrl" id="IlE-Zi-D1l" customClass="LoginViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t68-6t-izR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-C2-15Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62h-E0-fRx">
+                                        <rect key="frame" x="49" y="64" width="277" height="72"/>
+                                        <string key="text">Create Your
+Own Ethereum Wallet</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="62h-E0-fRx" firstAttribute="centerY" secondItem="Zls-C2-15Z" secondAttribute="centerY" id="FVM-SE-F0s"/>
+                                    <constraint firstItem="62h-E0-fRx" firstAttribute="centerX" secondItem="Zls-C2-15Z" secondAttribute="centerX" id="q1x-Qg-VcA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxS-OE-QmE">
+                                <rect key="frame" x="37.5" y="280" width="300" height="36"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create New Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createWalletTapped:" destination="IlE-Zi-D1l" eventType="touchUpInside" id="tkT-G2-0Qp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-0e-skM">
+                                <rect key="frame" x="37.5" y="331" width="300" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Recover Exist Wallet">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="recoverWalletTapped:" destination="IlE-Zi-D1l" eventType="touchUpInside" id="EEk-En-mfh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to import a wallet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vX-N0-Ae8">
+                                <rect key="frame" x="107" y="425" width="161" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To import and use your wallet from other platforms, read the guide first " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-Sy-Q8C">
+                                <rect key="frame" x="37.5" y="387" width="300" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2fd-Sy-Q8C" firstAttribute="width" secondItem="H5j-0e-skM" secondAttribute="width" id="H36-6M-NWA"/>
+                            <constraint firstItem="DxS-OE-QmE" firstAttribute="top" secondItem="Zls-C2-15Z" secondAttribute="bottom" constant="80" id="JGH-Jq-Cep"/>
+                            <constraint firstItem="H5j-0e-skM" firstAttribute="width" secondItem="DxS-OE-QmE" secondAttribute="width" id="Oyw-7l-w7N"/>
+                            <constraint firstItem="5vX-N0-Ae8" firstAttribute="centerX" secondItem="Vg9-z9-czz" secondAttribute="centerX" id="SHV-Vv-3GV"/>
+                            <constraint firstItem="2fd-Sy-Q8C" firstAttribute="top" secondItem="H5j-0e-skM" secondAttribute="bottom" constant="20" id="SqB-kg-lin"/>
+                            <constraint firstItem="Zls-C2-15Z" firstAttribute="top" secondItem="t68-6t-izR" secondAttribute="top" id="T7x-05-X2p"/>
+                            <constraint firstItem="DxS-OE-QmE" firstAttribute="width" secondItem="t68-6t-izR" secondAttribute="width" multiplier="4:5" id="Vxl-ZG-Ben"/>
+                            <constraint firstItem="H5j-0e-skM" firstAttribute="centerX" secondItem="Vg9-z9-czz" secondAttribute="centerX" id="elK-yG-LHe"/>
+                            <constraint firstItem="5vX-N0-Ae8" firstAttribute="top" secondItem="2fd-Sy-Q8C" secondAttribute="bottom" constant="2" id="j6O-Gb-Mdz"/>
+                            <constraint firstItem="Zls-C2-15Z" firstAttribute="height" secondItem="t68-6t-izR" secondAttribute="height" multiplier="3:10" id="kno-co-hXL"/>
+                            <constraint firstItem="Zls-C2-15Z" firstAttribute="trailing" secondItem="Vg9-z9-czz" secondAttribute="trailing" id="l7B-7V-C4v"/>
+                            <constraint firstItem="H5j-0e-skM" firstAttribute="top" secondItem="DxS-OE-QmE" secondAttribute="bottom" constant="15" id="pYC-Z9-zKe"/>
+                            <constraint firstItem="2fd-Sy-Q8C" firstAttribute="centerX" secondItem="Vg9-z9-czz" secondAttribute="centerX" id="xeQ-2v-UxT"/>
+                            <constraint firstItem="Zls-C2-15Z" firstAttribute="leading" secondItem="Vg9-z9-czz" secondAttribute="leading" id="yzw-FT-l5N"/>
+                            <constraint firstItem="DxS-OE-QmE" firstAttribute="centerX" secondItem="Vg9-z9-czz" secondAttribute="centerX" id="zkJ-BQ-Oyn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vg9-z9-czz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ANf-Tx-bCn"/>
+                    <connections>
+                        <outlet property="createWalletButton" destination="DxS-OE-QmE" id="oTU-UN-XGo"/>
+                        <outlet property="importGuideLabel" destination="5vX-N0-Ae8" id="2CQ-qY-8Ev"/>
+                        <outlet property="recoverWalletButton" destination="H5j-0e-skM" id="X0w-Kb-tNa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BUa-YE-vBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2162.4000000000001" y="-230.73463268365819"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3lV-TW-XmM">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBarCtrl" automaticallyAdjustsScrollViewInsets="NO" id="een-d1-NhR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WTp-Zf-GdB">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8vS-lh-JdG" kind="relationship" relationship="viewControllers" id="siE-On-MDX"/>
+                        <segue destination="Rsi-wu-ZTH" kind="relationship" relationship="viewControllers" id="47k-4K-UP9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kXb-Nv-6JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756" y="-232"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="LWo-OV-YxR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wallet" id="8vS-lh-JdG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wallet" image="wallet" id="2pf-gI-BAL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbZ-Sc-eM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="434" y="-518"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="59b-VS-7Ae">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="Rsi-wu-ZTH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Setting" image="settings" id="Ikt-PV-S0w"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Psp-Ml-tH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="-13"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hgV-DQ-Mom">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vDx-Oa-Ehg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ieq-kQ-Pf9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IlE-Zi-D1l" kind="relationship" relationship="rootViewController" id="i5N-T0-G0C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKa-ZO-cUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3103.1999999999998" y="-231.63418290854574"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings" width="30" height="30"/>
+        <image name="wallet" width="30" height="30"/>
+    </resources>
+</document>

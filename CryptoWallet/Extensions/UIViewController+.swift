@@ -45,6 +45,14 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    func showNavigationBar() {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    func hideNavigationBar() {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
