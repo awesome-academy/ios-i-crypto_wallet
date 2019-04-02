@@ -13,6 +13,7 @@ struct Wallet {
     var walletAddress = ""
     var keyData: Data?
     var isHierarchicalDeterministic = false
+    static var sharedWallet: Wallet?
 }
 
 extension Wallet: Equatable {

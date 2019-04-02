@@ -40,6 +40,8 @@
 		A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FA8F78224DBE7800952E4D /* UIViewController+.swift */; };
 		A7FA8F82224E05AD00952E4D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FA8F81224E05AD00952E4D /* WalletViewController.swift */; };
 		A7FA8F84224E05DD00952E4D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FA8F83224E05DD00952E4D /* SettingViewController.swift */; };
+		A7FE1D7822544C5200D1587F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE1D7722544C5200D1587F /* HomeTabBarController.swift */; };
+		A7FE1D7B225450FB00D1587F /* BackupNewWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE1D7A225450FB00D1587F /* BackupNewWalletViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		A7FA8F78224DBE7800952E4D /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		A7FA8F81224E05AD00952E4D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		A7FA8F83224E05DD00952E4D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A7FE1D7722544C5200D1587F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		A7FE1D7A225450FB00D1587F /* BackupNewWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupNewWalletViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 		A767B97D2252EE5A00AE8BA4 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
+				A7FE1D79225450D500D1587F /* BackupNewWallet */,
 				A7D183D922533166009C2EE9 /* BackupNotice */,
 				A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */,
 			);
@@ -256,11 +261,10 @@
 		A7FA8F67224DBD6D00952E4D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A7FE1D74225448B600D1587F /* Home */,
 				A767B9832252F15D00AE8BA4 /* Guide */,
 				A7506BE0225203A4002B6EFA /* Storyboards */,
 				A77CE7842251CDF3001A0F43 /* Login */,
-				A7FA8F80224E059600952E4D /* Setting */,
-				A7FA8F7F224E057100952E4D /* Wallet */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -351,6 +355,24 @@
 				A7FA8F83224E05DD00952E4D /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A7FE1D74225448B600D1587F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA8F7F224E057100952E4D /* Wallet */,
+				A7FA8F80224E059600952E4D /* Setting */,
+				A7FE1D7722544C5200D1587F /* HomeTabBarController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A7FE1D79225450D500D1587F /* BackupNewWallet */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE1D7A225450FB00D1587F /* BackupNewWalletViewController.swift */,
+			);
+			path = BackupNewWallet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +549,7 @@
 			files = (
 				A7FA8F75224DBE3500952E4D /* URLs.swift in Sources */,
 				A782CD1B224E0CCF00718C29 /* TokenPrice.swift in Sources */,
+				A7FE1D7822544C5200D1587F /* HomeTabBarController.swift in Sources */,
 				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
@@ -550,6 +573,7 @@
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
 				A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
+				A7FE1D7B225450FB00D1587F /* BackupNewWalletViewController.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,
 				A767B9872252FB4900AE8BA4 /* UITextField+.swift in Sources */,
 			);
