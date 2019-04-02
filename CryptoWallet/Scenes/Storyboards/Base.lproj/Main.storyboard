@@ -220,13 +220,78 @@ Own Ethereum Wallet</string>
                     <view key="view" contentMode="scaleToFill" id="DYD-5m-Ni9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backup-icon" translatesAutoresizingMaskIntoConstraints="NO" id="PIy-a7-Vwz">
+                                <rect key="frame" x="125" y="40" width="125" height="125"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PIy-a7-Vwz" secondAttribute="height" multiplier="1:1" id="Yab-eb-p6n"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup your wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-WE-L3f">
+                                <rect key="frame" x="86" y="170" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRl-DM-7eQ">
+                                <rect key="frame" x="37.5" y="260" width="300" height="78"/>
+                                <string key="text">Please backup your wallet diligently.
+CryptoWallet will not able to access accounts, recover keys, reset passwords nor reverse transactions. You are responsible for the security of your wallet/assets.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIp-nO-Ha4">
+                                <rect key="frame" x="0.0" y="631" width="375" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Backup Mnemonic Phrase">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-7n-5QL">
+                                <rect key="frame" x="37.5" y="569.5" width="300" height="41.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please ensure that you are not being watched when executing backup" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-Wd-kxP">
+                                        <rect key="frame" x="5" y="5" width="290" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Faw-Wd-kxP" firstAttribute="top" secondItem="xcO-7n-5QL" secondAttribute="top" constant="5" id="4XZ-5v-Hla"/>
+                                    <constraint firstAttribute="trailing" secondItem="Faw-Wd-kxP" secondAttribute="trailing" constant="5" id="HSj-sN-TZH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Faw-Wd-kxP" secondAttribute="bottom" constant="5" id="LGH-1b-NLP"/>
+                                    <constraint firstItem="Faw-Wd-kxP" firstAttribute="leading" secondItem="xcO-7n-5QL" secondAttribute="leading" constant="5" id="uJc-HQ-6cm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PIy-a7-Vwz" firstAttribute="centerX" secondItem="UVT-RD-qcc" secondAttribute="centerX" id="1Ml-Ad-8cp"/>
+                            <constraint firstItem="tdN-WE-L3f" firstAttribute="centerX" secondItem="UVT-RD-qcc" secondAttribute="centerX" id="6KM-H6-6KU"/>
+                            <constraint firstItem="PIy-a7-Vwz" firstAttribute="top" secondItem="UVT-RD-qcc" secondAttribute="top" constant="20" id="N79-JJ-8lB"/>
+                            <constraint firstItem="wIp-nO-Ha4" firstAttribute="leading" secondItem="UVT-RD-qcc" secondAttribute="leading" id="NiB-ES-K9q"/>
+                            <constraint firstItem="vRl-DM-7eQ" firstAttribute="width" secondItem="DYD-5m-Ni9" secondAttribute="width" multiplier="4:5" id="Pqr-Vg-htb"/>
+                            <constraint firstItem="xcO-7n-5QL" firstAttribute="centerX" secondItem="UVT-RD-qcc" secondAttribute="centerX" id="QVi-fl-hlH"/>
+                            <constraint firstItem="wIp-nO-Ha4" firstAttribute="bottom" secondItem="UVT-RD-qcc" secondAttribute="bottom" id="Ui9-dl-qr4"/>
+                            <constraint firstItem="wIp-nO-Ha4" firstAttribute="top" secondItem="xcO-7n-5QL" secondAttribute="bottom" constant="20" id="jF2-0F-Bkx"/>
+                            <constraint firstItem="vRl-DM-7eQ" firstAttribute="centerX" secondItem="UVT-RD-qcc" secondAttribute="centerX" id="m9j-Vk-zZU"/>
+                            <constraint firstItem="UVT-RD-qcc" firstAttribute="trailing" secondItem="wIp-nO-Ha4" secondAttribute="trailing" id="pxz-PP-LYr"/>
+                            <constraint firstItem="tdN-WE-L3f" firstAttribute="top" secondItem="PIy-a7-Vwz" secondAttribute="bottom" constant="5" id="wqE-jF-ulW"/>
+                            <constraint firstItem="xcO-7n-5QL" firstAttribute="width" secondItem="DYD-5m-Ni9" secondAttribute="width" multiplier="4:5" id="yKj-x3-qB5"/>
+                            <constraint firstItem="PIy-a7-Vwz" firstAttribute="width" secondItem="DYD-5m-Ni9" secondAttribute="width" multiplier="1:3" id="ya6-vK-wE1"/>
+                            <constraint firstItem="vRl-DM-7eQ" firstAttribute="top" secondItem="tdN-WE-L3f" secondAttribute="bottom" constant="60" id="ydR-8c-lxa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UVT-RD-qcc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXu-Wp-Mxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="-618"/>
+            <point key="canvasLocation" x="-370.39999999999998" y="-618.44077961019491"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3lV-TW-XmM">
@@ -287,8 +352,9 @@ Own Ethereum Wallet</string>
         </scene>
     </scenes>
     <resources>
+        <image name="backup-icon" width="512" height="512"/>
         <image name="settings" width="30" height="30"/>
         <image name="wallet" width="30" height="30"/>
-        <image name="wallet-icon" width="491.51998901367188" height="491.51998901367188"/>
+        <image name="wallet-icon" width="512" height="512"/>
     </resources>
 </document>

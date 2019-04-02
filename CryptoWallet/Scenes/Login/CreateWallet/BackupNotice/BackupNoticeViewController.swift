@@ -14,6 +14,18 @@ final class BackupNoticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configView()
+    }
+    
+    private func configView() {
+        let backupLaterBarButton = UIBarButtonItem(title: "Backup later",
+                                                   style: .done,
+                                                   target: self,
+                                                   action: #selector(handleBackupLaterTapped(_:)))
+        navigationItem.rightBarButtonItem = backupLaterBarButton
+    }
+    
+    @objc private func handleBackupLaterTapped(_ sender: Any) {
     }
 }
 
