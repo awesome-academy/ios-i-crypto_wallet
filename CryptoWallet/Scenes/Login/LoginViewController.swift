@@ -39,7 +39,7 @@ final class LoginViewController: UIViewController {
         navigationController?.pushViewController(recoverWalletController, animated: true)
     }
     
-    @objc private func handleImportGuideTapped(_ sender: Any) {
+    @objc private func handleShowGuideTapped(_ sender: Any) {
         let importGuideController = GuideViewController.instantiate()
         navigationController?.pushViewController(importGuideController, animated: true)
     }
@@ -48,8 +48,12 @@ final class LoginViewController: UIViewController {
         [createWalletButton, recoverWalletButton].forEach {
             $0.setBorder(cornerRadius: 5, borderWidth: 2, borderColor: .darkGray)
         }
-        let tapImportGuideLabel = UITapGestureRecognizer(target: self, action: #selector(handleImportGuideTapped(_:)))
-        importGuideLabel.addGestureRecognizer(tapImportGuideLabel)
-        importGuideLabel.isUserInteractionEnabled = true
+        let tapImportGuideLabel = UITapGestureRecognizer().then {
+            $0.addTarget(self, action: #selector(handleShowGuideTapped(_:)))
+        }
+        importGuideLabel.do {
+            $0.addGestureRecognizer(tapImportGuideLabel)
+            $0.isUserInteractionEnabled = true
+        }
     }
 }

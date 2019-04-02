@@ -9,10 +9,12 @@
 import UIKit
 import Reusable
 
-final class CreateWalletViewController: UIViewController, StoryboardSceneBased {
-    static var sceneStoryboard = Storyboards.main
-    
+final class CreateWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension CreateWalletViewController: StoryboardSceneBased {
+    static var sceneStoryboard = Storyboards.main
 }

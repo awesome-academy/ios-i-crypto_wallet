@@ -9,10 +9,12 @@
 import UIKit
 import Reusable
 
-final class RecoverWalletViewController: UIViewController, StoryboardSceneBased {
-    static var sceneStoryboard = Storyboards.main
-    
+final class RecoverWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension RecoverWalletViewController: StoryboardSceneBased {
+    static var sceneStoryboard = Storyboards.main
 }

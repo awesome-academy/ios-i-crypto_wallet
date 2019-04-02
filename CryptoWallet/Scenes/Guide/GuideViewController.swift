@@ -9,10 +9,12 @@
 import UIKit
 import Reusable
 
-final class GuideViewController: UIViewController, StoryboardSceneBased {
-    static var sceneStoryboard = Storyboards.main
-    
+final class GuideViewController: UIViewController {    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension GuideViewController: StoryboardSceneBased {
+    static var sceneStoryboard = Storyboards.main
 }
