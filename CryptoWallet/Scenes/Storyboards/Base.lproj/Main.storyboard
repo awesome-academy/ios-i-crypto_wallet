@@ -138,9 +138,76 @@ Own Ethereum Wallet</string>
                     <view key="view" contentMode="scaleToFill" id="gbS-Kk-nT5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="FsT-ui-l0g">
+                                <rect key="frame" x="125" y="40" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FsT-ui-l0g" secondAttribute="height" multiplier="1:1" id="ZLM-dj-tCw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAl-WL-48L">
+                                <rect key="frame" x="83" y="170" width="209" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wallet name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-md-Luw">
+                                <rect key="frame" x="37.5" y="260" width="300" height="24"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6K8-bH-Yqw">
+                                <rect key="frame" x="37.5" y="304" width="300" height="24"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PLc-BO-Luk">
+                                <rect key="frame" x="37.5" y="348" width="300" height="24"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-xu-d7N">
+                                <rect key="frame" x="0.0" y="631" width="375" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleCreateWalletTapped:" destination="Gr7-W7-KCh" eventType="touchUpInside" id="fgO-Wc-HoT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r6Q-md-Luw" firstAttribute="top" secondItem="xAl-WL-48L" secondAttribute="bottom" constant="60" id="1Mf-2u-cgC"/>
+                            <constraint firstItem="r6Q-md-Luw" firstAttribute="width" secondItem="gbS-Kk-nT5" secondAttribute="width" multiplier="4:5" id="7l2-5i-ne3"/>
+                            <constraint firstItem="6K8-bH-Yqw" firstAttribute="top" secondItem="r6Q-md-Luw" secondAttribute="bottom" constant="20" id="ENh-5Y-JBe"/>
+                            <constraint firstItem="r6Q-md-Luw" firstAttribute="centerX" secondItem="W1Q-tS-qCz" secondAttribute="centerX" id="LTB-R7-ccd"/>
+                            <constraint firstItem="5RA-xu-d7N" firstAttribute="bottom" secondItem="W1Q-tS-qCz" secondAttribute="bottom" id="Ly7-Kx-B9r"/>
+                            <constraint firstItem="FsT-ui-l0g" firstAttribute="centerX" secondItem="W1Q-tS-qCz" secondAttribute="centerX" id="Mu4-Q6-HNM"/>
+                            <constraint firstItem="FsT-ui-l0g" firstAttribute="width" secondItem="gbS-Kk-nT5" secondAttribute="width" multiplier="1:3" id="OCe-ex-VQf"/>
+                            <constraint firstItem="6K8-bH-Yqw" firstAttribute="centerX" secondItem="W1Q-tS-qCz" secondAttribute="centerX" id="QNK-Rt-nvH"/>
+                            <constraint firstItem="6K8-bH-Yqw" firstAttribute="width" secondItem="r6Q-md-Luw" secondAttribute="width" id="SoP-PM-jf2"/>
+                            <constraint firstItem="5RA-xu-d7N" firstAttribute="width" secondItem="gbS-Kk-nT5" secondAttribute="width" id="UF6-MD-zNf"/>
+                            <constraint firstItem="PLc-BO-Luk" firstAttribute="width" secondItem="r6Q-md-Luw" secondAttribute="width" id="aIJ-tS-SWg"/>
+                            <constraint firstItem="xAl-WL-48L" firstAttribute="top" secondItem="FsT-ui-l0g" secondAttribute="bottom" constant="5" id="b8i-WI-QpH"/>
+                            <constraint firstItem="5RA-xu-d7N" firstAttribute="centerX" secondItem="W1Q-tS-qCz" secondAttribute="centerX" id="cCJ-uk-1WS"/>
+                            <constraint firstItem="xAl-WL-48L" firstAttribute="centerX" secondItem="FsT-ui-l0g" secondAttribute="centerX" id="euH-Ga-RTP"/>
+                            <constraint firstItem="PLc-BO-Luk" firstAttribute="top" secondItem="6K8-bH-Yqw" secondAttribute="bottom" constant="20" id="ihd-wf-ddX"/>
+                            <constraint firstItem="FsT-ui-l0g" firstAttribute="top" secondItem="W1Q-tS-qCz" secondAttribute="top" constant="20" id="uiP-v5-Vrj"/>
+                            <constraint firstItem="PLc-BO-Luk" firstAttribute="centerX" secondItem="W1Q-tS-qCz" secondAttribute="centerX" id="vJE-SB-lXg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="W1Q-tS-qCz"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="6K8-bH-Yqw" id="woM-v7-vy4"/>
+                        <outlet property="repeatPasswordTextField" destination="PLc-BO-Luk" id="2nW-Go-2JR"/>
+                        <outlet property="walletNameTextField" destination="r6Q-md-Luw" id="b4U-3L-4Ya"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-kY-4LT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,5 +274,6 @@ Own Ethereum Wallet</string>
     <resources>
         <image name="settings" width="30" height="30"/>
         <image name="wallet" width="30" height="30"/>
+        <image name="wallet-icon" width="491.51998901367188" height="491.51998901367188"/>
     </resources>
 </document>
