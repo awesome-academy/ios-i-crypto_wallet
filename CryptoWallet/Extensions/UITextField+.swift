@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Validator
 
 extension UITextField {
     func underlined(height: CGFloat, color: UIColor) {
