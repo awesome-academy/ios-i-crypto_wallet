@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 
 final class BackupNoticeViewController: UIViewController {
-    var mnonemics: String = ""
+    var mnonemics = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
