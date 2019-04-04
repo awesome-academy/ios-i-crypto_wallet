@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 
 final class BackupNewWalletViewController: UIViewController {
-    @IBOutlet weak var mnenomicLabel: UILabel!
+    @IBOutlet private weak var mnenomicLabel: UILabel!
     
     var mnenomics = ""
     
