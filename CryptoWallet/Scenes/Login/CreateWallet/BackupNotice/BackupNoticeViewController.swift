@@ -19,6 +19,7 @@ final class BackupNoticeViewController: UIViewController {
     
     @IBAction private func handleBackupMnenomicTapped(_ sender: Any) {
         let backupNewWalletController = BackupNewWalletViewController.instantiate()
+        backupNewWalletController.mnenomics = mnonemics
         navigationController?.pushViewController(backupNewWalletController, animated: true)
     }
 

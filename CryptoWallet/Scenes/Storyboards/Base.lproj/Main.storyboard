@@ -347,6 +347,9 @@ CryptoWallet will not able to access accounts, recover keys, reset passwords nor
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleDoneTapped:" destination="ibP-4J-veB" eventType="touchUpInside" id="uW9-1r-ajl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -368,6 +371,9 @@ CryptoWallet will not able to access accounts, recover keys, reset passwords nor
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7J7-Uw-zrJ"/>
                     </view>
+                    <connections>
+                        <outlet property="mnenomicLabel" destination="jpm-6D-N7a" id="np9-ZZ-SoC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylR-gj-kKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
