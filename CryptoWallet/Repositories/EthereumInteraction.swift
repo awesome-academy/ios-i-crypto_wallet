@@ -33,4 +33,53 @@ enum EthereumInteraction {
                               isHierarchicalDeterministic: true)
         return (hdWallet, unwrapped)
     }
+    
+    static func importWalletByPrivateKey(walletName: String,
+                                         privateKey: String,
+                                         password: String) throws -> Wallet {
+        guard let data = Data.fromHex(privateKey) else {
+            throw EthereumInteractionErrors.cantImportWallet
+        }
+        
+        guard let newWallet = try? EthereumKeystoreV3(privateKey: data,
+                                                      password: password,
+                                                      aesMode: "aes-128-cbc") else {
+            throw EthereumInteractionErrors.cantImportWallet
+        }
+        
+        guard let wallet = newWallet,
+            wallet.addresses?.count == 1,
+            let keyData = try? JSONEncoder().encode(wallet.keystoreParams),
+            let address = newWallet?.addresses?.first?.address else {
+            throw EthereumInteractionErrors.cantImportWallet
+        }
+        
+        let importedWallet = Wallet(walletName: walletName,
+                                    walletAddress: address,
+                                    keyData: keyData,
+                                    isHierarchicalDeterministic: false)
+        return importedWallet
+    }
+    
+    static func importWalletByMnenomic(walletName: String,
+                                       mnenomicPhrase: String,
+                                       password: String) throws -> Wallet {
+        guard let keystore = try? BIP32Keystore(mnemonics: mnenomicPhrase,
+                                                password: password,
+                                                mnemonicsPassword: "",
+                                                language: .english,
+                                                prefixPath: "m/44'/60'/0'/0",
+                                                aesMode: "aes-128-cbc"), let wallet = keystore else {
+                                                    throw EthereumInteractionErrors.cantImportWallet
+        }
+        guard let keyData = try? JSONEncoder().encode(wallet.keystoreParams),
+            let address = wallet.addresses?.first?.address else {
+                throw EthereumInteractionErrors.cantImportWallet
+        }
+        let importedWallet = Wallet(walletName: walletName,
+                                    walletAddress: address,
+                                    keyData: keyData,
+                                    isHierarchicalDeterministic: true)
+        return importedWallet
+    }
 }
