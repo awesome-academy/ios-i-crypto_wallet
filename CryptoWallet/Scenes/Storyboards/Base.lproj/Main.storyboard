@@ -157,25 +157,31 @@ Own Ethereum Wallet</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YR-kZ-S4h">
-                                <rect key="frame" x="37.5" y="310.5" width="300" height="20.5"/>
+                                <rect key="frame" x="37.5" y="382.5" width="300" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhJ-aQ-V5b">
+                                <rect key="frame" x="37.5" y="310.5" width="300" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Of1-As-mSd">
-                                <rect key="frame" x="37.5" y="346" width="300" height="21"/>
+                                <rect key="frame" x="37.5" y="418" width="300" height="21"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmP-Am-YhR">
-                                <rect key="frame" x="37.5" y="382" width="300" height="21"/>
+                                <rect key="frame" x="37.5" y="454" width="300" height="21"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qey-Zo-4by">
-                                <rect key="frame" x="37.5" y="433" width="300" height="36"/>
+                                <rect key="frame" x="37.5" y="505" width="300" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Recover">
@@ -192,13 +198,20 @@ Own Ethereum Wallet</string>
                                     <action selector="handleGuideTapped:" destination="Fzr-4Q-BOB" eventType="touchUpInside" id="Vjq-My-fKT"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wallet name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8c-O0-1s1">
+                                <rect key="frame" x="37.5" y="346.5" width="300" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0YR-kZ-S4h" firstAttribute="trailing" secondItem="0DN-e9-1Io" secondAttribute="trailing" id="2FU-uo-4ic"/>
-                            <constraint firstItem="0YR-kZ-S4h" firstAttribute="top" secondItem="0DN-e9-1Io" secondAttribute="bottom" constant="20" id="87C-gj-HQZ"/>
+                            <constraint firstItem="y8c-O0-1s1" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="AWA-cn-mir"/>
                             <constraint firstItem="0DN-e9-1Io" firstAttribute="width" secondItem="x5U-aM-lSy" secondAttribute="width" id="BFo-se-oVc"/>
                             <constraint firstItem="aEK-jN-H3D" firstAttribute="trailing" secondItem="kge-7E-2h3" secondAttribute="trailing" id="CeJ-w6-oze"/>
+                            <constraint firstItem="0YR-kZ-S4h" firstAttribute="top" secondItem="y8c-O0-1s1" secondAttribute="bottom" constant="15" id="FKu-NK-WtR"/>
                             <constraint firstItem="x5U-aM-lSy" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="Gun-8e-SGb"/>
                             <constraint firstItem="Of1-As-mSd" firstAttribute="width" secondItem="x5U-aM-lSy" secondAttribute="width" id="KZ8-G7-QFo"/>
                             <constraint firstItem="qey-Zo-4by" firstAttribute="top" secondItem="XmP-Am-YhR" secondAttribute="bottom" constant="30" id="Klm-HK-s7v"/>
@@ -209,29 +222,36 @@ Own Ethereum Wallet</string>
                             <constraint firstItem="XmP-Am-YhR" firstAttribute="top" secondItem="Of1-As-mSd" secondAttribute="bottom" constant="15" id="SVj-74-k09"/>
                             <constraint firstItem="31n-dJ-yGb" firstAttribute="leading" secondItem="kge-7E-2h3" secondAttribute="leading" id="UOo-Zq-cv5"/>
                             <constraint firstItem="0YR-kZ-S4h" firstAttribute="leading" secondItem="0DN-e9-1Io" secondAttribute="leading" id="Vm7-6p-kcL"/>
+                            <constraint firstItem="y8c-O0-1s1" firstAttribute="top" secondItem="jhJ-aQ-V5b" secondAttribute="bottom" constant="15" id="YvM-tl-Ki2"/>
                             <constraint firstItem="0DN-e9-1Io" firstAttribute="top" secondItem="aEK-jN-H3D" secondAttribute="bottom" constant="20" id="bZE-oP-XJl"/>
                             <constraint firstItem="kge-7E-2h3" firstAttribute="trailing" secondItem="31n-dJ-yGb" secondAttribute="trailing" id="fCf-6s-C8s"/>
                             <constraint firstItem="Of1-As-mSd" firstAttribute="top" secondItem="0YR-kZ-S4h" secondAttribute="bottom" constant="15" id="fDb-Jo-ExL"/>
                             <constraint firstItem="Of1-As-mSd" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="fwf-1b-OC1"/>
+                            <constraint firstItem="jhJ-aQ-V5b" firstAttribute="trailing" secondItem="0DN-e9-1Io" secondAttribute="trailing" id="hu2-KG-Hmc"/>
                             <constraint firstItem="XmP-Am-YhR" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="ljr-dV-W5e"/>
                             <constraint firstItem="x5U-aM-lSy" firstAttribute="top" secondItem="kge-7E-2h3" secondAttribute="top" constant="20" id="mWV-qr-5yY"/>
                             <constraint firstItem="0DN-e9-1Io" firstAttribute="height" secondItem="TwP-Qq-UbM" secondAttribute="height" multiplier="1:6" id="n9J-A8-zjf"/>
                             <constraint firstItem="0DN-e9-1Io" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="nSu-XX-qVA"/>
                             <constraint firstItem="JG4-m3-KsR" firstAttribute="width" secondItem="x5U-aM-lSy" secondAttribute="width" id="nZB-DS-D0w"/>
                             <constraint firstItem="qey-Zo-4by" firstAttribute="centerX" secondItem="kge-7E-2h3" secondAttribute="centerX" id="pZo-eY-1gQ"/>
+                            <constraint firstItem="jhJ-aQ-V5b" firstAttribute="top" secondItem="0DN-e9-1Io" secondAttribute="bottom" constant="20" id="rD8-le-mMZ"/>
                             <constraint firstItem="XmP-Am-YhR" firstAttribute="width" secondItem="x5U-aM-lSy" secondAttribute="width" id="ry3-8x-EyO"/>
+                            <constraint firstItem="jhJ-aQ-V5b" firstAttribute="leading" secondItem="0DN-e9-1Io" secondAttribute="leading" id="xGi-a8-409"/>
                             <constraint firstItem="x5U-aM-lSy" firstAttribute="width" secondItem="TwP-Qq-UbM" secondAttribute="width" multiplier="4:5" id="xOj-E7-Bz4"/>
+                            <constraint firstItem="y8c-O0-1s1" firstAttribute="width" secondItem="x5U-aM-lSy" secondAttribute="width" id="yI3-mh-j2U"/>
                             <constraint firstItem="aEK-jN-H3D" firstAttribute="top" secondItem="x5U-aM-lSy" secondAttribute="bottom" constant="20" id="zND-aZ-I3x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kge-7E-2h3"/>
                     </view>
                     <connections>
                         <outlet property="guideButton" destination="31n-dJ-yGb" id="5uC-wY-CZM"/>
+                        <outlet property="methodTabSegmentControl" destination="x5U-aM-lSy" id="ENp-kt-VY3"/>
                         <outlet property="passwordTextField" destination="Of1-As-mSd" id="OUO-LO-EJh"/>
-                        <outlet property="recoverDataTextView" destination="0DN-e9-1Io" id="srV-bA-59p"/>
                         <outlet property="recoverWalletButton" destination="qey-Zo-4by" id="i9e-tw-pFh"/>
                         <outlet property="recoverWalletNoticeLabel" destination="JG4-m3-KsR" id="DEZ-2G-fTQ"/>
+                        <outlet property="recoveryDataTextView" destination="0DN-e9-1Io" id="GAh-2K-KXZ"/>
                         <outlet property="repeatPasswordTextField" destination="XmP-Am-YhR" id="BtX-it-cgL"/>
+                        <outlet property="walletNameTextField" destination="y8c-O0-1s1" id="xQl-TO-LGE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqi-jw-N6R" userLabel="First Responder" sceneMemberID="firstResponder"/>

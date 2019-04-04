@@ -11,11 +11,12 @@ import Validator
 
 protocol ValidatorConvertible {
     func validated(_ value: String) -> ValidationResult
-    func validatedEquality(_ firstValue: String, _ secondValue: String) -> ValidationResult
 }
 
 enum ValidatorType {
     case password
+    case privateKey
+    case mnenomicPhrase
 }
 
 enum ValidatorFactory {
@@ -23,6 +24,10 @@ enum ValidatorFactory {
         switch type {
         case .password:
             return PasswordValidator()
+        case .privateKey:
+            return PrivateKeyValidator()
+        case .mnenomicPhrase:
+            return MnenomicPhraseValidator()
         }
     }
 }
@@ -38,5 +43,25 @@ final class PasswordValidator: ValidatorConvertible {
         let passwordRule = ValidationRulePattern(pattern: "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,16}$",
                                                  error: ValidationErrors.invalidPassword)
         return value.validate(rule: passwordRule)
+    }
+}
+
+final class PrivateKeyValidator: ValidatorConvertible {
+    func validated(_ value: String) -> ValidationResult {
+        let privateKeyRule = ValidationRulePattern(pattern: "^([a-fA-F0-9]){64,64}$",
+                                                   error: ValidationErrors.invalidPrivateKey)
+        return value.validate(rule: privateKeyRule)
+    }
+}
+
+final class MnenomicPhraseValidator: ValidatorConvertible {
+    func validated(_ value: String) -> ValidationResult {
+        let words = value.split(separator: " ")
+        if words.count == 12 {
+            let mnenomicPhraseRule = ValidationRulePattern(pattern: "^([a-z\\sA-Z]){0,100}$",
+                                                           error: ValidationErrors.invalidMnenomicPhrase)
+            return value.validate(rule: mnenomicPhraseRule)
+        }
+        return ValidationResult.invalid([ValidationErrors.invalidMnenomicPhrase])
     }
 }

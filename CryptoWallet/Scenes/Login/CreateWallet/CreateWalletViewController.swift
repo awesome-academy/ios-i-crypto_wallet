@@ -31,7 +31,7 @@ final class CreateWalletViewController: UIViewController {
                     password: validatedPassword)
                 if let id = Identifier(nonEmpty: Constants.appName) {
                     Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
-                        $0.set(string: mnonemics, forKey: "mnonemics")
+                        $0.set(string: "0:" + mnonemics, forKey: "recoveryData")
                         $0.set(string: validatedPassword, forKey: "password")
                     }
                 }
@@ -63,7 +63,7 @@ final class CreateWalletViewController: UIViewController {
             passwordTextField.do {
                 $0.underlined(height: 1, color: .lightGray)
             }
-            switch validator.validatedEquality(password, repeatPassword) {
+            switch PasswordValidator().validatedEquality(password, repeatPassword) {
             case .valid:
                 repeatPasswordTextField.do {
                     $0.underlined(height: 1, color: .lightGray)

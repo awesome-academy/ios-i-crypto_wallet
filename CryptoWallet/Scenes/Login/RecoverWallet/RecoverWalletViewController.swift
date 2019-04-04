@@ -10,14 +10,20 @@ import UIKit
 import Reusable
 import Then
 import UITextView_Placeholder
+import Valet
 
 final class RecoverWalletViewController: UIViewController {
-    @IBOutlet private weak var recoverDataTextView: UITextView!
+    @IBOutlet private weak var recoveryDataTextView: UITextView!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var repeatPasswordTextField: UITextField!
     @IBOutlet private weak var recoverWalletButton: UIButton!
     @IBOutlet private weak var guideButton: UIButton!
     @IBOutlet private weak var recoverWalletNoticeLabel: UILabel!
+    @IBOutlet private weak var walletNameTextField: UITextField!
+    @IBOutlet weak var methodTabSegmentControl: UISegmentedControl!
+    
+    private var validatedPassword = ""
+    private var validatedRecoveryData = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +31,52 @@ final class RecoverWalletViewController: UIViewController {
     }
     
     @IBAction private func handleRecoverWalletTapped(_ sender: Any) {
+        if validate() {
+            do {
+                let wallet = methodTabSegmentControl.selectedSegmentIndex == 0 ?
+                    try EthereumInteraction.importWalletByMnenomic(walletName:
+                        walletNameTextField.text ?? Constants.appName,
+                                                                   mnenomicPhrase: validatedRecoveryData,
+                                                                   password: validatedPassword) :
+                    try EthereumInteraction.importWalletByPrivateKey(walletName:
+                        walletNameTextField.text ?? Constants.appName,
+                                                                     privateKey: validatedRecoveryData,
+                                                                     password: validatedPassword)
+                if let id = Identifier(nonEmpty: Constants.appName) {
+                    Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
+                        $0.set(string: "\(methodTabSegmentControl.selectedSegmentIndex):\(validatedRecoveryData)",
+                               forKey: "recoveryData")
+                    }
+                }
+                Wallet.sharedWallet = wallet
+                let homeTabBarController = HomeTabBarController.instantiate()
+                navigationController?.pushViewController(homeTabBarController, animated: true)
+            } catch {
+                showErrorAlert(message: error.localizedDescription)
+            }
+        }
     }
     
     @IBAction private func handleGuideTapped(_ sender: Any) {
+        let guideController = GuideViewController.instantiate()
+        navigationController?.pushViewController(guideController, animated: true)
     }
     
     @IBAction func handleRecoverMethodTabChanged(_ sender: UISegmentedControl) {
         let methodName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "Mnenomic Phrase"
-        recoverWalletNoticeLabel.text = "You can reset the password while importing the \(methodName)."
-        recoverDataTextView.do {
+        recoverWalletNoticeLabel.do {
+            $0.text = "You can reset the password while importing the \(methodName)."
+        }
+        guideButton.do {
+            $0.setTitle("What is a \(methodName)?", for: .normal)
+        }
+        recoveryDataTextView.do {
             $0.placeholder = methodName
         }
     }
     
     private func configView() {
-        recoverDataTextView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .lightGray)
+        recoveryDataTextView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .lightGray)
         recoverWalletButton.setBorder(cornerRadius: 5, borderWidth: 0, borderColor: .white)
         let headerLine = CALayer().then {
             $0.frame = CGRect(x: 0, y: 0, width: guideButton.frame.width, height: 1)
@@ -51,12 +88,61 @@ final class RecoverWalletViewController: UIViewController {
             $0.setImage(UIImage(named: "book-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
             $0.contentMode = .scaleAspectFit
         }
-        [passwordTextField, repeatPasswordTextField].forEach {
+        [passwordTextField, repeatPasswordTextField, walletNameTextField].forEach {
             $0.underlined(height: 1, color: .lightGray)
         }
-        recoverDataTextView.do {
+        recoveryDataTextView.do {
             $0.placeholder = "Mnenomic Phrase"
             $0.placeholderColor = .lightGray
+        }
+    }
+    
+    private func validate() -> Bool {
+        let passwordValidator = ValidatorFactory.validatorFor(type: .password)
+        let recoverDataValidator = methodTabSegmentControl.selectedSegmentIndex == 0 ?
+            ValidatorFactory.validatorFor(type: .mnenomicPhrase) : ValidatorFactory.validatorFor(type: .privateKey)
+        guard let recoveryData = recoveryDataTextView.text else {
+            showErrorAlert(message: ValidationErrors.emptyRecoveryData.localizedDescription)
+            return false
+        }
+        guard let password = passwordTextField.text, let repeatPassword = repeatPasswordTextField.text else {
+            showErrorAlert(message: ValidationErrors.emptyPassword.localizedDescription)
+            return false
+        }
+        switch recoverDataValidator.validated(recoveryData) {
+        case .valid:
+            recoveryDataTextView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .lightGray)
+            validatedRecoveryData = recoveryData
+            switch passwordValidator.validated(password) {
+            case .valid:
+                passwordTextField.do {
+                    $0.underlined(height: 1, color: .lightGray)
+                }
+                switch PasswordValidator().validatedEquality(password, repeatPassword) {
+                case .valid:
+                    repeatPasswordTextField.do {
+                        $0.underlined(height: 1, color: .lightGray)
+                    }
+                    validatedPassword = password
+                    return true
+                case .invalid(let errors):
+                    repeatPasswordTextField.do {
+                        $0.underlined(height: 1, color: .red)
+                    }
+                    showErrorAlert(message: errors.first?.localizedDescription)
+                    return false
+                }
+            case .invalid(let errors):
+                passwordTextField.do {
+                    $0.underlined(height: 1, color: .red)
+                }
+                showErrorAlert(message: errors.first?.localizedDescription)
+                return false
+            }
+        case .invalid(let errors):
+            recoveryDataTextView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .red)
+            showErrorAlert(message: errors.first?.localizedDescription)
+            return false
         }
     }
 }
