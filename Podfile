@@ -7,7 +7,7 @@ target 'CryptoWallet' do
 
   # Pods for CryptoWallet
   pod 'AlamofireObjectMapper'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 5.0.0-beta.3'
   pod 'web3swift'
   pod 'SwiftLint'
   pod 'Then'
@@ -15,4 +15,5 @@ target 'CryptoWallet' do
   pod 'Valet'
   pod 'Validator'
   pod 'UITextView+Placeholder'
+  pod "SwiftChart"
 end
