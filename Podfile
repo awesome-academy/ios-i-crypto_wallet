@@ -14,4 +14,5 @@ target 'CryptoWallet' do
   pod 'Reusable'
   pod 'Valet'
   pod 'Validator'
+  pod 'UITextView+Placeholder'
 end

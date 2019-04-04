@@ -151,7 +151,7 @@ Own Ethereum Wallet</string>
                                     <constraint firstAttribute="bottom" secondItem="JG4-m3-KsR" secondAttribute="bottom" constant="20" id="Fng-u9-GLS"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Mnenomic Phrase" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0DN-e9-1Io">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0DN-e9-1Io">
                                 <rect key="frame" x="37.5" y="179.5" width="300" height="111"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

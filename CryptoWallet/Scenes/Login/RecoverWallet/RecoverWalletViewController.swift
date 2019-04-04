@@ -9,6 +9,7 @@
 import UIKit
 import Reusable
 import Then
+import UITextView_Placeholder
 
 final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var recoverDataTextView: UITextView!
@@ -17,8 +18,6 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var recoverWalletButton: UIButton!
     @IBOutlet private weak var guideButton: UIButton!
     @IBOutlet private weak var recoverWalletNoticeLabel: UILabel!
-    
-    private var recoverDataPlaceHolder = "Mnenomic Phrase"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +33,8 @@ final class RecoverWalletViewController: UIViewController {
     @IBAction func handleRecoverMethodTabChanged(_ sender: UISegmentedControl) {
         let methodName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "Mnenomic Phrase"
         recoverWalletNoticeLabel.text = "You can reset the password while importing the \(methodName)."
-        recoverDataPlaceHolder = methodName
-        if recoverDataTextView.textColor == .lightGray {
-            recoverDataTextView.text = methodName
+        recoverDataTextView.do {
+            $0.placeholder = methodName
         }
     }
     
@@ -57,31 +55,12 @@ final class RecoverWalletViewController: UIViewController {
             $0.underlined(height: 1, color: .lightGray)
         }
         recoverDataTextView.do {
-            $0.delegate = self
-            $0.textColor = .lightGray
-            $0.text = recoverDataPlaceHolder
+            $0.placeholder = "Mnenomic Phrase"
+            $0.placeholderColor = .lightGray
         }
     }
 }
 
 extension RecoverWalletViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.main
-}
-
-extension RecoverWalletViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
-            textView.do {
-                $0.text = nil
-                $0.textColor = .black
-            }
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = recoverDataPlaceHolder
-            textView.textColor = .lightGray
-        }
-    }
 }
