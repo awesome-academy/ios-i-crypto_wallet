@@ -35,8 +35,9 @@ final class CreateWalletViewController: UIViewController {
                         $0.set(string: validatedPassword, forKey: "password")
                     }
                 }
+                Wallet.sharedWallet = wallet
                 let backupNoticeController = BackupNoticeViewController.instantiate().then {
-                    $0.wallet = wallet
+                    $0.mnonemics = mnonemics
                 }
                 navigationController?.pushViewController(backupNoticeController, animated: true)
             } catch {

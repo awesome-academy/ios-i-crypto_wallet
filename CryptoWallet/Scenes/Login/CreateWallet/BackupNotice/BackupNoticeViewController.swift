@@ -10,11 +10,16 @@ import UIKit
 import Reusable
 
 final class BackupNoticeViewController: UIViewController {
-    var wallet: Wallet?
+    var mnonemics = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+    }
+    
+    @IBAction private func handleBackupMnenomicTapped(_ sender: Any) {
+        let backupNewWalletController = BackupNewWalletViewController.instantiate()
+        navigationController?.pushViewController(backupNewWalletController, animated: true)
     }
     
     private func configView() {
@@ -26,6 +31,8 @@ final class BackupNoticeViewController: UIViewController {
     }
     
     @objc private func handleBackupLaterTapped(_ sender: Any) {
+        let homeTabBarController = HomeTabBarController.instantiate()
+        present(homeTabBarController, animated: true, completion: nil)
     }
 }
 

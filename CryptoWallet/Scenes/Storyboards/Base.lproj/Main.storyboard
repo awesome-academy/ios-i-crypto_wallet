@@ -249,6 +249,9 @@ CryptoWallet will not able to access accounts, recover keys, reset passwords nor
                                 <state key="normal" title="Backup Mnemonic Phrase">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleBackupMnenomicTapped:" destination="QBZ-R7-Ba7" eventType="touchUpInside" id="gGd-iN-VFp"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-7n-5QL">
                                 <rect key="frame" x="37.5" y="569.5" width="300" height="41.5"/>
@@ -293,10 +296,25 @@ CryptoWallet will not able to access accounts, recover keys, reset passwords nor
             </objects>
             <point key="canvasLocation" x="-370.39999999999998" y="-618.44077961019491"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Backup New Wallet View Controller-->
+        <scene sceneID="SP7-ve-Hep">
+            <objects>
+                <viewController storyboardIdentifier="BackupNewWalletViewController" id="ibP-4J-veB" customClass="BackupNewWalletViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f7c-zC-GWf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7J7-Uw-zrJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylR-gj-kKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="-618"/>
+        </scene>
+        <!--Home Tab Bar Controller-->
         <scene sceneID="3lV-TW-XmM">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarCtrl" automaticallyAdjustsScrollViewInsets="NO" id="een-d1-NhR" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="een-d1-NhR" customClass="HomeTabBarController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WTp-Zf-GdB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
