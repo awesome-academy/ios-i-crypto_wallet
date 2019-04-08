@@ -13,7 +13,7 @@ final class ContractTransaction: BaseModel {
     var isVerified = false
     var isEnabled = false
     var address = ""
-    var totalSupply = 0.0
+    var totalSupply = ""
     var decimals = 0
     var symbol = ""
     var name = ""

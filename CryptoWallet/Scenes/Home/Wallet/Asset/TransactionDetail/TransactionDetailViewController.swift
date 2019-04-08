@@ -9,7 +9,7 @@
 import UIKit
 import Reusable
 
-class TransactionDetailViewController: UIViewController {
+final class TransactionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

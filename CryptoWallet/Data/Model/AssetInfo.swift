@@ -18,6 +18,7 @@ struct AssetInfo {
     var price = 0.0
     var twentyFourHChange = 0.0
     var amount = 0.0
+    var websiteSlug = ""
     var type: AssetType = .token
 }
 
@@ -31,6 +32,7 @@ extension AssetInfo {
                          price: 162.0,
                          twentyFourHChange: -2.45,
                          amount: 10,
+                         websiteSlug: "",
                          type: .coin)
     }
 }

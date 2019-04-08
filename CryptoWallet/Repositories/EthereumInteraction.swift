@@ -89,14 +89,14 @@ enum EthereumInteraction {
     
     static func getERC20TokenBalance(contractAddress: String, walletAddress: String) -> String? {
         let web3 = Web3.InfuraMainnetWeb3()
-        let etherWalletAdress = EthereumAddress(walletAddress)
+        let etherWalletAddress = EthereumAddress(walletAddress)
         let exploredAddress = EthereumAddress(walletAddress)
         let erc20ContractAddress = EthereumAddress(contractAddress)
         guard let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2) else {
             return nil
         }
         var options = TransactionOptions.defaultOptions
-        options.from = etherWalletAdress
+        options.from = etherWalletAddress
         options.gasPrice = .automatic
         options.gasLimit = .automatic
         let method = "balanceOf"
@@ -113,6 +113,19 @@ enum EthereumInteraction {
                 return nil
             }
             return Web3.Utils.formatToEthereumUnits(balanceBigUInt, toUnits: .eth, decimals: 3)
+        } catch {
+            return nil
+        }
+    }
+    
+    static func getEtherBalance(address: String) -> String? {
+        guard let walletAddress = EthereumAddress(address) else {
+            return nil
+        }
+        let web3 = Web3.InfuraMainnetWeb3()
+        do {
+            let balanceResult = try web3.eth.getBalance(address: walletAddress)
+            return Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 3)
         } catch {
             return nil
         }

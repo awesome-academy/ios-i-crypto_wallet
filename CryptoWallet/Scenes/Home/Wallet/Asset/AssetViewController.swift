@@ -13,8 +13,12 @@ final class AssetViewController: UIViewController {
     @IBOutlet private weak var transactionTableView: UITableView!
     
     var assetInfo: AssetInfo?
-    var transactionList = [Transaction]()
-    var transactionDateList = [String]()
+    private var assetHeader: AssetHeader?
+    private var transactionList = [Transaction]()
+    private var transactionDateList = [String]()
+    private let transactionRepository: TransactionRepository = TransactionRepositoryImpl(api: APIService.share)
+    private let assetRepository: AssetRepository = AssetRepositoryImpl(api: APIService.share)
+    private var page = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +26,10 @@ final class AssetViewController: UIViewController {
     }
     
     private func configView() {
-        let assetHeader = AssetHeader(frame: CGRect(x: 0,
-                                                    y: 0,
-                                                    width: transactionTableView.frame.width,
-                                                    height: transactionTableView.frame.height / 2)).then {
+        assetHeader = AssetHeader(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: transactionTableView.frame.width,
+                                                height: transactionTableView.frame.height / 2)).then {
             if let assetInfo = assetInfo {
                 $0.setAssetInfo(assetInfo)
             }
@@ -69,9 +73,8 @@ final class AssetViewController: UIViewController {
                                                    target: nil,
                                                    action: nil)
         }
-        transactionList = Transaction.mock() ?? []
-        transactionDateList = getTransactionDateList(transactionList: transactionList)
-        transactionTableView.reloadData()
+        fetchTransactionListAndLoadData()
+        fetchAndReloadAssetInfo()
     }
     
     @objc private func handleAssetDetailTapped(_ sender: UIBarButtonItem) {
@@ -82,12 +85,125 @@ final class AssetViewController: UIViewController {
     private func getTransactionDateList(transactionList: [Transaction]) -> [String] {
         var transactionDateList = [String]()
         transactionList.forEach {
-            let stringDate = Date.convertTimeStampToDate(timeStamp: $0.timeStamp)
+            guard let timeStamp = Double($0.timeStamp) else {
+                return
+            }
+            let stringDate = Date.convertTimeStampToDate(timeStamp: timeStamp)
             if !transactionDateList.contains(stringDate) {
                 transactionDateList.append(stringDate)
             }
         }
         return transactionDateList
+    }
+    
+    private func fetchAndReloadAssetInfo() {
+        guard var assetInfo = assetInfo else {
+            return
+        }
+        if assetInfo.type == .coin {
+            self.assetRepository.getEthereumInfo { (result) in
+                switch result {
+                case .success(let ethereumMarketResponse):
+                    if let ethereumMarketResponse = ethereumMarketResponse {
+                        assetInfo.price = ethereumMarketResponse.price
+                        assetInfo.id = ethereumMarketResponse.id
+                        assetInfo.websiteSlug = ethereumMarketResponse.websiteSlug
+                        assetInfo.twentyFourHChange = ethereumMarketResponse.usdPercentChange
+                        let group = DispatchGroup()
+                        group.enter()
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            if let address = Wallet.sharedWallet?.walletAddress,
+                                let amount = EthereumInteraction.getEtherBalance(address: address),
+                                let amountDouble = Double(amount) {
+                                assetInfo.amount = amountDouble
+                                group.leave()
+                            } else {
+                                group.leave()
+                            }
+                        }
+                        group.notify(queue: .main, execute: {
+                            self.assetInfo = assetInfo
+                            if let assetHeader = self.assetHeader {
+                                assetHeader.setAssetInfo(assetInfo)
+                            }
+                        })
+                    }
+                case .failure(let error):
+                    self.showErrorAlert(message: error?.errorMessage)
+                }
+            }
+        } else {
+            self.assetRepository.getAssetMarket(contractAddress: assetInfo.smartContractAddress) { (result) in
+                switch result {
+                case .success(let assetMarketResponse):
+                    if let assetMarket = assetMarketResponse?.assetMarket {
+                        assetInfo.price = assetMarket.price
+                        assetInfo.id = assetMarket.id
+                        assetInfo.websiteSlug = assetMarket.websiteSlug
+                        assetInfo.twentyFourHChange = assetMarket.percentChange24h
+                        let group = DispatchGroup()
+                        group.enter()
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            if let address = Wallet.sharedWallet?.walletAddress,
+                                let amount = EthereumInteraction.getERC20TokenBalance(
+                                    contractAddress: assetInfo.smartContractAddress,
+                                    walletAddress: address),
+                                let amountDouble = Double(amount) {
+                                assetInfo.amount = amountDouble
+                                group.leave()
+                            } else {
+                                group.leave()
+                            }
+                        }
+                        group.notify(queue: .main, execute: {
+                            self.assetInfo = assetInfo
+                            if let assetHeader = self.assetHeader {
+                                assetHeader.setAssetInfo(assetInfo)
+                            }
+                        })
+                    }
+                case .failure(let error):
+                    self.showErrorAlert(message: error?.errorMessage)
+                }
+            }
+        }
+    }
+    
+    private func fetchTransactionListAndLoadData() {
+        guard let assetInfo = assetInfo, let wallet = Wallet.sharedWallet else {
+            return
+        }
+        if assetInfo.type == .coin {
+            transactionRepository.getTransactionList(walletAddress: wallet.walletAddress, page: page) { (result) in
+                switch result {
+                case .success(let transactionResponse):
+                    guard let transactionList = transactionResponse?.transactions else {
+                        return
+                    }
+                    self.transactionList = transactionList
+                    self.transactionDateList = self.getTransactionDateList(transactionList: transactionList)
+                    self.transactionTableView.reloadData()
+                case .failure(let error):
+                    self.showErrorAlert(message: error?.errorMessage)
+                }
+            }
+        } else {
+            transactionRepository.getTransactionList(walletAddress: wallet.walletAddress,
+                                                     page: page,
+                                                     contractAddress: assetInfo.smartContractAddress) { (result) in
+                switch result {
+                case .success(let transactionResponse):
+                    guard let transactionList = transactionResponse?.transactions else {
+                        return
+                    }
+                    self.transactionList = transactionList
+                    self.transactionDateList = self.getTransactionDateList(transactionList: transactionList)
+                    self.transactionTableView.reloadData()
+                case .failure(let error):
+                    self.showErrorAlert(message: error?.errorMessage)
+                }
+            }
+        }
     }
 }
 
@@ -102,7 +218,10 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionList.filter {
-            return Date.convertTimeStampToDate(timeStamp: $0.timeStamp) == transactionDateList[section]
+            guard let timestamp = Double($0.timeStamp) else {
+                return false
+            }
+            return Date.convertTimeStampToDate(timeStamp: timestamp) == transactionDateList[section]
         }.count
     }
     
@@ -113,7 +232,10 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
         var amount = 0.0
         var symbol = ""
         let sectionTransactionList = transactionList.filter {
-            return Date.convertTimeStampToDate(timeStamp: $0.timeStamp) == transactionDateList[indexPath.section]
+            guard let timestamp = Double($0.timeStamp) else {
+                return false
+            }
+            return Date.convertTimeStampToDate(timeStamp: timestamp) == transactionDateList[indexPath.section]
         }
         let transaction = sectionTransactionList[indexPath.row]
         guard let wallet = Wallet.sharedWallet, let assetInfo = assetInfo else {
@@ -125,7 +247,7 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
                 address = transaction.to
                 symbol = "ETH"
             } else {
-                if contractOperation.from == wallet.walletAddress {
+                if contractOperation.from.lowercased() == wallet.walletAddress.lowercased() {
                     transactionType = .transferTokenTo(token: assetInfo.symbol)
                     address = contractOperation.to
                 } else {
@@ -133,19 +255,23 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
                     address = contractOperation.from
                 }
                 if let value = Double(contractOperation.value) {
-                    amount = value
+                    if let decimals = transaction.contractOperation?.contractTransaction?.decimals {
+                        amount = value / pow(10, Double(decimals))
+                    }
                 }
                 symbol = assetInfo.symbol
             }
         } else {
-            if transaction.from == wallet.walletAddress {
+            if transaction.from.lowercased() == wallet.walletAddress.lowercased() {
                 transactionType = .sent
                 address = transaction.to
             } else {
                 transactionType = .received
                 address = transaction.from
             }
-            amount = transaction.value
+            if let value = Double(transaction.value) {
+                amount = value / pow(10, 18)
+            }
             symbol = "ETH"
         }
         transactionCell.setCellValue(transactionType: transactionType, address: address, amount: amount, symbol: symbol)
