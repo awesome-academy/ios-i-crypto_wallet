@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct AssetInfo {
+    var id = 0
     var logo: UIImage?
     var name = ""
     var symbol = ""
@@ -21,7 +22,8 @@ struct AssetInfo {
 
 extension AssetInfo {
     static func mock() -> AssetInfo {
-        return AssetInfo(logo: UIImage(named: "ethereum"),
+        return AssetInfo(id: 1_027,
+                         logo: UIImage(named: "ethereum"),
                          name: "Ethereum",
                          symbol: "ETH",
                          smartContractAddress: "",

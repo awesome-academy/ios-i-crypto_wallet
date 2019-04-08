@@ -8,6 +8,7 @@
 
 import UIKit
 import Reusable
+import Kingfisher
 
 final class AssetCell: UITableViewCell {
     @IBOutlet private weak var assetLogoImageView: UIImageView!
@@ -30,7 +31,16 @@ final class AssetCell: UITableViewCell {
     
     func setCellValue(_ assetInfo: AssetInfo) {
         assetLogoImageView.do {
-            $0.image = assetInfo.logo
+            if let logo = assetInfo.logo {
+                $0.image = logo
+            } else {
+                if assetInfo.id == 0 {
+                    $0.image = UIImage(named: "default-token-icon")
+                } else {
+                    let urlImage = URL(string: URLs.cmcCoinIconAPI + "/\(assetInfo.id).png")
+                    $0.kf.setImage(with: urlImage)
+                }
+            }
             $0.contentMode = .scaleAspectFit
             $0.clipsToBounds = true
         }
@@ -38,14 +48,17 @@ final class AssetCell: UITableViewCell {
             $0.text = assetInfo.name
         }
         assetPriceLabel.do {
-            $0.text = "$\(assetInfo.price)"
+            $0.text = "$" + String(format: "%.3f", assetInfo.price)
         }
         asset24hChangeLabel.do {
-            $0.textColor = assetInfo.twentyFourHChange < 0 ? .red : UIColor.greenColor
-            $0.text = "\(assetInfo.twentyFourHChange)%"
+            $0.textColor = assetInfo.twentyFourHChange < 0 ? .red :
+                assetInfo.twentyFourHChange == 0 ? .gray : UIColor.greenColor
+            $0.text = assetInfo.twentyFourHChange <= 0 ?
+                "\(assetInfo.twentyFourHChange)%" :
+                "+\(assetInfo.twentyFourHChange)%"
         }
         assetAmountLabel.do {
-            $0.text = "\(assetInfo.amount) \(assetInfo.symbol)"
+            $0.text = String(format: "%.2f", assetInfo.amount) + " \(assetInfo.symbol)"
         }
         assetValueLabel.do {
             $0.text = "$" +  String(format: "%.2f", assetInfo.amount * assetInfo.price)

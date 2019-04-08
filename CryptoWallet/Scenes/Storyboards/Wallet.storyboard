@@ -173,16 +173,16 @@
                                                         <constraint firstAttribute="width" secondItem="ylO-OT-Nsu" secondAttribute="height" id="v5m-wq-ub8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9or-N8-2Bf">
-                                                    <rect key="frame" x="88" y="7.5" width="97" height="58"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9or-N8-2Bf">
+                                                    <rect key="frame" x="88" y="7.5" width="159.5" height="58"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRD-Id-JRg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="69.5" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MTE-Pm-1w1">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MTE-Pm-1w1">
                                                             <rect key="frame" x="0.0" y="29" width="97" height="29"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$160.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnM-Vf-xzm">
@@ -191,7 +191,7 @@
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-2.35%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZ3-gP-Naf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-2.35%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZ3-gP-Naf">
                                                                     <rect key="frame" x="53" y="0.0" width="44" height="29"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -201,17 +201,17 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QII-cV-Pbp">
-                                                    <rect key="frame" x="240" y="7.5" width="115" height="58"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" horizontalCompressionResistancePriority="200" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QII-cV-Pbp">
+                                                    <rect key="frame" x="252.5" y="7.5" width="102.5" height="58"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.00000 ETH" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-MJ-Nk9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="10.00000 ETH" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-MJ-Nk9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="102.5" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1600.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-hj-YdO">
-                                                            <rect key="frame" x="0.0" y="29" width="115" height="29"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="$1600.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-hj-YdO">
+                                                            <rect key="frame" x="0.0" y="29" width="102.5" height="29"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -225,6 +225,7 @@
                                                 <constraint firstItem="9or-N8-2Bf" firstAttribute="height" secondItem="ylO-OT-Nsu" secondAttribute="height" id="GVh-PS-lH6"/>
                                                 <constraint firstItem="QII-cV-Pbp" firstAttribute="centerY" secondItem="ylO-OT-Nsu" secondAttribute="centerY" id="RCI-FC-k8P"/>
                                                 <constraint firstItem="ylO-OT-Nsu" firstAttribute="leading" secondItem="dTb-Lk-2J8" secondAttribute="leading" constant="20" id="ZDS-3n-hFe"/>
+                                                <constraint firstItem="QII-cV-Pbp" firstAttribute="leading" secondItem="9or-N8-2Bf" secondAttribute="trailing" constant="5" id="Zfm-ed-0q5"/>
                                                 <constraint firstItem="9or-N8-2Bf" firstAttribute="leading" secondItem="ylO-OT-Nsu" secondAttribute="trailing" constant="10" id="eQ9-Cd-dHX"/>
                                                 <constraint firstAttribute="trailing" secondItem="QII-cV-Pbp" secondAttribute="trailing" constant="20" id="gis-H6-VgH"/>
                                                 <constraint firstItem="ylO-OT-Nsu" firstAttribute="centerY" secondItem="dTb-Lk-2J8" secondAttribute="centerY" id="lfp-yM-h67"/>
