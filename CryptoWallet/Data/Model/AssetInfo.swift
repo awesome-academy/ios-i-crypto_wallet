@@ -18,6 +18,7 @@ struct AssetInfo {
     var price = 0.0
     var twentyFourHChange = 0.0
     var amount = 0.0
+    var type: AssetType = .token
 }
 
 extension AssetInfo {
@@ -29,6 +30,7 @@ extension AssetInfo {
                          smartContractAddress: "",
                          price: 162.0,
                          twentyFourHChange: -2.45,
-                         amount: 10)
+                         amount: 10,
+                         type: .coin)
     }
 }

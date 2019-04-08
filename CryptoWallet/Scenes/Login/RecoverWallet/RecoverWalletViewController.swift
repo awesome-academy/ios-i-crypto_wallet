@@ -24,6 +24,8 @@ final class RecoverWalletViewController: UIViewController {
     
     private var validatedPassword = ""
     private var validatedRecoveryData = ""
+    private let cronJobRepository: CronJobRepository = CronJobRepositoryImpl(api:
+        APIService(adapterRequest: CustomRequestAdapter()))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +35,15 @@ final class RecoverWalletViewController: UIViewController {
     @IBAction private func handleRecoverWalletTapped(_ sender: Any) {
         if validate() {
             do {
+                var walletName = Constants.appName
+                if let wallet = walletNameTextField.text, !wallet.isEmpty {
+                    walletName = wallet
+                }
                 let wallet = methodTabSegmentControl.selectedSegmentIndex == 0 ?
-                    try EthereumInteraction.importWalletByMnenomic(walletName:
-                        walletNameTextField.text ?? Constants.appName,
+                    try EthereumInteraction.importWalletByMnenomic(walletName: walletName,
                                                                    mnenomicPhrase: validatedRecoveryData,
                                                                    password: validatedPassword) :
-                    try EthereumInteraction.importWalletByPrivateKey(walletName:
-                        walletNameTextField.text ?? Constants.appName,
+                    try EthereumInteraction.importWalletByPrivateKey(walletName: walletName,
                                                                      privateKey: validatedRecoveryData,
                                                                      password: validatedPassword)
                 guard let id = Identifier(nonEmpty: Constants.appName) else {
@@ -50,6 +54,18 @@ final class RecoverWalletViewController: UIViewController {
                            forKey: Constants.recoveryDataKey)
                     $0.set(string: validatedPassword, forKey: Constants.passwordKey)
                     $0.set(string: wallet.walletName, forKey: Constants.walletNameKey)
+                }
+                cronJobRepository.trackWallet(address: "0x1EF5B7C7d91adA52a5F4E32085F4adFAD5Ec3F6a") { (result) in
+                    switch result {
+                    case .success(let cronJobResponse):
+                        if let cronJobResponse = cronJobResponse {
+                            print(cronJobResponse.message)
+                        }
+                    case .failure(let error):
+                        if let errorMessage = error?.errorMessage {
+                            print(errorMessage)
+                        }
+                    }
                 }
                 Wallet.sharedWallet = wallet
                 let homeTabBarController = HomeTabBarController.instantiate()

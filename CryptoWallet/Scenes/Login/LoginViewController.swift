@@ -55,6 +55,7 @@ final class LoginViewController: UIViewController {
             $0.addGestureRecognizer(tapImportGuideLabel)
             $0.isUserInteractionEnabled = true
         }
+        //try!  SessionManager.logout()
         do {
             let isLogedIn = try SessionManager.checkLogin()
             if isLogedIn {

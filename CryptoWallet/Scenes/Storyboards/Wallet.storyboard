@@ -292,13 +292,85 @@
                     <view key="view" contentMode="scaleToFill" id="QQy-ar-q3p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m8k-nZ-5Er">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" rowHeight="72" id="TMM-aT-RRR" customClass="TransactionCell" customModule="CryptoWallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TMM-aT-RRR" id="Dwj-5t-dOF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mzj-zR-pEB">
+                                                    <rect key="frame" x="20" y="9" width="53.5" height="53.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="mzj-zR-pEB" secondAttribute="height" id="SoA-iD-Pvb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S1a-3y-RwI">
+                                                    <rect key="frame" x="83.5" y="0.0" width="134" height="71.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-62-HGF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6k-1f-mHs">
+                                                            <rect key="frame" x="0.0" y="36" width="134" height="35.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeN-t7-6HH">
+                                                    <rect key="frame" x="298.5" y="27" width="56.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NeN-t7-6HH" firstAttribute="centerY" secondItem="Dwj-5t-dOF" secondAttribute="centerY" id="7h7-A0-cvg"/>
+                                                <constraint firstAttribute="bottom" secondItem="S1a-3y-RwI" secondAttribute="bottom" id="QpK-be-ckd"/>
+                                                <constraint firstItem="mzj-zR-pEB" firstAttribute="centerY" secondItem="Dwj-5t-dOF" secondAttribute="centerY" id="SMN-LW-pHi"/>
+                                                <constraint firstItem="S1a-3y-RwI" firstAttribute="leading" secondItem="mzj-zR-pEB" secondAttribute="trailing" constant="10" id="eik-iA-0g4"/>
+                                                <constraint firstItem="mzj-zR-pEB" firstAttribute="height" secondItem="Dwj-5t-dOF" secondAttribute="height" multiplier="3:4" id="f1N-0Y-Bvc"/>
+                                                <constraint firstAttribute="trailing" secondItem="NeN-t7-6HH" secondAttribute="trailing" constant="20" id="ojh-04-HQs"/>
+                                                <constraint firstItem="S1a-3y-RwI" firstAttribute="top" secondItem="Dwj-5t-dOF" secondAttribute="top" id="qwh-5o-wnR"/>
+                                                <constraint firstItem="mzj-zR-pEB" firstAttribute="leading" secondItem="Dwj-5t-dOF" secondAttribute="leading" constant="20" id="uC3-Oc-NiG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="I6k-1f-mHs" id="AOc-GT-Jbt"/>
+                                            <outlet property="amountLabel" destination="NeN-t7-6HH" id="lqm-vj-8MX"/>
+                                            <outlet property="transactionTypeImage" destination="mzj-zR-pEB" id="S0d-8j-gif"/>
+                                            <outlet property="transactionTypeLabel" destination="tfk-62-HGF" id="6hR-uJ-2pf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m8k-nZ-5Er" firstAttribute="leading" secondItem="VEY-d3-f28" secondAttribute="leading" id="FNW-Em-rLp"/>
+                            <constraint firstItem="m8k-nZ-5Er" firstAttribute="top" secondItem="VEY-d3-f28" secondAttribute="top" id="JER-QM-70O"/>
+                            <constraint firstItem="VEY-d3-f28" firstAttribute="trailing" secondItem="m8k-nZ-5Er" secondAttribute="trailing" id="bUb-Xr-wvE"/>
+                            <constraint firstItem="VEY-d3-f28" firstAttribute="bottom" secondItem="m8k-nZ-5Er" secondAttribute="bottom" id="qNV-T5-EWw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VEY-d3-f28"/>
                     </view>
+                    <connections>
+                        <outlet property="transactionTableView" destination="m8k-nZ-5Er" id="CDi-Hx-qjm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRd-Mc-K7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-581"/>
+            <point key="canvasLocation" x="1709.5999999999999" y="-581.55922038980509"/>
         </scene>
         <!--Wallet-->
         <scene sceneID="FUB-8y-8Mi">

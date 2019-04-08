@@ -17,6 +17,8 @@ final class CreateWalletViewController: UIViewController {
     @IBOutlet private weak var repeatPasswordTextField: UITextField!
     
     private var validatedPassword = ""
+    private let cronJobRepository: CronJobRepository = CronJobRepositoryImpl(api:
+        APIService(adapterRequest: CustomRequestAdapter()))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +28,12 @@ final class CreateWalletViewController: UIViewController {
     @IBAction private func handleCreateWalletTapped(_ sender: Any) {
         if validate() {
             do {
+                var walletName = Constants.appName
+                if let wallet = walletNameTextField.text, !wallet.isEmpty {
+                    walletName = wallet
+                }
                 let (wallet, mnonemics) = try EthereumInteraction.createNewWallet(
-                    name: walletNameTextField.text ?? Constants.appName,
+                    name: walletName,
                     password: validatedPassword)
                 guard let id = Identifier(nonEmpty: Constants.appName) else {
                     throw SessionErrors.cantCreateIdentifier
@@ -36,6 +42,18 @@ final class CreateWalletViewController: UIViewController {
                     $0.set(string: "0:" + mnonemics, forKey: Constants.recoveryDataKey)
                     $0.set(string: validatedPassword, forKey: Constants.passwordKey)
                     $0.set(string: wallet.walletName, forKey: Constants.walletNameKey)
+                }
+                cronJobRepository.trackWallet(address: wallet.walletAddress) { (result) in
+                    switch result {
+                    case .success(let cronJobResponse):
+                        if let cronJobResponse = cronJobResponse {
+                            print(cronJobResponse.message)
+                        }
+                    case .failure(let error):
+                        if let errorMessage = error?.errorMessage {
+                            print(errorMessage)
+                        }
+                    }
                 }
                 Wallet.sharedWallet = wallet
                 let backupNoticeController = BackupNoticeViewController.instantiate().then {

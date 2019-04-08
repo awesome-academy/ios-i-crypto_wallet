@@ -21,6 +21,9 @@ final class ContractOperation: BaseModel {
         mapping(map: map)
     }
     
+    init() {
+    }
+    
     func mapping(map: Map) {
         transactionId <- map["transactionId"]
         contractTransaction <- map["contract"]
