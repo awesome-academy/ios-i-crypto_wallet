@@ -8,6 +8,7 @@
 
 import UIKit
 import Reusable
+import Toast_Swift
 
 final class AssetHeader: UIView {
     @IBOutlet private weak var sendButton: UIButton!
@@ -104,12 +105,35 @@ final class AssetHeader: UIView {
     }
     
     @IBAction private func handleSendButtonTapped(_ sender: Any) {
+        guard let viewController = viewController else {
+            return
+        }
+        let sendTransactionController = SendTransactionViewController.instantiate()
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                                          style: .plain,
+                                                                          target: nil,
+                                                                          action: nil)
+        viewController.navigationController?.pushViewController(sendTransactionController, animated: true)
     }
     
     @IBAction private func handleReceiveButtonTapped(_ sender: Any) {
+        guard let viewController = viewController else {
+            return
+        }
+        let receiveTransactionController = ReceiveTransactionViewController.instantiate()
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                                          style: .plain,
+                                                                          target: nil,
+                                                                          action: nil)
+        viewController.navigationController?.pushViewController(receiveTransactionController, animated: true)
     }
     
     @IBAction private func handleCopyAddressTapped(_ sender: Any) {
+        guard let address = Wallet.sharedWallet?.walletAddress else {
+            return
+        }
+        UIPasteboard.general.string = address
+        viewController?.view.makeToast("Address copied")
     }
 }
 

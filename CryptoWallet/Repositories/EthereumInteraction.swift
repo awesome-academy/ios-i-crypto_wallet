@@ -13,16 +13,17 @@ import BigInt
 
 enum EthereumInteraction {
     static func createNewWallet(name: String = Constants.appName, password: String) throws -> (Wallet, String) {
-        guard let mnemonics = try? BIP39.generateMnemonics(bitsOfEntropy: 128),
+        guard let mnemonics = ((try? BIP39.generateMnemonics(bitsOfEntropy: 128)) as String??),
             let unwrapped = mnemonics else {
                 throw Web3Error.keystoreError(err: .noEntropyError)
         }
-        guard let keystore = try? BIP32Keystore(mnemonics: unwrapped,
-                                                password: password,
-                                                mnemonicsPassword: "",
-                                                language: .english,
-                                                prefixPath: "m/44'/60'/0'/0",
-                                                aesMode: "aes-128-cbc"), let wallet = keystore else {
+        guard let keystore = ((try? BIP32Keystore(mnemonics: unwrapped,
+                                                  password: password,
+                                                  mnemonicsPassword: "",
+                                                  language: .english,
+                                                  prefixPath: "m/44'/60'/0'/0",
+                                                  aesMode: "aes-128-cbc")) as BIP32Keystore??),
+            let wallet = keystore else {
             throw EthereumInteractionErrors.cantCreateWallet
         }
         guard let keyData = try? JSONEncoder().encode(wallet.keystoreParams),
@@ -43,9 +44,9 @@ enum EthereumInteraction {
             throw EthereumInteractionErrors.cantImportWallet
         }
         
-        guard let newWallet = try? EthereumKeystoreV3(privateKey: data,
-                                                      password: password,
-                                                      aesMode: "aes-128-cbc") else {
+        guard let newWallet = ((try? EthereumKeystoreV3(privateKey: data,
+                                                        password: password,
+                                                        aesMode: "aes-128-cbc")) as EthereumKeystoreV3??) else {
             throw EthereumInteractionErrors.cantImportWallet
         }
         
@@ -66,13 +67,14 @@ enum EthereumInteraction {
     static func importWalletByMnenomic(walletName: String = Constants.appName,
                                        mnenomicPhrase: String,
                                        password: String) throws -> Wallet {
-        guard let keystore = try? BIP32Keystore(mnemonics: mnenomicPhrase,
-                                                password: password,
-                                                mnemonicsPassword: "",
-                                                language: .english,
-                                                prefixPath: "m/44'/60'/0'/0",
-                                                aesMode: "aes-128-cbc"), let wallet = keystore else {
-                                                    throw EthereumInteractionErrors.cantImportWallet
+        guard let keystore = ((try? BIP32Keystore(mnemonics: mnenomicPhrase,
+                                                  password: password,
+                                                  mnemonicsPassword: "",
+                                                  language: .english,
+                                                  prefixPath: "m/44'/60'/0'/0",
+                                                  aesMode: "aes-128-cbc")) as BIP32Keystore??),
+            let wallet = keystore else {
+            throw EthereumInteractionErrors.cantImportWallet
         }
         guard let keyData = try? JSONEncoder().encode(wallet.keystoreParams),
             let address = wallet.addresses?.first?.address else {

@@ -11,6 +11,7 @@ import ObjectMapper
 
 protocol CronJobRepository {
     func trackWallet(address: String, completion: @escaping (BaseResult<CronJobResponse>) -> Void)
+    func checkWallet(address: String, completion: @escaping (BaseResult<CheckCronJobResponse>) -> Void)
 }
 
 final class CronJobRepositoryImpl: CronJobRepository {
@@ -23,6 +24,19 @@ final class CronJobRepositoryImpl: CronJobRepository {
     func trackWallet(address: String, completion: @escaping (BaseResult<CronJobResponse>) -> Void) {
         let input = CronJobRequest(address: address)
         api?.request(input: input) { (object: CronJobResponse?, error) in
+            if let object = object {
+                completion(.success(object))
+            } else if let error = error {
+                completion(.failure(error: error))
+            } else {
+                completion(.failure(error: nil))
+            }
+        }
+    }
+    
+    func checkWallet(address: String, completion: @escaping (BaseResult<CheckCronJobResponse>) -> Void) {
+        let input = CheckCronJobRequest(address: address)
+        api?.request(input: input) { (object: CheckCronJobResponse?, error) in
             if let object = object {
                 completion(.success(object))
             } else if let error = error {

@@ -8,7 +8,7 @@ target 'CryptoWallet' do
   # Pods for CryptoWallet
   pod 'ObjectMapper'
   pod 'Alamofire', '4.8.1'
-  pod 'web3swift'
+  pod 'web3swift', '~> 2.1.3'
   pod 'SwiftLint'
   pod 'Then'
   pod 'Reusable'
@@ -17,4 +17,5 @@ target 'CryptoWallet' do
   pod 'UITextView+Placeholder'
   pod 'SwiftChart'
   pod 'Kingfisher'
+  pod 'Toast-Swift', '~> 5.0.0'
 end

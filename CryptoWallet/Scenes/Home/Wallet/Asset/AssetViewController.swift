@@ -61,6 +61,12 @@ final class AssetViewController: UIViewController {
     }
     
     @objc private func handleAssetDetailTapped(_ sender: UIBarButtonItem) {
+        let assetDetailController = AssetDetailViewController.instantiate()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
+        navigationController?.pushViewController(assetDetailController, animated: true)
     }
     
     private func getTransactionDateList(transactionList: [Transaction]) -> [String] {
@@ -153,6 +159,12 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let transactionDetailController = TransactionDetailViewController.instantiate()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
+        navigationController?.pushViewController(transactionDetailController, animated: true)
     }
 }
 

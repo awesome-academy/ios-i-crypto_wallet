@@ -19,6 +19,9 @@
 		A7090735225DEE740077EC20 /* EthereumMarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */; };
 		A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CD2256ED3F00573A5A /* AssetCell.swift */; };
 		A71402D02256F3A000573A5A /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CF2256F3A000573A5A /* AssetInfo.swift */; };
+		A71FCFD82263583B00DF2584 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */; };
+		A71FCFDA22637F7900DF2584 /* CheckCronJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71FCFD922637F7900DF2584 /* CheckCronJobRequest.swift */; };
+		A71FCFDC2263808100DF2584 /* CheckCronJobResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71FCFDB2263808100DF2584 /* CheckCronJobResponse.swift */; };
 		A73BC082225ADA4B00D0CD00 /* DataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC081225ADA4B00D0CD00 /* DataMock.swift */; };
 		A73BC085225AE5F300D0CD00 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC084225AE5F300D0CD00 /* AssetViewController.swift */; };
 		A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC086225AEDFF00D0CD00 /* ChartType.swift */; };
@@ -26,7 +29,10 @@
 		A73E198A22603CF300B9D9DF /* AssetMarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */; };
 		A73E198C226046F100B9D9DF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198B226046F100B9D9DF /* TransactionType.swift */; };
 		A73E198E2260656B00B9D9DF /* AssetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198D2260656B00B9D9DF /* AssetType.swift */; };
+		A73E19932260960B00B9D9DF /* ReceiveTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E19922260960B00B9D9DF /* ReceiveTransactionViewController.swift */; };
+		A73E19952260964800B9D9DF /* SendTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E19942260964800B9D9DF /* SendTransactionViewController.swift */; };
 		A74E9852226561FB00E41E26 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E9851226561FB00E41E26 /* Date+.swift */; };
+		A74E9855226567D800E41E26 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E9854226567D800E41E26 /* TransactionDetailViewController.swift */; };
 		A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDC2251FEA0002B6EFA /* Setting.storyboard */; };
 		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
 		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
@@ -44,6 +50,7 @@
 		A76C87A2225C444600E3216E /* WalletValueDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */; };
 		A76C87A6225C469800E3216E /* WalletValueDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A5225C469800E3216E /* WalletValueDataRequest.swift */; };
 		A76C87A8225C505900E3216E /* WalletValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A7225C505900E3216E /* WalletValue.swift */; };
+		A76C87AE225C752400E3216E /* CronJobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87AD225C752400E3216E /* CronJobAPI.swift */; };
 		A76C87B0225C946000E3216E /* WalletValueDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87AF225C946000E3216E /* WalletValueDataResponse.swift */; };
 		A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77C2251A04B001A0F43 /* Transaction.swift */; };
 		A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77E2251A206001A0F43 /* ContractOperation.swift */; };
@@ -92,6 +99,9 @@
 		A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumMarketResponse.swift; sourceTree = "<group>"; };
 		A71402CD2256ED3F00573A5A /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		A71402CF2256F3A000573A5A /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
+		A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
+		A71FCFD922637F7900DF2584 /* CheckCronJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCronJobRequest.swift; sourceTree = "<group>"; };
+		A71FCFDB2263808100DF2584 /* CheckCronJobResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCronJobResponse.swift; sourceTree = "<group>"; };
 		A73BC081225ADA4B00D0CD00 /* DataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMock.swift; sourceTree = "<group>"; };
 		A73BC084225AE5F300D0CD00 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		A73BC086225AEDFF00D0CD00 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
@@ -99,7 +109,10 @@
 		A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetMarketResponse.swift; sourceTree = "<group>"; };
 		A73E198B226046F100B9D9DF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		A73E198D2260656B00B9D9DF /* AssetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetType.swift; sourceTree = "<group>"; };
+		A73E19922260960B00B9D9DF /* ReceiveTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveTransactionViewController.swift; sourceTree = "<group>"; };
+		A73E19942260964800B9D9DF /* SendTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionViewController.swift; sourceTree = "<group>"; };
 		A74E9851226561FB00E41E26 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		A74E9854226567D800E41E26 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		A7506BDC2251FEA0002B6EFA /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A7506BE122520AE8002B6EFA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -117,6 +130,7 @@
 		A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataRepository.swift; sourceTree = "<group>"; };
 		A76C87A5225C469800E3216E /* WalletValueDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataRequest.swift; sourceTree = "<group>"; };
 		A76C87A7225C505900E3216E /* WalletValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValue.swift; sourceTree = "<group>"; };
+		A76C87AD225C752400E3216E /* CronJobAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CronJobAPI.swift; sourceTree = "<group>"; };
 		A76C87AF225C946000E3216E /* WalletValueDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataResponse.swift; sourceTree = "<group>"; };
 		A77CE77C2251A04B001A0F43 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A77CE77E2251A206001A0F43 /* ContractOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOperation.swift; sourceTree = "<group>"; };
@@ -180,6 +194,10 @@
 		A73BC083225AE5CC00D0CD00 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				A74E9853226567BF00E41E26 /* TransactionDetail */,
+				A73E1990226095C100B9D9DF /* ReceiveTransaction */,
+				A73E198F226095A500B9D9DF /* SendTransaction */,
+				A73E1991226095CC00B9D9DF /* AssetDetail */,
 				A73BC084225AE5F300D0CD00 /* AssetViewController.swift */,
 				A77FD430225F2D11006E4773 /* TransactionCell.swift */,
 				A77FD432225F2F92006E4773 /* AssetHeader.xib */,
@@ -197,6 +215,7 @@
 				A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */,
 				A77FD428225EEC3E006E4773 /* CronJobResponse.swift */,
 				A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */,
+				A71FCFDB2263808100DF2584 /* CheckCronJobResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -211,6 +230,7 @@
 				A7090732225DEE280077EC20 /* EthereumMarketRequest.swift */,
 				A77FD424225ED6E5006E4773 /* CronJobRequest.swift */,
 				A73E198722603C9300B9D9DF /* AssetMarketRequest.swift */,
+				A71FCFD922637F7900DF2584 /* CheckCronJobRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -230,6 +250,38 @@
 				A76C8797225C412B00E3216E /* BaseError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		A73E198F226095A500B9D9DF /* SendTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				A73E19942260964800B9D9DF /* SendTransactionViewController.swift */,
+			);
+			path = SendTransaction;
+			sourceTree = "<group>";
+		};
+		A73E1990226095C100B9D9DF /* ReceiveTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				A73E19922260960B00B9D9DF /* ReceiveTransactionViewController.swift */,
+			);
+			path = ReceiveTransaction;
+			sourceTree = "<group>";
+		};
+		A73E1991226095CC00B9D9DF /* AssetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */,
+			);
+			path = AssetDetail;
+			sourceTree = "<group>";
+		};
+		A74E9853226567BF00E41E26 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A74E9854226567D800E41E26 /* TransactionDetailViewController.swift */,
+			);
+			path = TransactionDetail;
 			sourceTree = "<group>";
 		};
 		A7506BE0225203A4002B6EFA /* Storyboards */ = {
@@ -399,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FA8F74224DBE3500952E4D /* URLs.swift */,
+				A76C87AD225C752400E3216E /* CronJobAPI.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
 				A73BC086225AEDFF00D0CD00 /* ChartType.swift */,
@@ -555,6 +608,7 @@
 				TargetAttributes = {
 					A7FA8F48224DBC5700952E4D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -612,13 +666,14 @@
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
-				"${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
 			);
@@ -636,13 +691,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRLP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/scrypt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Web3swift.framework",
 			);
@@ -706,6 +762,7 @@
 				A709072F225DA1510077EC20 /* CMCCoinInfoRequest.swift in Sources */,
 				A76C87A2225C444600E3216E /* WalletValueDataRepository.swift in Sources */,
 				A76C87A6225C469800E3216E /* WalletValueDataRequest.swift in Sources */,
+				A73E19932260960B00B9D9DF /* ReceiveTransactionViewController.swift in Sources */,
 				A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */,
 				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
@@ -717,19 +774,24 @@
 				A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,
+				A71FCFD82263583B00DF2584 /* AssetDetailViewController.swift in Sources */,
 				A7D183D422530E91009C2EE9 /* Validator.swift in Sources */,
 				A7D183E122534024009C2EE9 /* Wallet.swift in Sources */,
 				A7FA8F82224E05AD00952E4D /* WalletViewController.swift in Sources */,
 				A73E198C226046F100B9D9DF /* TransactionType.swift in Sources */,
+				A74E9855226567D800E41E26 /* TransactionDetailViewController.swift in Sources */,
 				A76C87A0225C427600E3216E /* APIService.swift in Sources */,
 				A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */,
 				A7090725225D7F060077EC20 /* TokenListResponse.swift in Sources */,
 				A77FD427225EEBC8006E4773 /* CronJobRepository.swift in Sources */,
 				A7FA8F84224E05DD00952E4D /* SettingViewController.swift in Sources */,
 				A77FD435225F3186006E4773 /* AssetHeader.swift in Sources */,
+				A71FCFDC2263808100DF2584 /* CheckCronJobResponse.swift in Sources */,
 				A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */,
 				A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
+				A71FCFDA22637F7900DF2584 /* CheckCronJobRequest.swift in Sources */,
+				A76C87AE225C752400E3216E /* CronJobAPI.swift in Sources */,
 				A7090723225D7C680077EC20 /* AssetRepository.swift in Sources */,
 				A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */,
 				A7090727225D804E0077EC20 /* TokenListRequest.swift in Sources */,
@@ -747,6 +809,7 @@
 				A71402D02256F3A000573A5A /* AssetInfo.swift in Sources */,
 				A77CE7862251CE0F001A0F43 /* LoginViewController.swift in Sources */,
 				A7506BEB225219D4002B6EFA /* UIView+.swift in Sources */,
+				A73E19952260964800B9D9DF /* SendTransactionViewController.swift in Sources */,
 				A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */,
 				A791946F22574A63008403EC /* ChartHelper.swift in Sources */,
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
@@ -915,7 +978,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Phan-Dinh-Van.CryptoWallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -934,7 +997,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Phan-Dinh-Van.CryptoWallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
