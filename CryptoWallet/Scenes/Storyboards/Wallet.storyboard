@@ -22,14 +22,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwk-da-hb7">
-                                        <rect key="frame" x="25" y="43.5" width="100.5" height="13"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="25" y="43.5" width="74" height="13"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2.34%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnT-zL-K0T">
-                                        <rect key="frame" x="298" y="41" width="57" height="18"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <rect key="frame" x="308" y="43" width="47" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -265,16 +265,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="sok-Rl-LON"/>
                     <connections>
-                        <outlet property="allChartLabel" destination="HLy-1o-E2M" id="eCJ-sP-1QJ"/>
+                        <outlet property="allChartButton" destination="HLy-1o-E2M" id="4Wv-Lk-CYa"/>
                         <outlet property="assetListTableView" destination="liI-JI-Xxk" id="PfQ-iz-tWe"/>
                         <outlet property="assetPriceChartLabel" destination="xo6-WY-ztq" id="n53-eU-XWZ"/>
                         <outlet property="assetSearchBar" destination="18z-dw-BjU" id="JKM-Af-Oib"/>
-                        <outlet property="assetValueView" destination="8aI-9n-eg1" id="dyX-C1-bAd"/>
-                        <outlet property="oneDayChartLabel" destination="1Zc-hm-HXC" id="1ve-wK-WSP"/>
-                        <outlet property="oneMonthChartLabel" destination="bN6-Qm-yX7" id="GqH-RB-vqP"/>
-                        <outlet property="oneWeekChartLabel" destination="sLy-Vk-ejV" id="TFx-Mv-8bI"/>
-                        <outlet property="oneYearChartLabel" destination="m00-cs-aHq" id="oQW-Ee-u6B"/>
-                        <outlet property="sixHoursChartLabel" destination="fDY-zT-rHg" id="1xK-8t-Zsh"/>
+                        <outlet property="assetValueView" destination="8aI-9n-eg1" id="RwM-b1-Tnf"/>
+                        <outlet property="oneDayChartButton" destination="1Zc-hm-HXC" id="r24-sh-eWI"/>
+                        <outlet property="oneMonthChartButton" destination="bN6-Qm-yX7" id="wmm-qw-ENE"/>
+                        <outlet property="oneWeekChartButton" destination="sLy-Vk-ejV" id="CPL-I0-wXx"/>
+                        <outlet property="oneYearChartButton" destination="m00-cs-aHq" id="3dg-sf-7la"/>
+                        <outlet property="sixHoursChartButton" destination="fDY-zT-rHg" id="Fwm-3y-tLh"/>
                         <outlet property="totalValueLabel" destination="97C-x0-36G" id="GgI-JL-ZPm"/>
                         <outlet property="value24hChangeLabel" destination="UnT-zL-K0T" id="wG7-V6-yhi"/>
                         <outlet property="walletNameLabel" destination="Xwk-da-hb7" id="HcR-mJ-SGP"/>
@@ -284,13 +284,27 @@
             </objects>
             <point key="canvasLocation" x="837.60000000000002" y="-580.65967016491754"/>
         </scene>
+        <!--Asset View Controller-->
+        <scene sceneID="loW-UI-9Fe">
+            <objects>
+                <viewController storyboardIdentifier="AssetViewController" id="D0p-QS-ieu" customClass="AssetViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QQy-ar-q3p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VEY-d3-f28"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRd-Mc-K7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="-581"/>
+        </scene>
         <!--Wallet-->
         <scene sceneID="FUB-8y-8Mi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="rH7-rP-Lf5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wallet" image="wallet" selectedImage="wallet" id="AQa-fe-bmG"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ejE-k0-SHr">
                         <autoresizingMask key="autoresizingMask"/>

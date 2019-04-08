@@ -16,43 +16,35 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var assetSearchBar: UISearchBar!
     @IBOutlet private weak var assetListTableView: UITableView!
     @IBOutlet private weak var assetValueView: UIView!
-    @IBOutlet private weak var sixHoursChartLabel: UIButton!
-    @IBOutlet private weak var oneDayChartLabel: UIButton!
-    @IBOutlet private weak var oneWeekChartLabel: UIButton!
-    @IBOutlet private weak var oneMonthChartLabel: UIButton!
-    @IBOutlet private weak var oneYearChartLabel: UIButton!
-    @IBOutlet private weak var allChartLabel: UIButton!
+    @IBOutlet private weak var sixHoursChartButton: UIButton!
+    @IBOutlet private weak var oneDayChartButton: UIButton!
+    @IBOutlet private weak var oneWeekChartButton: UIButton!
+    @IBOutlet private weak var oneMonthChartButton: UIButton!
+    @IBOutlet private weak var oneYearChartButton: UIButton!
+    @IBOutlet private weak var allChartButton: UIButton!
     @IBOutlet weak var assetPriceChartLabel: UILabel!
     
     private var assetList = [AssetInfo]()
+    private var allAssetList = [AssetInfo]()
+    private var chartData = [(x: Double, y: Double)]()
+    private var chart: Chart?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavigationBar()
+    }
+    
     private func configView() {
-        [oneDayChartLabel,
-         oneWeekChartLabel,
-         oneMonthChartLabel,
-         oneYearChartLabel,
-         allChartLabel].forEach {
-            $0?.setTitleColor(.darkGray, for: .normal)
-        }
-        let chart = Chart(frame: assetValueView.bounds)
-        chart.delegate = self
-        let data = DataMock.chartValueData
-        let series = ChartSeries(data: data)
-        series.area = true
-        let xLabels = ChartHelper.findLabels(data: data, axis: .X, numberLabel: 6)
-        chart.xLabels = xLabels
-        chart.xLabelsFormatter = { String(Int(round($1))) + "h" }
-        let yLabels = ChartHelper.findLabels(data: data, axis: .Y, numberLabel: 6)
-        chart.yLabels = yLabels
-        chart.yLabelsFormatter = { "$" + String(Int($1)) }
-        chart.add(series)
-        chart.hideHighlightLineOnTouchEnd = true
-        assetValueView.addSubview(chart)
         assetListTableView.do {
             $0.delegate = self
             $0.dataSource = self
@@ -60,21 +52,73 @@ final class WalletViewController: UIViewController {
             $0.estimatedRowHeight = UITableView.automaticDimension
             $0.tableFooterView = UIView()
         }
-        assetList.append(AssetInfo.mock())
+        allAssetList.append(AssetInfo.mock())
+        assetList = allAssetList
+        assetSearchBar.do {
+            $0.delegate = self
+        }
+        walletNameLabel.do {
+            $0.text = Wallet.sharedWallet?.walletName
+        }
+        handleChartTimeTapped(sixHoursChartButton)
     }
     
     @IBAction private func handleChartTimeTapped(_ sender: UIButton) {
-        [sixHoursChartLabel,
-         oneDayChartLabel,
-         oneWeekChartLabel,
-         oneMonthChartLabel,
-         oneYearChartLabel,
-         allChartLabel].forEach {
+        [sixHoursChartButton,
+         oneDayChartButton,
+         oneWeekChartButton,
+         oneMonthChartButton,
+         oneYearChartButton,
+         allChartButton].forEach {
             $0?.setTitleColor(.darkGray, for: .normal)
         }
         sender.do {
-            $0.setTitleColor(Colors.blueColor, for: .normal)
+            $0.setTitleColor(UIColor.blueColor, for: .normal)
         }
+        guard let currentTitle = sender.currentTitle  else {
+            return
+        }
+        if currentTitle == ChartType.allDay.rawValue {
+            drawChart(chartType: .allDay, chartData: DataMock.chartValueData, numberXPoint: 4)
+        } else {
+            drawChart(chartType: ChartType(rawValue: currentTitle) ?? .sixHours, chartData: DataMock.chartValueData)
+        }
+    }
+    
+    private func drawChart(chartType: ChartType, chartData: [(x: Double, y: Double)], numberXPoint: Int = 6) {
+        guard var chart = chart else {
+            return
+        }
+        chart.removeFromSuperview()
+        chart = Chart(frame: assetValueView.bounds)
+        chart.delegate = self
+        let series = ChartSeries(data: chartData)
+        series.area = true
+        let xLabels = ChartHelper.findLabels(data: chartData, axis: .X, numberPoint: numberXPoint)
+        chart.xLabels = xLabels
+        chart.xLabelsFormatter = {
+            let date = Date(timeIntervalSince1970: $1)
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC+7")
+            dateFormatter.locale = NSLocale.current
+            switch chartType {
+            case .sixHours, .oneDay:
+                dateFormatter.dateFormat = "HH:mm"
+            case .oneWeek:
+                dateFormatter.dateFormat = "dd"
+            case .oneMonth, .oneYear:
+                dateFormatter.dateFormat = "MMM dd"
+            case .allDay:
+                dateFormatter.dateFormat = "MMM dd, yyyy"
+            }
+            return dateFormatter.string(from: date)
+        }
+        let yLabels = ChartHelper.findLabels(data: chartData, axis: .Y, numberPoint: 6)
+        chart.yLabels = yLabels
+        chart.yLabelsFormatter = { "$" + String(Int($1)) }
+        chart.add(series)
+        chart.hideHighlightLineOnTouchEnd = true
+        assetValueView.addSubview(chart)
     }
 }
 
@@ -119,5 +163,22 @@ extension WalletViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let assetController = AssetViewController.instantiate()
+        assetController.assetInfo = assetList[indexPath.row]
+        navigationController?.pushViewController(assetController, animated: true)
+    }
+}
+
+extension WalletViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            assetList = allAssetList
+            self.assetListTableView.reloadData()
+        } else {
+            self.assetList = self.allAssetList.filter {
+                $0.name.lowercased().contains(searchText.lowercased())
+            }
+            self.assetListTableView.reloadData()
+        }
     }
 }

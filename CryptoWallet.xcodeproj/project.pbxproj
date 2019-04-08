@@ -11,8 +11,9 @@
 		A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7025CE62255FAAD00CE43C2 /* SessionManager.swift */; };
 		A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CD2256ED3F00573A5A /* AssetCell.swift */; };
 		A71402D02256F3A000573A5A /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CF2256F3A000573A5A /* AssetInfo.swift */; };
-		A73BC080225AD98B00D0CD00 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC07F225AD98B00D0CD00 /* Colors.swift */; };
 		A73BC082225ADA4B00D0CD00 /* DataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC081225ADA4B00D0CD00 /* DataMock.swift */; };
+		A73BC085225AE5F300D0CD00 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC084225AE5F300D0CD00 /* AssetViewController.swift */; };
+		A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC086225AEDFF00D0CD00 /* ChartType.swift */; };
 		A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDC2251FEA0002B6EFA /* Setting.storyboard */; };
 		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
 		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
@@ -21,6 +22,8 @@
 		A767B9822252EE9600AE8BA4 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */; };
 		A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9842252F18300AE8BA4 /* GuideViewController.swift */; };
 		A767B9872252FB4900AE8BA4 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9862252FB4900AE8BA4 /* UITextField+.swift */; };
+		A76C8796225C3B8300E3216E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C8795225C3B8300E3216E /* UIColor+.swift */; };
+		A76C87AA225C700600E3216E /* RunCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A9225C700600E3216E /* RunCloud.swift */; };
 		A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77C2251A04B001A0F43 /* Transaction.swift */; };
 		A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77E2251A206001A0F43 /* ContractOperation.swift */; };
 		A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7802251A338001A0F43 /* ContractTransaction.swift */; };
@@ -57,8 +60,9 @@
 		A7025CE62255FAAD00CE43C2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A71402CD2256ED3F00573A5A /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		A71402CF2256F3A000573A5A /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
-		A73BC07F225AD98B00D0CD00 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A73BC081225ADA4B00D0CD00 /* DataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMock.swift; sourceTree = "<group>"; };
+		A73BC084225AE5F300D0CD00 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
+		A73BC086225AEDFF00D0CD00 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
 		A7506BDC2251FEA0002B6EFA /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A7506BE122520AE8002B6EFA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		A767B9842252F18300AE8BA4 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		A767B9862252FB4900AE8BA4 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		A76C8795225C3B8300E3216E /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		A76C87A9225C700600E3216E /* RunCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCloud.swift; sourceTree = "<group>"; };
 		A77CE77C2251A04B001A0F43 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A77CE77E2251A206001A0F43 /* ContractOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOperation.swift; sourceTree = "<group>"; };
 		A77CE7802251A338001A0F43 /* ContractTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTransaction.swift; sourceTree = "<group>"; };
@@ -125,6 +131,14 @@
 				9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A73BC083225AE5CC00D0CD00 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				A73BC084225AE5F300D0CD00 /* AssetViewController.swift */,
+			);
+			path = Asset;
 			sourceTree = "<group>";
 		};
 		A7506BE0225203A4002B6EFA /* Storyboards */ = {
@@ -252,6 +266,7 @@
 				A7FA8F78224DBE7800952E4D /* UIViewController+.swift */,
 				A7506BEA225219D4002B6EFA /* UIView+.swift */,
 				A767B9862252FB4900AE8BA4 /* UITextField+.swift */,
+				A76C8795225C3B8300E3216E /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,7 +305,8 @@
 				A7FA8F74224DBE3500952E4D /* URLs.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
-				A73BC07F225AD98B00D0CD00 /* Colors.swift */,
+				A73BC086225AEDFF00D0CD00 /* ChartType.swift */,
+				A76C87A9225C700600E3216E /* RunCloud.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -361,6 +377,7 @@
 		A7FA8F7F224E057100952E4D /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				A73BC083225AE5CC00D0CD00 /* Asset */,
 				A7FA8F81224E05AD00952E4D /* WalletViewController.swift */,
 				A71402CD2256ED3F00573A5A /* AssetCell.swift */,
 			);
@@ -572,10 +589,11 @@
 				A7FA8F75224DBE3500952E4D /* URLs.swift in Sources */,
 				A782CD1B224E0CCF00718C29 /* TokenPrice.swift in Sources */,
 				A7FE1D7822544C5200D1587F /* HomeTabBarController.swift in Sources */,
-				A73BC080225AD98B00D0CD00 /* Colors.swift in Sources */,
 				A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */,
 				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
+				A73BC085225AE5F300D0CD00 /* AssetViewController.swift in Sources */,
+				A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */,
 				A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,
@@ -589,6 +607,7 @@
 				A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */,
 				A7FA8F4D224DBC5700952E4D /* AppDelegate.swift in Sources */,
 				A7FA8F6F224DBDD200952E4D /* BaseModel.swift in Sources */,
+				A76C8796225C3B8300E3216E /* UIColor+.swift in Sources */,
 				A7D183DD22533B56009C2EE9 /* EthereumInteraction.swift in Sources */,
 				A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */,
 				A767B9822252EE9600AE8BA4 /* CreateWalletViewController.swift in Sources */,
@@ -598,6 +617,7 @@
 				A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */,
 				A791946F22574A63008403EC /* ChartHelper.swift in Sources */,
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
+				A76C87AA225C700600E3216E /* RunCloud.swift in Sources */,
 				A73BC082225ADA4B00D0CD00 /* DataMock.swift in Sources */,
 				A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
