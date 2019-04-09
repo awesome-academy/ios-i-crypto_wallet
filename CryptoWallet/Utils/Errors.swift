@@ -54,3 +54,16 @@ extension EthereumInteractionErrors: LocalizedError {
         }
     }
 }
+
+enum SessionErrors: Error {
+    case cantCreateIdentifier
+}
+
+extension SessionErrors: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .cantCreateIdentifier:
+            return "Error while creating app identifier"
+        }
+    }
+}

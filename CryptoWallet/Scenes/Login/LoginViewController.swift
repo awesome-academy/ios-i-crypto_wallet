@@ -55,5 +55,14 @@ final class LoginViewController: UIViewController {
             $0.addGestureRecognizer(tapImportGuideLabel)
             $0.isUserInteractionEnabled = true
         }
+        do {
+            let isLogedIn = try SessionManager.checkLogin()
+            if isLogedIn {
+                let homeTabBarController = HomeTabBarController.instantiate()
+                present(homeTabBarController, animated: true, completion: nil)
+            }
+        } catch {
+            showErrorAlert(message: error.localizedDescription)
+        }
     }
 }

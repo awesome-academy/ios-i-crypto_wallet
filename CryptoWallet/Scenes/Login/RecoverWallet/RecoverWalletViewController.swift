@@ -42,15 +42,18 @@ final class RecoverWalletViewController: UIViewController {
                         walletNameTextField.text ?? Constants.appName,
                                                                      privateKey: validatedRecoveryData,
                                                                      password: validatedPassword)
-                if let id = Identifier(nonEmpty: Constants.appName) {
-                    Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
-                        $0.set(string: "\(methodTabSegmentControl.selectedSegmentIndex):\(validatedRecoveryData)",
-                               forKey: "recoveryData")
-                    }
+                guard let id = Identifier(nonEmpty: Constants.appName) else {
+                    throw SessionErrors.cantCreateIdentifier
+                }
+                Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
+                    $0.set(string: "\(methodTabSegmentControl.selectedSegmentIndex):\(validatedRecoveryData)",
+                           forKey: Constants.recoveryDataKey)
+                    $0.set(string: validatedPassword, forKey: Constants.passwordKey)
+                    $0.set(string: wallet.walletName, forKey: Constants.walletNameKey)
                 }
                 Wallet.sharedWallet = wallet
                 let homeTabBarController = HomeTabBarController.instantiate()
-                navigationController?.pushViewController(homeTabBarController, animated: true)
+                present(homeTabBarController, animated: true, completion: nil)
             } catch {
                 showErrorAlert(message: error.localizedDescription)
             }

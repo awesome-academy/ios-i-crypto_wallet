@@ -29,11 +29,13 @@ final class CreateWalletViewController: UIViewController {
                 let (wallet, mnonemics) = try EthereumInteraction.createNewWallet(
                     name: walletNameTextField.text ?? Constants.appName,
                     password: validatedPassword)
-                if let id = Identifier(nonEmpty: Constants.appName) {
-                    Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
-                        $0.set(string: "0:" + mnonemics, forKey: "recoveryData")
-                        $0.set(string: validatedPassword, forKey: "password")
-                    }
+                guard let id = Identifier(nonEmpty: Constants.appName) else {
+                    throw SessionErrors.cantCreateIdentifier
+                }
+                Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly).do {
+                    $0.set(string: "0:" + mnonemics, forKey: Constants.recoveryDataKey)
+                    $0.set(string: validatedPassword, forKey: Constants.passwordKey)
+                    $0.set(string: wallet.walletName, forKey: Constants.walletNameKey)
                 }
                 Wallet.sharedWallet = wallet
                 let backupNoticeController = BackupNoticeViewController.instantiate().then {

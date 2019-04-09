@@ -10,4 +10,7 @@ import Foundation
 
 enum Constants {
     static let appName = "CryptoWallet"
+    static let passwordKey = "passwordKey"
+    static let recoveryDataKey = "recoveryDataKey"
+    static let walletNameKey = "walletNameKey"
 }
