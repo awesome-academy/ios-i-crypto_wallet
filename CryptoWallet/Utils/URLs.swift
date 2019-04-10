@@ -12,6 +12,8 @@ enum URLs {
     static let baseUrl = "https://api.trustwallet.com"
     static let cmcGraphAPI = "https://graphs2.coinmarketcap.com/currencies"
     static let cmcCoinIconAPI = "https://s2.coinmarketcap.com/static/img/coins/64x64"
+    static let runCloudCronJobsAPI = "https://manage.runcloud.io/base-api/servers/\(RunCloud.serverId)/cronjobs"
+    static let totalValueChartAPI = "http://secretcat.rf.gd"
     static let transactionAPI = baseUrl + "/ethereum/transactions"
     static let tokenPriceAPI = baseUrl + "/prices"
     static let tokenInfoAPI = baseUrl + "/v2/tokens"

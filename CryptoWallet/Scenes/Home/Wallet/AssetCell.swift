@@ -41,7 +41,7 @@ final class AssetCell: UITableViewCell {
             $0.text = "$\(assetInfo.price)"
         }
         asset24hChangeLabel.do {
-            $0.textColor = assetInfo.twentyFourHChange < 0 ? .red : Colors.greenColor
+            $0.textColor = assetInfo.twentyFourHChange < 0 ? .red : UIColor.greenColor
             $0.text = "\(assetInfo.twentyFourHChange)%"
         }
         assetAmountLabel.do {

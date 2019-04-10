@@ -48,3 +48,6 @@ playground.xcworkspace
 #
 Pods/
 Podfile.lock
+
+#API
+CryptoWallet/Utils/RunCloud.swift
