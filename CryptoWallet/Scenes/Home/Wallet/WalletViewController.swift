@@ -28,6 +28,9 @@ final class WalletViewController: UIViewController {
     private var allAssetList = [AssetInfo]()
     private var chartData = [(x: Double, y: Double)]()
     private var chart: Chart?
+    private let walletValueDataRepository: WalletValueDataRepository =
+        WalletValueDataRepositoryImpl(api: APIService.share)
+    private let assetRespository: AssetRepository = AssetRepositoryImpl(api: APIService.share)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +55,6 @@ final class WalletViewController: UIViewController {
             $0.estimatedRowHeight = UITableView.automaticDimension
             $0.tableFooterView = UIView()
         }
-        allAssetList.append(AssetInfo.mock())
-        assetList = allAssetList
         assetSearchBar.do {
             $0.delegate = self
         }
@@ -61,6 +62,7 @@ final class WalletViewController: UIViewController {
             $0.text = Wallet.sharedWallet?.walletName
         }
         handleChartTimeTapped(sixHoursChartButton)
+        fetchAssetListAndLoadData()
     }
     
     @IBAction private func handleChartTimeTapped(_ sender: UIButton) {
@@ -75,22 +77,90 @@ final class WalletViewController: UIViewController {
         sender.do {
             $0.setTitleColor(UIColor.blueColor, for: .normal)
         }
-        guard let currentTitle = sender.currentTitle  else {
+        guard let currentTitle = sender.currentTitle else {
             return
         }
-        if currentTitle == ChartType.allDay.rawValue {
-            drawChart(chartType: .allDay, chartData: DataMock.chartValueData, numberXPoint: 4)
-        } else {
-            drawChart(chartType: ChartType(rawValue: currentTitle) ?? .sixHours, chartData: DataMock.chartValueData)
+        fetchDataAndDrawChart(currentChartType: currentTitle)
+    }
+    
+    private func fetchDataAndDrawChart(currentChartType: String) {
+        var fromTimestamp = 0.0
+        var numberXPoint = 6
+        switch currentChartType {
+        case ChartType.sixHours.rawValue:
+            if let pastTime = Calendar.current.date(byAdding: .hour, value: -6, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+            numberXPoint = 6
+        case ChartType.oneDay.rawValue:
+            if let pastTime = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+            numberXPoint = 6
+        case ChartType.oneWeek.rawValue:
+            if let pastTime = Calendar.current.date(byAdding: .day, value: -7, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+            numberXPoint = 6
+        case ChartType.oneMonth.rawValue:
+            if let pastTime = Calendar.current.date(byAdding: .month, value: -1, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+            numberXPoint = 6
+        case ChartType.oneYear.rawValue:
+            if let pastTime = Calendar.current.date(byAdding: .year, value: -1, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+            numberXPoint = 6
+        case ChartType.allDay.rawValue:
+            numberXPoint = 4
+        default:
+            if let pastTime = Calendar.current.date(byAdding: .hour, value: -6, to: Date()) {
+                fromTimestamp = pastTime.timeIntervalSince1970
+            }
+        }
+        guard let address = Wallet.sharedWallet?.walletAddress else {
+            return
+        }
+        walletValueDataRepository.getWalletValueData(address: address,
+                                                     from: fromTimestamp) { (result) in
+            switch result {
+            case .success(let walletValueDataResponse):
+                guard let walletValueDataResponse = walletValueDataResponse else {
+                    return
+                }
+                self.totalValueLabel.do {
+                    $0.text = "$\(walletValueDataResponse.totalUsd)"
+                }
+                self.value24hChangeLabel.do {
+                    $0.text = walletValueDataResponse.usdPercentChange > 0 ?
+                        "+\(walletValueDataResponse.usdPercentChange)%" :
+                        "\(walletValueDataResponse.usdPercentChange)%"
+                    $0.textColor = walletValueDataResponse.usdPercentChange > 0 ?
+                        .greenColor : .red
+                }
+                if let history = walletValueDataResponse.history {
+                    self.chartData = ChartHelper.convertWalletValueToChartData(walletValues: history) ?? []
+                }
+                DispatchQueue.main.async {
+                    self.drawChart(chartType: ChartType(rawValue: currentChartType) ?? .sixHours,
+                                   chartData: self.chartData,
+                                   numberXPoint: numberXPoint)
+                }
+            case .failure(let error):
+                self.showErrorAlert(message: error?.errorMessage)
+            }
         }
     }
     
     private func drawChart(chartType: ChartType, chartData: [(x: Double, y: Double)], numberXPoint: Int = 6) {
-        guard var chart = chart else {
+        if let chart = chart {
+            chart.removeFromSuperview()
+        }
+        chart = Chart(frame: assetValueView.bounds)
+        guard let chart = chart else {
             return
         }
-        chart.removeFromSuperview()
-        chart = Chart(frame: assetValueView.bounds)
         chart.delegate = self
         let series = ChartSeries(data: chartData)
         series.area = true
@@ -104,9 +174,7 @@ final class WalletViewController: UIViewController {
             switch chartType {
             case .sixHours, .oneDay:
                 dateFormatter.dateFormat = "HH:mm"
-            case .oneWeek:
-                dateFormatter.dateFormat = "dd"
-            case .oneMonth, .oneYear:
+            case .oneWeek, .oneMonth, .oneYear:
                 dateFormatter.dateFormat = "MMM dd"
             case .allDay:
                 dateFormatter.dateFormat = "MMM dd, yyyy"
@@ -119,6 +187,80 @@ final class WalletViewController: UIViewController {
         chart.add(series)
         chart.hideHighlightLineOnTouchEnd = true
         assetValueView.addSubview(chart)
+    }
+    
+    private func fetchAssetListAndLoadData() {
+        guard let address = Wallet.sharedWallet?.walletAddress else {
+            return
+        }
+        let group = DispatchGroup()
+        group.enter()
+        self.assetRespository.getEthereumInfo { (result) in
+            switch result {
+            case .success(let ethereumMarketResponse):
+                if let fetchedEthereum = ethereumMarketResponse {
+                    var ethereum = AssetInfo()
+                    ethereum.name = fetchedEthereum.name
+                    ethereum.logo = UIImage(named: "ethereum")
+                    ethereum.symbol = fetchedEthereum.symbol
+                    ethereum.price = fetchedEthereum.price
+                    ethereum.twentyFourHChange = fetchedEthereum.usdPercentChange
+                    self.allAssetList.append(ethereum)
+                    group.leave()
+                }
+            case .failure(let error):
+                self.showErrorAlert(message: error?.errorMessage)
+                group.leave()
+            }
+        }
+        group.enter()
+        assetRespository.getAssetList(address: address) { (result) in
+            switch result {
+            case .success(let tokenListResponse):
+                guard let tokenList = tokenListResponse?.tokens, !tokenList.isEmpty  else {
+                    group.leave()
+                    return
+                }
+                if let etherBalance = tokenListResponse?.etherBalance, !self.allAssetList.isEmpty {
+                    self.allAssetList[0].amount = etherBalance
+                }
+                tokenList.forEach {
+                    var assetInfo = AssetInfo()
+                    assetInfo.name = $0.name
+                    assetInfo.symbol = $0.symbol
+                    assetInfo.amount = $0.balance / pow(10.0, $0.decimals)
+                    assetInfo.price = $0.price
+                    assetInfo.twentyFourHChange = $0.usdPercentChange
+                    assetInfo.smartContractAddress = $0.address
+                    self.allAssetList.append(assetInfo)
+                }
+                self.assetRespository.getCMCCoinInfo(completion: { (result) in
+                    switch result {
+                    case .success(let cmcCoinInfoList):
+                        for i in 0..<self.allAssetList.count {
+                            let element = cmcCoinInfoList?.first(where: {
+                                $0.symbol == self.allAssetList[i].symbol
+                            })
+                            if let matchedElement = element {
+                                self.allAssetList[i].id = matchedElement.id
+                            }
+                        }
+                        group.leave()
+                    case .failure(let error):
+                        self.showErrorAlert(message: error?.errorMessage)
+                        group.leave()
+                    }
+                })
+            case .failure(let error):
+                self.showErrorAlert(message: error?.errorMessage)
+                group.leave()
+            }
+        }
+        group.notify(queue: .main, execute: {
+            print(self.allAssetList.count)
+            self.assetList = self.allAssetList
+            self.assetListTableView.reloadData()
+        })
     }
 }
 

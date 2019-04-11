@@ -54,6 +54,15 @@ enum ChartHelper {
         }
         return labels
     }
+    
+    static func convertWalletValueToChartData(walletValues: [WalletValue]) -> [(x: Double, y: Double)]? {
+        var array = [(x: Double, y: Double)]()
+        walletValues.forEach {
+            let element = (x: $0.timeStamp, y: $0.totalUsd)
+            array.append(element)
+        }
+        return array
+    }
 }
 
 enum Axis {

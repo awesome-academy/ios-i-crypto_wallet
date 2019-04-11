@@ -8,6 +8,8 @@
 
 import Foundation
 import Web3swift
+import EthereumAddress
+import BigInt
 
 enum EthereumInteraction {
     static func createNewWallet(name: String = Constants.appName, password: String) throws -> (Wallet, String) {
@@ -81,5 +83,36 @@ enum EthereumInteraction {
                                     keyData: keyData,
                                     isHierarchicalDeterministic: true)
         return importedWallet
+    }
+    
+    static func getERC20TokenBalance(contractAddress: String, walletAddress: String) -> String? {
+        let web3 = Web3.InfuraMainnetWeb3()
+        let etherWalletAdress = EthereumAddress(walletAddress)
+        let exploredAddress = EthereumAddress(walletAddress)
+        let erc20ContractAddress = EthereumAddress(contractAddress)
+        guard let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2) else {
+            return nil
+        }
+        var options = TransactionOptions.defaultOptions
+        options.from = etherWalletAdress
+        options.gasPrice = .automatic
+        options.gasLimit = .automatic
+        let method = "balanceOf"
+        guard let transaction = contract.read(
+            method,
+            parameters: [exploredAddress] as [AnyObject],
+            extraData: Data(),
+            transactionOptions: options) else {
+                return nil
+        }
+        do {
+            let tokenBalance = try transaction.call()
+            guard let balanceBigUInt = tokenBalance["0"] as? BigUInt else {
+                return nil
+            }
+            return Web3.Utils.formatToEthereumUnits(balanceBigUInt, toUnits: .eth, decimals: 3)
+        } catch {
+            return nil
+        }
     }
 }

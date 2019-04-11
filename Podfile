@@ -6,8 +6,8 @@ target 'CryptoWallet' do
   use_frameworks!
 
   # Pods for CryptoWallet
-  pod 'AlamofireObjectMapper'
-  pod 'Alamofire', '~> 5.0.0-beta.3'
+  pod 'ObjectMapper'
+  pod 'Alamofire', '4.8.1'
   pod 'web3swift'
   pod 'SwiftLint'
   pod 'Then'
@@ -15,5 +15,6 @@ target 'CryptoWallet' do
   pod 'Valet'
   pod 'Validator'
   pod 'UITextView+Placeholder'
-  pod "SwiftChart"
+  pod 'SwiftChart'
+  pod 'Kingfisher'
 end
