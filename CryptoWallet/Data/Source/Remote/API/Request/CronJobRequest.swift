@@ -13,15 +13,14 @@ import Alamofire
 final class CronJobRequest: BaseRequest {
     required init(address: String) {
         let body: [String: Any] = [
-            "jobName": address,
-            "user": "root",
-            "command": "wget -q -O \"\(URLs.totalValueChartAPI)?address=\(address)\" > /dev/null 2>&1",
-            "minute": "*/20",
-            "hour": "*",
-            "dayOfMonth": "*",
-            "month": "*",
-            "dayOfWeek": "*"
+            "title": address,
+            "enabled": 1,
+            "category": CronJobAPI.categoryGroupId,
+            "plugin": "urlplug",
+            "target": "allgrp",
+            "timing": ["minutes": [ 0, 20, 40 ]],
+            "params": ["url": "http://secretcat.spdns.org/wallet-tracker.php?address=\(address)"]
         ]
-        super.init(url: URLs.baseUrl, requestType: .post, body: body)
+        super.init(url: URLs.cronJobAPI, requestType: .post, body: body)
     }
 }

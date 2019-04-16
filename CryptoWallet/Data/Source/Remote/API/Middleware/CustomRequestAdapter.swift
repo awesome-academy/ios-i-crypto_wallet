@@ -14,6 +14,7 @@ final class CustomRequestAdapter: RequestAdapter {
         var urlRequest = urlRequest
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.setValue(CronJobAPI.apiKey, forHTTPHeaderField: "X-API-Key")
         return urlRequest
     }
 }

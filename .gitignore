@@ -50,4 +50,4 @@ Pods/
 Podfile.lock
 
 #API
-CryptoWallet/Utils/RunCloud.swift
+CryptoWallet/Utils/CronJobAPI.swift
