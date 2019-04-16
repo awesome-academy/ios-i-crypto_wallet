@@ -10,6 +10,7 @@ import Foundation
 import Valet
 
 enum SessionManager {
+    
     static func checkLogin() throws -> Bool {
         guard let id = Identifier(nonEmpty: Constants.appName) else {
             throw SessionErrors.cantCreateIdentifier
@@ -34,5 +35,13 @@ enum SessionManager {
         }
         Wallet.sharedWallet = wallet
         return true
+    }
+    
+    static func logout() throws {
+        guard let id = Identifier(nonEmpty: Constants.appName) else {
+            throw SessionErrors.cantCreateIdentifier
+        }
+        let myValet = Valet.valet(with: id, accessibility: .whenUnlockedThisDeviceOnly)
+        myValet.removeAllObjects()
     }
 }

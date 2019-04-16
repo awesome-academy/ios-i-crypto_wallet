@@ -13,6 +13,7 @@ protocol AssetRepository {
     func getAssetList(address: String, completion: @escaping (BaseResult<TokenListResponse>) -> Void)
     func getCMCCoinInfo(completion: @escaping (BaseArrayResult<CMCCoinInfoResponse>) -> Void)
     func getEthereumInfo(completion: @escaping (BaseResult<EthereumMarketResponse>) -> Void)
+    func getAssetMarket(contractAddress: String, completion: @escaping (BaseResult<AssetMarketResponse>) -> Void)
 }
 
 final class AssetRepositoryImpl: AssetRepository {
@@ -59,6 +60,18 @@ final class AssetRepositoryImpl: AssetRepository {
                 completion(.failure(error: nil))
             }
         }
-
+    }
+    
+    func getAssetMarket(contractAddress: String, completion: @escaping (BaseResult<AssetMarketResponse>) -> Void) {
+        let input = AssetMarketRequest(contractAddress: contractAddress)
+        api?.request(input: input) { (object: AssetMarketResponse?, error) in
+            if let object = object {
+                completion(.success(object))
+            } else if let error = error {
+                completion(.failure(error: error))
+            } else {
+                completion(.failure(error: nil))
+            }
+        }
     }
 }

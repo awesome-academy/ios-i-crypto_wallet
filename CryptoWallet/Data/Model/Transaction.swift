@@ -28,6 +28,9 @@ final class Transaction: BaseModel {
         mapping(map: map)
     }
     
+    init() {
+    }
+    
     func mapping(map: Map) {
         contractOperation <- map["operations"]
         id <- map["id"]
@@ -42,5 +45,31 @@ final class Transaction: BaseModel {
         gasUsed <- map["gasUsed"]
         input <- map["input"]
         error <- map["error"]
+    }
+    
+    static func mock() -> [Transaction]? {
+        guard let wallet = Wallet.sharedWallet else {
+            return nil
+        }
+        var transactions = [Transaction]()
+        let tx1 = Transaction()
+        tx1.timeStamp = 1_555_051_084
+        tx1.from = "0x5af2be193a6abca9c8817001f45744777db30756"
+        tx1.to = wallet.walletAddress
+        tx1.value = 10
+        let tx2 = Transaction()
+        tx2.timeStamp = 1_555_050_900
+        tx2.from = wallet.walletAddress
+        tx2.to = "0x5af2be193a6abca9c8817001f45744777db30756"
+        tx2.value = 5
+        let tx3 = Transaction()
+        tx3.timeStamp = 1_555_051_400
+        tx3.from = wallet.walletAddress
+        tx3.to = "0x5af2be193a6abca9c8817001f45744777db30756"
+        tx3.contractOperation = ContractOperation()
+        transactions.append(tx1)
+        transactions.append(tx2)
+        transactions.append(tx3)
+        return transactions
     }
 }

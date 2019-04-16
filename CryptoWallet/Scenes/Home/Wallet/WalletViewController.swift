@@ -193,6 +193,7 @@ final class WalletViewController: UIViewController {
         guard let address = Wallet.sharedWallet?.walletAddress else {
             return
         }
+        allAssetList.append(AssetInfo())
         let group = DispatchGroup()
         group.enter()
         self.assetRespository.getEthereumInfo { (result) in
@@ -205,7 +206,8 @@ final class WalletViewController: UIViewController {
                     ethereum.symbol = fetchedEthereum.symbol
                     ethereum.price = fetchedEthereum.price
                     ethereum.twentyFourHChange = fetchedEthereum.usdPercentChange
-                    self.allAssetList.append(ethereum)
+                    ethereum.type = .coin
+                    self.allAssetList[0] = ethereum
                     group.leave()
                 }
             case .failure(let error):
@@ -217,12 +219,14 @@ final class WalletViewController: UIViewController {
         assetRespository.getAssetList(address: address) { (result) in
             switch result {
             case .success(let tokenListResponse):
-                guard let tokenList = tokenListResponse?.tokens, !tokenList.isEmpty  else {
+                guard let tokenListResponse = tokenListResponse else {
                     group.leave()
                     return
                 }
-                if let etherBalance = tokenListResponse?.etherBalance, !self.allAssetList.isEmpty {
-                    self.allAssetList[0].amount = etherBalance
+                self.allAssetList[0].amount = tokenListResponse.etherBalance
+                guard let tokenList = tokenListResponse.tokens, !tokenList.isEmpty else {
+                    group.leave()
+                    return
                 }
                 tokenList.forEach {
                     var assetInfo = AssetInfo()
@@ -257,7 +261,6 @@ final class WalletViewController: UIViewController {
             }
         }
         group.notify(queue: .main, execute: {
-            print(self.allAssetList.count)
             self.assetList = self.allAssetList
             self.assetListTableView.reloadData()
         })

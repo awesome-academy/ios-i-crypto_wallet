@@ -36,7 +36,7 @@ enum EthereumInteraction {
         return (hdWallet, unwrapped)
     }
     
-    static func importWalletByPrivateKey(walletName: String,
+    static func importWalletByPrivateKey(walletName: String = Constants.appName,
                                          privateKey: String,
                                          password: String) throws -> Wallet {
         guard let data = Data.fromHex(privateKey) else {
@@ -63,7 +63,7 @@ enum EthereumInteraction {
         return importedWallet
     }
     
-    static func importWalletByMnenomic(walletName: String,
+    static func importWalletByMnenomic(walletName: String = Constants.appName,
                                        mnenomicPhrase: String,
                                        password: String) throws -> Wallet {
         guard let keystore = try? BIP32Keystore(mnemonics: mnenomicPhrase,

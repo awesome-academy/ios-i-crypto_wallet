@@ -13,6 +13,8 @@ final class CustomRequestAdapter: RequestAdapter {
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         return urlRequest
     }
 }
+

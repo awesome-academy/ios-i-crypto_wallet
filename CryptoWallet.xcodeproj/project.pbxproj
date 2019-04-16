@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E17FF07C2582172785CD918 /* Pods_CryptoWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */; };
+		68F7C22A04902E8A138B88A5 /* Pods_CryptoWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFF4078B9713276CA701A74 /* Pods_CryptoWallet.framework */; };
 		A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7025CE62255FAAD00CE43C2 /* SessionManager.swift */; };
 		A7090721225D787F0077EC20 /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7090720225D787F0077EC20 /* DataTransform.swift */; };
 		A7090723225D7C680077EC20 /* AssetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7090722225D7C680077EC20 /* AssetRepository.swift */; };
@@ -22,6 +22,11 @@
 		A73BC082225ADA4B00D0CD00 /* DataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC081225ADA4B00D0CD00 /* DataMock.swift */; };
 		A73BC085225AE5F300D0CD00 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC084225AE5F300D0CD00 /* AssetViewController.swift */; };
 		A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73BC086225AEDFF00D0CD00 /* ChartType.swift */; };
+		A73E198822603C9300B9D9DF /* AssetMarketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198722603C9300B9D9DF /* AssetMarketRequest.swift */; };
+		A73E198A22603CF300B9D9DF /* AssetMarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */; };
+		A73E198C226046F100B9D9DF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198B226046F100B9D9DF /* TransactionType.swift */; };
+		A73E198E2260656B00B9D9DF /* AssetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E198D2260656B00B9D9DF /* AssetType.swift */; };
+		A74E9852226561FB00E41E26 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E9851226561FB00E41E26 /* Date+.swift */; };
 		A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDC2251FEA0002B6EFA /* Setting.storyboard */; };
 		A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */; };
 		A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7506BE122520AE8002B6EFA /* Storyboards.swift */; };
@@ -39,13 +44,18 @@
 		A76C87A2225C444600E3216E /* WalletValueDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */; };
 		A76C87A6225C469800E3216E /* WalletValueDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A5225C469800E3216E /* WalletValueDataRequest.swift */; };
 		A76C87A8225C505900E3216E /* WalletValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87A7225C505900E3216E /* WalletValue.swift */; };
-		A76C87AE225C752400E3216E /* RunCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87AD225C752400E3216E /* RunCloud.swift */; };
 		A76C87B0225C946000E3216E /* WalletValueDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C87AF225C946000E3216E /* WalletValueDataResponse.swift */; };
 		A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77C2251A04B001A0F43 /* Transaction.swift */; };
 		A77CE77F2251A206001A0F43 /* ContractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE77E2251A206001A0F43 /* ContractOperation.swift */; };
 		A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7802251A338001A0F43 /* ContractTransaction.swift */; };
 		A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7822251AD14001A0F43 /* AssetMarket.swift */; };
 		A77CE7862251CE0F001A0F43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CE7852251CE0F001A0F43 /* LoginViewController.swift */; };
+		A77FD425225ED6E5006E4773 /* CronJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FD424225ED6E5006E4773 /* CronJobRequest.swift */; };
+		A77FD427225EEBC8006E4773 /* CronJobRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FD426225EEBC8006E4773 /* CronJobRepository.swift */; };
+		A77FD429225EEC3E006E4773 /* CronJobResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FD428225EEC3E006E4773 /* CronJobResponse.swift */; };
+		A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FD430225F2D11006E4773 /* TransactionCell.swift */; };
+		A77FD433225F2F92006E4773 /* AssetHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77FD432225F2F92006E4773 /* AssetHeader.xib */; };
+		A77FD435225F3186006E4773 /* AssetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FD434225F3186006E4773 /* AssetHeader.swift */; };
 		A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1C224E15A200718C29 /* TokenInfo.swift */; };
 		A782CD1F224E19C900718C29 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1E224E19C900718C29 /* Contract.swift */; };
 		A791946F22574A63008403EC /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791946E22574A63008403EC /* ChartHelper.swift */; };
@@ -70,9 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B40CF0298545506788AC780 /* Pods-CryptoWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.debug.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.debug.xcconfig"; sourceTree = "<group>"; };
-		9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.release.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.release.xcconfig"; sourceTree = "<group>"; };
+		6D21D837AE71CE98118846F4 /* Pods-CryptoWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.release.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.release.xcconfig"; sourceTree = "<group>"; };
 		A7025CE62255FAAD00CE43C2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A7090720225D787F0077EC20 /* DataTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransform.swift; sourceTree = "<group>"; };
 		A7090722225D7C680077EC20 /* AssetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRepository.swift; sourceTree = "<group>"; };
@@ -87,6 +95,11 @@
 		A73BC081225ADA4B00D0CD00 /* DataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMock.swift; sourceTree = "<group>"; };
 		A73BC084225AE5F300D0CD00 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		A73BC086225AEDFF00D0CD00 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
+		A73E198722603C9300B9D9DF /* AssetMarketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetMarketRequest.swift; sourceTree = "<group>"; };
+		A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetMarketResponse.swift; sourceTree = "<group>"; };
+		A73E198B226046F100B9D9DF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		A73E198D2260656B00B9D9DF /* AssetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetType.swift; sourceTree = "<group>"; };
+		A74E9851226561FB00E41E26 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		A7506BDC2251FEA0002B6EFA /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		A7506BDE2251FEAF002B6EFA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A7506BE122520AE8002B6EFA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -104,13 +117,18 @@
 		A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataRepository.swift; sourceTree = "<group>"; };
 		A76C87A5225C469800E3216E /* WalletValueDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataRequest.swift; sourceTree = "<group>"; };
 		A76C87A7225C505900E3216E /* WalletValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValue.swift; sourceTree = "<group>"; };
-		A76C87AD225C752400E3216E /* RunCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunCloud.swift; sourceTree = "<group>"; };
 		A76C87AF225C946000E3216E /* WalletValueDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletValueDataResponse.swift; sourceTree = "<group>"; };
 		A77CE77C2251A04B001A0F43 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A77CE77E2251A206001A0F43 /* ContractOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOperation.swift; sourceTree = "<group>"; };
 		A77CE7802251A338001A0F43 /* ContractTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTransaction.swift; sourceTree = "<group>"; };
 		A77CE7822251AD14001A0F43 /* AssetMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetMarket.swift; sourceTree = "<group>"; };
 		A77CE7852251CE0F001A0F43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A77FD424225ED6E5006E4773 /* CronJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobRequest.swift; sourceTree = "<group>"; };
+		A77FD426225EEBC8006E4773 /* CronJobRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobRepository.swift; sourceTree = "<group>"; };
+		A77FD428225EEC3E006E4773 /* CronJobResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobResponse.swift; sourceTree = "<group>"; };
+		A77FD430225F2D11006E4773 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		A77FD432225F2F92006E4773 /* AssetHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetHeader.xib; sourceTree = "<group>"; };
+		A77FD434225F3186006E4773 /* AssetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetHeader.swift; sourceTree = "<group>"; };
 		A782CD1C224E15A200718C29 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
 		A782CD1E224E19C900718C29 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		A791946E22574A63008403EC /* ChartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHelper.swift; sourceTree = "<group>"; };
@@ -134,6 +152,8 @@
 		A7FA8F83224E05DD00952E4D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7FE1D7722544C5200D1587F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		A7FE1D7A225450FB00D1587F /* BackupNewWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupNewWalletViewController.swift; sourceTree = "<group>"; };
+		CEFF4078B9713276CA701A74 /* Pods_CryptoWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9136BEE4F785FD80AC39D20 /* Pods-CryptoWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoWallet.debug.xcconfig"; path = "Target Support Files/Pods-CryptoWallet/Pods-CryptoWallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,26 +161,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E17FF07C2582172785CD918 /* Pods_CryptoWallet.framework in Frameworks */,
+				68F7C22A04902E8A138B88A5 /* Pods_CryptoWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16C4741992DD3A9B56E48E91 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9AB879B443FBB53AE39A300A /* Pods_CryptoWallet.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		866AEA0F458AF77689B48908 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4B40CF0298545506788AC780 /* Pods-CryptoWallet.debug.xcconfig */,
-				9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */,
+				D9136BEE4F785FD80AC39D20 /* Pods-CryptoWallet.debug.xcconfig */,
+				6D21D837AE71CE98118846F4 /* Pods-CryptoWallet.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -169,6 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				A73BC084225AE5F300D0CD00 /* AssetViewController.swift */,
+				A77FD430225F2D11006E4773 /* TransactionCell.swift */,
+				A77FD432225F2F92006E4773 /* AssetHeader.xib */,
+				A77FD434225F3186006E4773 /* AssetHeader.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -180,6 +195,8 @@
 				A7090724225D7F060077EC20 /* TokenListResponse.swift */,
 				A709072C225DA0B80077EC20 /* CMCCoinInfoResponse.swift */,
 				A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */,
+				A77FD428225EEC3E006E4773 /* CronJobResponse.swift */,
+				A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -192,6 +209,8 @@
 				A7090726225D804E0077EC20 /* TokenListRequest.swift */,
 				A709072E225DA1510077EC20 /* CMCCoinInfoRequest.swift */,
 				A7090732225DEE280077EC20 /* EthereumMarketRequest.swift */,
+				A77FD424225ED6E5006E4773 /* CronJobRequest.swift */,
+				A73E198722603C9300B9D9DF /* AssetMarketRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -275,7 +294,7 @@
 				A7FA8F4B224DBC5700952E4D /* CryptoWallet */,
 				A7FA8F4A224DBC5700952E4D /* Products */,
 				866AEA0F458AF77689B48908 /* Pods */,
-				16C4741992DD3A9B56E48E91 /* Frameworks */,
+				B4A7A68FF8C4F868A5426D3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,6 +359,7 @@
 				A7506BEA225219D4002B6EFA /* UIView+.swift */,
 				A767B9862252FB4900AE8BA4 /* UITextField+.swift */,
 				A76C8795225C3B8300E3216E /* UIColor+.swift */,
+				A74E9851226561FB00E41E26 /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -351,6 +371,7 @@
 				A7025CE62255FAAD00CE43C2 /* SessionManager.swift */,
 				A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */,
 				A7090722225D7C680077EC20 /* AssetRepository.swift */,
+				A77FD426225EEBC8006E4773 /* CronJobRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -378,10 +399,11 @@
 			isa = PBXGroup;
 			children = (
 				A7FA8F74224DBE3500952E4D /* URLs.swift */,
-				A76C87AD225C752400E3216E /* RunCloud.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
 				A73BC086225AEDFF00D0CD00 /* ChartType.swift */,
+				A73E198B226046F100B9D9DF /* TransactionType.swift */,
+				A73E198D2260656B00B9D9DF /* AssetType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -490,6 +512,14 @@
 			path = BackupNewWallet;
 			sourceTree = "<group>";
 		};
+		B4A7A68FF8C4F868A5426D3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEFF4078B9713276CA701A74 /* Pods_CryptoWallet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -497,12 +527,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7FA8F5E224DBC5700952E4D /* Build configuration list for PBXNativeTarget "CryptoWallet" */;
 			buildPhases = (
-				D46458802D3A45ACF9A23A9B /* [CP] Check Pods Manifest.lock */,
+				A9576C050673F530A3DF184A /* [CP] Check Pods Manifest.lock */,
 				A7FA8F45224DBC5700952E4D /* Sources */,
 				A7FA8F46224DBC5700952E4D /* Frameworks */,
 				A7FA8F47224DBC5700952E4D /* Resources */,
-				2314345707CEF3537675E125 /* [CP] Embed Pods Frameworks */,
 				A7FA8F7C224DC1A100952E4D /* ShellScript */,
+				39FBF4F13D408F759A935457 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -554,6 +584,7 @@
 				A7FA8F5A224DBC5700952E4D /* LaunchScreen.storyboard in Resources */,
 				A7506BDF2251FEAF002B6EFA /* Wallet.storyboard in Resources */,
 				A7FA8F57224DBC5700952E4D /* Assets.xcassets in Resources */,
+				A77FD433225F2F92006E4773 /* AssetHeader.xib in Resources */,
 				A7FA8F52224DBC5700952E4D /* Main.storyboard in Resources */,
 				A7506BDD2251FEA0002B6EFA /* Setting.storyboard in Resources */,
 			);
@@ -562,7 +593,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2314345707CEF3537675E125 /* [CP] Embed Pods Frameworks */ = {
+		39FBF4F13D408F759A935457 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -637,7 +668,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		D46458802D3A45ACF9A23A9B /* [CP] Check Pods Manifest.lock */ = {
+		A9576C050673F530A3DF184A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -669,6 +700,7 @@
 				A7FA8F75224DBE3500952E4D /* URLs.swift in Sources */,
 				A76C879C225C416800E3216E /* CustomRequestAdapter.swift in Sources */,
 				A7FE1D7822544C5200D1587F /* HomeTabBarController.swift in Sources */,
+				A77FD425225ED6E5006E4773 /* CronJobRequest.swift in Sources */,
 				A7090735225DEE740077EC20 /* EthereumMarketResponse.swift in Sources */,
 				A7090721225D787F0077EC20 /* DataTransform.swift in Sources */,
 				A709072F225DA1510077EC20 /* CMCCoinInfoRequest.swift in Sources */,
@@ -677,21 +709,27 @@
 				A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */,
 				A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */,
 				A77CE77D2251A04B001A0F43 /* Transaction.swift in Sources */,
+				A73E198822603C9300B9D9DF /* AssetMarketRequest.swift in Sources */,
 				A73BC085225AE5F300D0CD00 /* AssetViewController.swift in Sources */,
 				A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */,
+				A74E9852226561FB00E41E26 /* Date+.swift in Sources */,
+				A73E198A22603CF300B9D9DF /* AssetMarketResponse.swift in Sources */,
 				A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
 				A7FA8F77224DBE3D00952E4D /* Constants.swift in Sources */,
 				A7D183D422530E91009C2EE9 /* Validator.swift in Sources */,
 				A7D183E122534024009C2EE9 /* Wallet.swift in Sources */,
 				A7FA8F82224E05AD00952E4D /* WalletViewController.swift in Sources */,
+				A73E198C226046F100B9D9DF /* TransactionType.swift in Sources */,
 				A76C87A0225C427600E3216E /* APIService.swift in Sources */,
 				A7506BE222520AE8002B6EFA /* Storyboards.swift in Sources */,
 				A7090725225D7F060077EC20 /* TokenListResponse.swift in Sources */,
+				A77FD427225EEBC8006E4773 /* CronJobRepository.swift in Sources */,
 				A7FA8F84224E05DD00952E4D /* SettingViewController.swift in Sources */,
+				A77FD435225F3186006E4773 /* AssetHeader.swift in Sources */,
 				A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */,
+				A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
-				A76C87AE225C752400E3216E /* RunCloud.swift in Sources */,
 				A7090723225D7C680077EC20 /* AssetRepository.swift in Sources */,
 				A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */,
 				A7090727225D804E0077EC20 /* TokenListRequest.swift in Sources */,
@@ -700,6 +738,7 @@
 				A76C87B0225C946000E3216E /* WalletValueDataResponse.swift in Sources */,
 				A709072D225DA0B80077EC20 /* CMCCoinInfoResponse.swift in Sources */,
 				A7FA8F6F224DBDD200952E4D /* BaseModel.swift in Sources */,
+				A73E198E2260656B00B9D9DF /* AssetType.swift in Sources */,
 				A76C8796225C3B8300E3216E /* UIColor+.swift in Sources */,
 				A7090733225DEE280077EC20 /* EthereumMarketRequest.swift in Sources */,
 				A7D183DD22533B56009C2EE9 /* EthereumInteraction.swift in Sources */,
@@ -719,6 +758,7 @@
 				A7FE1D7B225450FB00D1587F /* BackupNewWalletViewController.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,
 				A767B9872252FB4900AE8BA4 /* UITextField+.swift in Sources */,
+				A77FD429225EEC3E006E4773 /* CronJobResponse.swift in Sources */,
 				A76C87A8225C505900E3216E /* WalletValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,7 +903,7 @@
 		};
 		A7FA8F5F224DBC5700952E4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B40CF0298545506788AC780 /* Pods-CryptoWallet.debug.xcconfig */;
+			baseConfigurationReference = D9136BEE4F785FD80AC39D20 /* Pods-CryptoWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -882,7 +922,7 @@
 		};
 		A7FA8F60224DBC5700952E4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B51126288E0705AA6D5F268 /* Pods-CryptoWallet.release.xcconfig */;
+			baseConfigurationReference = 6D21D837AE71CE98118846F4 /* Pods-CryptoWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
