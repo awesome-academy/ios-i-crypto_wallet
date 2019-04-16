@@ -38,6 +38,9 @@ final class AssetViewController: UIViewController {
             }
             $0.sendButtonTapped = { [weak self] in
                 let sendTransactionController = SendTransactionViewController.instantiate()
+                if let assetInfo = self?.assetInfo {
+                    sendTransactionController.assetInfo = assetInfo
+                }
                 self?.navigationController?.pushViewController(sendTransactionController, animated: true)
             }
             $0.receiveButtonTapped = { [weak self] in
