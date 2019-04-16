@@ -46,18 +46,17 @@ final class CreateWalletViewController: UIViewController {
                 cronJobRepository.checkWallet(address: wallet.walletAddress) { (result) in
                     switch result {
                     case .success(let checkCronJobResponse):
-                        if let checkCronJobResponse = checkCronJobResponse {
-                            if checkCronJobResponse.description.contains(CronJobAPI.notExistEvent) {
-                                self.cronJobRepository.trackWallet(address: wallet.walletAddress) { (result) in
-                                    switch result {
-                                    case .success(let cronJobResponse):
-                                        if let cronJobResponse = cronJobResponse {
-                                            print(cronJobResponse.id)
-                                        }
-                                    case .failure(let error):
-                                        if let errorMessage = error?.errorMessage {
-                                            print(errorMessage)
-                                        }
+                        if let checkCronJobResponse = checkCronJobResponse,
+                            checkCronJobResponse.description.contains(CronJobAPI.notExistEvent) {
+                            self.cronJobRepository.trackWallet(address: wallet.walletAddress) { (result) in
+                                switch result {
+                                case .success(let cronJobResponse):
+                                    if let cronJobResponse = cronJobResponse {
+                                        print(cronJobResponse.id)
+                                    }
+                                case .failure(let error):
+                                    if let errorMessage = error?.errorMessage {
+                                        print(errorMessage)
                                     }
                                 }
                             }

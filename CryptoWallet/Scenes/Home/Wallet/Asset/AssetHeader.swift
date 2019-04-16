@@ -22,7 +22,9 @@ final class AssetHeader: UIView {
     @IBOutlet private weak var addressView: UIView!
     @IBOutlet private weak var addressLabel: UILabel!
     
-    var viewController: UIViewController?
+    var sendButtonTapped: (() -> Void)?
+    var receiveButtonTapped: (() -> Void)?
+    var makeToast: ((String) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -105,27 +107,11 @@ final class AssetHeader: UIView {
     }
     
     @IBAction private func handleSendButtonTapped(_ sender: Any) {
-        guard let viewController = viewController else {
-            return
-        }
-        let sendTransactionController = SendTransactionViewController.instantiate()
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
-                                                                          style: .plain,
-                                                                          target: nil,
-                                                                          action: nil)
-        viewController.navigationController?.pushViewController(sendTransactionController, animated: true)
+        sendButtonTapped?()
     }
     
     @IBAction private func handleReceiveButtonTapped(_ sender: Any) {
-        guard let viewController = viewController else {
-            return
-        }
-        let receiveTransactionController = ReceiveTransactionViewController.instantiate()
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
-                                                                          style: .plain,
-                                                                          target: nil,
-                                                                          action: nil)
-        viewController.navigationController?.pushViewController(receiveTransactionController, animated: true)
+        receiveButtonTapped?()
     }
     
     @IBAction private func handleCopyAddressTapped(_ sender: Any) {
@@ -133,7 +119,7 @@ final class AssetHeader: UIView {
             return
         }
         UIPasteboard.general.string = address
-        viewController?.view.makeToast("Address copied")
+        makeToast?("Address copied")
     }
 }
 

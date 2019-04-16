@@ -26,9 +26,19 @@ final class AssetViewController: UIViewController {
                                                     y: 0,
                                                     width: transactionTableView.frame.width,
                                                     height: transactionTableView.frame.height / 2)).then {
-            $0.viewController = self
             if let assetInfo = assetInfo {
                 $0.setAssetInfo(assetInfo)
+            }
+            $0.makeToast = { [weak self] (message) in
+                self?.view.makeToast(message)
+            }
+            $0.sendButtonTapped = { [weak self] in
+                let sendTransactionController = SendTransactionViewController.instantiate()
+                self?.navigationController?.pushViewController(sendTransactionController, animated: true)
+            }
+            $0.receiveButtonTapped = { [weak self] in
+                let receiveTransactionController = ReceiveTransactionViewController.instantiate()
+                self?.navigationController?.pushViewController(receiveTransactionController, animated: true)
             }
         }
         transactionTableView.do {
@@ -54,6 +64,10 @@ final class AssetViewController: UIViewController {
             }
             $0.title = assetInfo.name + "(\(assetInfo.symbol))"
             $0.rightBarButtonItem = detailAssetButton
+            $0.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                   style: .plain,
+                                                   target: nil,
+                                                   action: nil)
         }
         transactionList = Transaction.mock() ?? []
         transactionDateList = getTransactionDateList(transactionList: transactionList)
@@ -62,10 +76,6 @@ final class AssetViewController: UIViewController {
     
     @objc private func handleAssetDetailTapped(_ sender: UIBarButtonItem) {
         let assetDetailController = AssetDetailViewController.instantiate()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
         navigationController?.pushViewController(assetDetailController, animated: true)
     }
     
@@ -160,10 +170,6 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let transactionDetailController = TransactionDetailViewController.instantiate()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
         navigationController?.pushViewController(transactionDetailController, animated: true)
     }
 }
