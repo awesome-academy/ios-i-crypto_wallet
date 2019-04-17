@@ -19,7 +19,7 @@ final class CronJobRequest: BaseRequest {
             "plugin": "urlplug",
             "target": "allgrp",
             "timing": ["minutes": [ 0, 20, 40 ]],
-            "params": ["url": "http://secretcat.spdns.org/wallet-tracker.php?address=\(address)"]
+            "params": ["url": "\(URLs.totalValueChartAPI)?address=\(address)"]
         ]
         super.init(url: URLs.cronJobAPI, requestType: .post, body: body)
     }

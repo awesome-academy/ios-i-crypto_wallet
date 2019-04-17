@@ -46,7 +46,6 @@
 		A767B9802252EE7D00AE8BA4 /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B97F2252EE7D00AE8BA4 /* RecoverWalletViewController.swift */; };
 		A767B9822252EE9600AE8BA4 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */; };
 		A767B9852252F18300AE8BA4 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9842252F18300AE8BA4 /* GuideViewController.swift */; };
-		A767B9872252FB4900AE8BA4 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767B9862252FB4900AE8BA4 /* UITextField+.swift */; };
 		A76C8796225C3B8300E3216E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C8795225C3B8300E3216E /* UIColor+.swift */; };
 		A76C8798225C412B00E3216E /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C8797225C412B00E3216E /* BaseError.swift */; };
 		A76C879A225C414E00E3216E /* BaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C8799225C414E00E3216E /* BaseResult.swift */; };
@@ -133,7 +132,6 @@
 		A767B97F2252EE7D00AE8BA4 /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		A767B9812252EE9600AE8BA4 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		A767B9842252F18300AE8BA4 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
-		A767B9862252FB4900AE8BA4 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		A76C8795225C3B8300E3216E /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		A76C8797225C412B00E3216E /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
 		A76C8799225C414E00E3216E /* BaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResult.swift; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 			children = (
 				A7FA8F78224DBE7800952E4D /* UIViewController+.swift */,
 				A7506BEA225219D4002B6EFA /* UIView+.swift */,
-				A767B9862252FB4900AE8BA4 /* UITextField+.swift */,
 				A76C8795225C3B8300E3216E /* UIColor+.swift */,
 				A74E9851226561FB00E41E26 /* Date+.swift */,
 				A7CE013C22671B5500405833 /* Double+.swift */,
@@ -864,7 +861,6 @@
 				A76C879E225C423F00E3216E /* BaseRequest.swift in Sources */,
 				A7FE1D7B225450FB00D1587F /* BackupNewWalletViewController.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,
-				A767B9872252FB4900AE8BA4 /* UITextField+.swift in Sources */,
 				A77FD429225EEC3E006E4773 /* CronJobResponse.swift in Sources */,
 				A76C87A8225C505900E3216E /* WalletValue.swift in Sources */,
 			);
