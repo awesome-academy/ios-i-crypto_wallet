@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import BigInt
 
 enum Constants {
     static let appName = "CryptoWallet"
     static let passwordKey = "passwordKey"
     static let recoveryDataKey = "recoveryDataKey"
     static let walletNameKey = "walletNameKey"
+    static let gasLimitDefault: BigUInt = 21_000
 }

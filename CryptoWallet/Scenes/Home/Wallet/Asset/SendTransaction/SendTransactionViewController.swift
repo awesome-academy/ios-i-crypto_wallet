@@ -168,8 +168,8 @@ final class SendTransactionViewController: UIViewController {
             let amount = Double(amountString) {
             self.conversionValueLabel.do {
                 $0.text = valueType == .asset ?
-                "~" + String(format: "%.3f", amount * assetInfo.price) + " USD":
-                "~" + String(format: "%.3f", amount / assetInfo.price) + " \(assetInfo.symbol)"
+                "~" + (amount * assetInfo.price).threeDecimals(with: "USD"):
+                "~" + (amount / assetInfo.price).threeDecimals(with: assetInfo.symbol)
             }
         } else {
             self.conversionValueLabel.do {

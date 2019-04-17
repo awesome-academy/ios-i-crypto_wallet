@@ -72,7 +72,7 @@ final class AssetHeader: UIView {
     func setAssetInfo(_ assetInfo: AssetInfo) {
         self.assetInfo = assetInfo
         assetAmountLabel.do {
-            $0.text = String(format: "%.4f", assetInfo.amount) + " " + String(assetInfo.symbol)
+            $0.text = assetInfo.amount.fourDecimals(with: assetInfo.symbol)
         }
         assetLogoImageView.do {
             if let logo = assetInfo.logo {
@@ -89,7 +89,7 @@ final class AssetHeader: UIView {
             $0.clipsToBounds = true
         }
         assetPriceLabel.do {
-            $0.text = "$" + String(format: "%.2f", assetInfo.price)
+            $0.text = "$" + assetInfo.price.twoDecimals()
         }
         usdPercentChange.do {
             $0.textColor = assetInfo.twentyFourHChange < 0 ? .red :
@@ -99,7 +99,7 @@ final class AssetHeader: UIView {
             "+\(assetInfo.twentyFourHChange)%"
         }
         assetValueLabel.do {
-            $0.text = "$" +  String(format: "%.2f", assetInfo.amount * assetInfo.price)
+            $0.text = "$" +  (assetInfo.amount * assetInfo.price).twoDecimals()
         }
         addressLabel.do {
             if let address = Wallet.sharedWallet?.walletAddress {

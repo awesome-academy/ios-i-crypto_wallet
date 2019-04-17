@@ -135,14 +135,14 @@ enum EthereumInteraction {
         let web3 = Web3.InfuraMainnetWeb3()
         do {
             let gasPrice = try web3.eth.getGasPrice()
-            let fee = gasPrice * 21_000
-            guard let stringFee = Web3.Utils.formatToEthereumUnits(fee,
+            let estimatedFee = gasPrice * Constants.gasLimitDefault
+            guard let stringFee = Web3.Utils.formatToEthereumUnits(estimatedFee,
                                                                    toUnits: .eth,
                                                                    decimals: 18),
-                let doubleFee = Double(stringFee) else {
+                let fee = Double(stringFee) else {
                 return nil
             }
-            return (doubleFee, Double(gasPrice))
+            return (fee, Double(gasPrice))
         } catch {
             return nil
         }

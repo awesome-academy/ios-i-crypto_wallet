@@ -72,6 +72,7 @@
 		A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1C224E15A200718C29 /* TokenInfo.swift */; };
 		A782CD1F224E19C900718C29 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1E224E19C900718C29 /* Contract.swift */; };
 		A791946F22574A63008403EC /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791946E22574A63008403EC /* ChartHelper.swift */; };
+		A7CE013D22671B5500405833 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CE013C22671B5500405833 /* Double+.swift */; };
 		A7D183D422530E91009C2EE9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D322530E91009C2EE9 /* Validator.swift */; };
 		A7D183D622531A89009C2EE9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D522531A89009C2EE9 /* Errors.swift */; };
 		A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */; };
@@ -158,6 +159,7 @@
 		A782CD1C224E15A200718C29 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
 		A782CD1E224E19C900718C29 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		A791946E22574A63008403EC /* ChartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHelper.swift; sourceTree = "<group>"; };
+		A7CE013C22671B5500405833 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		A7D183D322530E91009C2EE9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		A7D183D522531A89009C2EE9 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupNoticeViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				A767B9862252FB4900AE8BA4 /* UITextField+.swift */,
 				A76C8795225C3B8300E3216E /* UIColor+.swift */,
 				A74E9851226561FB00E41E26 /* Date+.swift */,
+				A7CE013C22671B5500405833 /* Double+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,10 +490,6 @@
 				A76C87AD225C752400E3216E /* CronJobAPI.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
-				A73BC086225AEDFF00D0CD00 /* ChartType.swift */,
-				A73E198B226046F100B9D9DF /* TransactionType.swift */,
-				A73E198D2260656B00B9D9DF /* AssetType.swift */,
-				A74E98562265BDE900E41E26 /* ValueType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -505,6 +504,10 @@
 		A7FA8F6C224DBDBD00952E4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A73BC086225AEDFF00D0CD00 /* ChartType.swift */,
+				A73E198B226046F100B9D9DF /* TransactionType.swift */,
+				A73E198D2260656B00B9D9DF /* AssetType.swift */,
+				A74E98562265BDE900E41E26 /* ValueType.swift */,
 				A7FA8F6E224DBDD200952E4D /* BaseModel.swift */,
 				A76C87A7225C505900E3216E /* WalletValue.swift */,
 				A782CD1C224E15A200718C29 /* TokenInfo.swift */,
@@ -827,6 +830,7 @@
 				A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
 				A709CD0B2264DFC70001A309 /* TransactionResponse.swift in Sources */,
+				A7CE013D22671B5500405833 /* Double+.swift in Sources */,
 				A71FCFDA22637F7900DF2584 /* CheckCronJobRequest.swift in Sources */,
 				A76C87AE225C752400E3216E /* CronJobAPI.swift in Sources */,
 				A7090723225D7C680077EC20 /* AssetRepository.swift in Sources */,
