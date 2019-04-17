@@ -387,6 +387,21 @@
             </objects>
             <point key="canvasLocation" x="1710" y="-1348"/>
         </scene>
+        <!--ScanQR View Controller-->
+        <scene sceneID="l8D-1a-A3P">
+            <objects>
+                <viewController storyboardIdentifier="ScanQRViewController" id="jKW-aw-X96" customClass="ScanQRViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6bg-Dq-yt7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XMh-Tf-CmN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbE-2k-S14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="-1769"/>
+        </scene>
         <!--Send Transaction View Controller-->
         <scene sceneID="lmV-ew-CGU">
             <objects>
@@ -395,8 +410,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="approximately" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-h5-pY6">
-                                <rect key="frame" x="25" y="174" width="91" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-h5-pY6">
+                                <rect key="frame" x="25" y="174" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -456,6 +471,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="handleAmountValueChanged:" destination="oqw-pb-4sn" eventType="editingChanged" id="O06-ab-uMh"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-rC-qhN">
                                                 <rect key="frame" x="235" y="0.0" width="50" height="32"/>
@@ -490,6 +508,17 @@
                                     <constraint firstItem="cZS-i8-lB6" firstAttribute="leading" secondItem="qKI-a5-otG" secondAttribute="leading" constant="5" id="cLa-gH-bf3"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpG-Ky-9Ck">
+                                <rect key="frame" x="20" y="611" width="335" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleNextButtonTapped:" destination="oqw-pb-4sn" eventType="touchUpInside" id="cvy-iQ-RAd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -499,8 +528,11 @@
                             <constraint firstItem="qKI-a5-otG" firstAttribute="height" secondItem="81M-2Y-S4a" secondAttribute="height" id="NUc-bx-uIr"/>
                             <constraint firstItem="81M-2Y-S4a" firstAttribute="top" secondItem="q5n-la-wMq" secondAttribute="top" constant="30" id="RNE-b9-e5T"/>
                             <constraint firstItem="Plo-h5-pY6" firstAttribute="leading" secondItem="Lu9-8q-304" secondAttribute="leading" id="SW4-Na-6ct"/>
+                            <constraint firstItem="q5n-la-wMq" firstAttribute="bottom" secondItem="cpG-Ky-9Ck" secondAttribute="bottom" constant="20" id="dc3-RE-6LJ"/>
                             <constraint firstItem="81M-2Y-S4a" firstAttribute="leading" secondItem="q5n-la-wMq" secondAttribute="leading" constant="20" id="nra-A1-9Ov"/>
                             <constraint firstItem="q5n-la-wMq" firstAttribute="trailing" secondItem="81M-2Y-S4a" secondAttribute="trailing" constant="20" id="qjO-1p-odm"/>
+                            <constraint firstItem="cpG-Ky-9Ck" firstAttribute="leading" secondItem="qKI-a5-otG" secondAttribute="leading" id="sTG-vh-sal"/>
+                            <constraint firstItem="cpG-Ky-9Ck" firstAttribute="trailing" secondItem="qKI-a5-otG" secondAttribute="trailing" id="v8Q-wv-gUT"/>
                             <constraint firstItem="qKI-a5-otG" firstAttribute="leading" secondItem="q5n-la-wMq" secondAttribute="leading" constant="20" id="yYa-yV-L7m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q5n-la-wMq"/>
@@ -509,6 +541,8 @@
                         <outlet property="amountTextField" destination="Lu9-8q-304" id="Dwf-AE-n0Z"/>
                         <outlet property="amountView" destination="qKI-a5-otG" id="PMS-fC-TA1"/>
                         <outlet property="conversionValueLabel" destination="Plo-h5-pY6" id="Xny-XL-Xou"/>
+                        <outlet property="maxButton" destination="hvH-rC-qhN" id="RhN-yO-EqT"/>
+                        <outlet property="nextButton" destination="cpG-Ky-9Ck" id="GtL-rB-Hdp"/>
                         <outlet property="recipientAddressTextField" destination="Zhc-IT-l8I" id="2jc-Th-X86"/>
                         <outlet property="recipientAddressView" destination="81M-2Y-S4a" id="mQo-Ci-JXo"/>
                     </connections>
@@ -516,6 +550,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0L5-02-Bli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2724" y="-1053.8230884557722"/>
+        </scene>
+        <!--Confirm Send Transaction View Controller-->
+        <scene sceneID="PvA-PI-Anq">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmSendTransactionViewController" id="8Lc-jj-HQV" customClass="ConfirmSendTransactionViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sS8-cg-fBH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SJo-uW-lld"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mni-y4-BDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3497" y="-1054"/>
         </scene>
         <!--Transaction Detail View Controller-->
         <scene sceneID="NgM-28-Jp4">

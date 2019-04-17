@@ -72,7 +72,7 @@ final class AssetHeader: UIView {
     func setAssetInfo(_ assetInfo: AssetInfo) {
         self.assetInfo = assetInfo
         assetAmountLabel.do {
-            $0.text = String(format: "%.4f", assetInfo.amount) + String(assetInfo.symbol)
+            $0.text = String(format: "%.4f", assetInfo.amount) + " " + String(assetInfo.symbol)
         }
         assetLogoImageView.do {
             if let logo = assetInfo.logo {
