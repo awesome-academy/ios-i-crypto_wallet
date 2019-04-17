@@ -25,6 +25,7 @@ final class AssetHeader: UIView {
     var sendButtonTapped: (() -> Void)?
     var receiveButtonTapped: (() -> Void)?
     var makeToast: ((String) -> Void)?
+    var assetInfo: AssetInfo?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +70,7 @@ final class AssetHeader: UIView {
     }
     
     func setAssetInfo(_ assetInfo: AssetInfo) {
+        self.assetInfo = assetInfo
         assetAmountLabel.do {
             $0.text = String(format: "%.4f", assetInfo.amount) + String(assetInfo.symbol)
         }
