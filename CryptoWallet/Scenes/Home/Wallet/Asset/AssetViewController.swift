@@ -101,7 +101,10 @@ final class AssetViewController: UIViewController {
             return
         }
         if assetInfo.type == .coin {
-            self.assetRepository.getEthereumInfo { (result) in
+            assetRepository.getEthereumInfo { [weak self] (result) in
+                guard let self = self else {
+                    return
+                }
                 switch result {
                 case .success(let ethereumMarketResponse):
                     if let ethereumMarketResponse = ethereumMarketResponse {
@@ -133,7 +136,10 @@ final class AssetViewController: UIViewController {
                 }
             }
         } else {
-            self.assetRepository.getAssetMarket(contractAddress: assetInfo.smartContractAddress) { (result) in
+            assetRepository.getAssetMarket(contractAddress: assetInfo.smartContractAddress) { [weak self] (result) in
+                guard let self = self else {
+                    return
+                }
                 switch result {
                 case .success(let assetMarketResponse):
                     if let assetMarket = assetMarketResponse?.assetMarket {
@@ -174,7 +180,11 @@ final class AssetViewController: UIViewController {
             return
         }
         if assetInfo.type == .coin {
-            transactionRepository.getTransactionList(walletAddress: wallet.walletAddress, page: page) { (result) in
+            transactionRepository.getTransactionList(walletAddress: wallet.walletAddress,
+                                                     page: page) { [weak self] (result) in
+                guard let self = self else {
+                    return
+                }
                 switch result {
                 case .success(let transactionResponse):
                     guard let transactionList = transactionResponse?.transactions else {
@@ -190,7 +200,11 @@ final class AssetViewController: UIViewController {
         } else {
             transactionRepository.getTransactionList(walletAddress: wallet.walletAddress,
                                                      page: page,
-                                                     contractAddress: assetInfo.smartContractAddress) { (result) in
+                                                     contractAddress:
+            assetInfo.smartContractAddress) { [weak self] (result) in
+                guard let self = self else {
+                    return
+                }
                 switch result {
                 case .success(let transactionResponse):
                     guard let transactionList = transactionResponse?.transactions else {

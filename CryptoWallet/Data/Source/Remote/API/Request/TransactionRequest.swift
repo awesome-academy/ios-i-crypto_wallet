@@ -19,7 +19,6 @@ final class TransactionRequest: BaseRequest {
         if !contractAddress.isEmpty {
             body["contract"] = contractAddress
         }
-        print(body)
         super.init(url: URLs.transactionAPI, requestType: .get, body: body)
     }
 }
