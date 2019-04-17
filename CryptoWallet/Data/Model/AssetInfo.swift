@@ -14,6 +14,7 @@ struct AssetInfo {
     var logo: UIImage?
     var name = ""
     var symbol = ""
+    var decimals = 0.0
     var smartContractAddress = ""
     var price = 0.0
     var twentyFourHChange = 0.0
@@ -28,6 +29,7 @@ extension AssetInfo {
                          logo: UIImage(named: "ethereum"),
                          name: "Ethereum",
                          symbol: "ETH",
+                         decimals: 18,
                          smartContractAddress: "",
                          price: 162.0,
                          twentyFourHChange: -2.45,

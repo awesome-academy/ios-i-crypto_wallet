@@ -25,7 +25,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet weak var assetPriceChartLabel: UILabel!
     
     private var assetList = [AssetInfo]()
-    private var allAssetList = [AssetInfo]()
+    private var allAssetList = [AssetInfo()]
     private var chartData = [(x: Double, y: Double)]()
     private var chart: Chart?
     private let walletValueDataRepository: WalletValueDataRepository =
@@ -193,45 +193,41 @@ final class WalletViewController: UIViewController {
         guard let address = Wallet.sharedWallet?.walletAddress else {
             return
         }
-        allAssetList.append(AssetInfo())
-        let group = DispatchGroup()
-        group.enter()
-        self.assetRespository.getEthereumInfo { (result) in
-            switch result {
-            case .success(let ethereumMarketResponse):
-                if let fetchedEthereum = ethereumMarketResponse {
-                    var ethereum = AssetInfo()
-                    ethereum.name = fetchedEthereum.name
-                    ethereum.logo = UIImage(named: "ethereum")
-                    ethereum.symbol = fetchedEthereum.symbol
-                    ethereum.price = fetchedEthereum.price
-                    ethereum.twentyFourHChange = fetchedEthereum.usdPercentChange
-                    ethereum.type = .coin
-                    self.allAssetList[0] = ethereum
-                    group.leave()
-                }
-            case .failure(let error):
-                self.showErrorAlert(message: error?.errorMessage)
-                group.leave()
-            }
-        }
-        group.enter()
         assetRespository.getAssetList(address: address) { (result) in
             switch result {
             case .success(let tokenListResponse):
                 guard let tokenListResponse = tokenListResponse else {
-                    group.leave()
                     return
                 }
                 self.allAssetList[0].amount = tokenListResponse.etherBalance
+                self.assetRespository.getEthereumInfo { (result) in
+                    switch result {
+                    case .success(let ethereumMarketResponse):
+                        if let fetchedEthereum = ethereumMarketResponse {
+                            self.allAssetList[0].name = fetchedEthereum.name
+                            self.allAssetList[0].logo = UIImage(named: "ethereum")
+                            self.allAssetList[0].symbol = fetchedEthereum.symbol
+                            self.allAssetList[0].price = fetchedEthereum.price
+                            self.allAssetList[0].twentyFourHChange = fetchedEthereum.usdPercentChange
+                            self.allAssetList[0].type = .coin
+                            self.allAssetList[0].decimals = 18
+                            DispatchQueue.main.async {
+                                self.assetList = self.allAssetList
+                                self.assetListTableView.reloadData()
+                            }
+                        }
+                    case .failure(let error):
+                        self.showErrorAlert(message: error?.errorMessage)
+                    }
+                }
                 guard let tokenList = tokenListResponse.tokens, !tokenList.isEmpty else {
-                    group.leave()
                     return
                 }
                 tokenList.forEach {
                     var assetInfo = AssetInfo()
                     assetInfo.name = $0.name
                     assetInfo.symbol = $0.symbol
+                    assetInfo.decimals = $0.decimals
                     assetInfo.amount = $0.balance / pow(10.0, $0.decimals)
                     assetInfo.price = $0.price
                     assetInfo.twentyFourHChange = $0.usdPercentChange
@@ -249,21 +245,18 @@ final class WalletViewController: UIViewController {
                                 self.allAssetList[i].id = matchedElement.id
                             }
                         }
-                        group.leave()
+                        DispatchQueue.main.async {
+                            self.assetList = self.allAssetList
+                            self.assetListTableView.reloadData()
+                        }
                     case .failure(let error):
                         self.showErrorAlert(message: error?.errorMessage)
-                        group.leave()
                     }
                 })
             case .failure(let error):
                 self.showErrorAlert(message: error?.errorMessage)
-                group.leave()
             }
         }
-        group.notify(queue: .main, execute: {
-            self.assetList = self.allAssetList
-            self.assetListTableView.reloadData()
-        })
     }
 }
 

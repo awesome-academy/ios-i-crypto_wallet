@@ -13,7 +13,6 @@ extension UIViewController {
         let alertViewController = UIAlertController(title: title,
                                                     message: message,
                                                     preferredStyle: .alert)
-        
         if let cancelButton = cancelButton {
             let cancelAction = UIAlertAction(title: cancelButton, style: .cancel, handler: { (_) in
                 cancelAction?()
@@ -23,6 +22,7 @@ extension UIViewController {
         
         if let otherButtons = otherButtons {
             for (index, otherButton) in otherButtons.enumerated() {
+                
                 let otherAction = UIAlertAction(title: otherButton, style: .default, handler: { (_) in
                                                     otherAction?(index)
                 })
@@ -52,7 +52,7 @@ extension UIViewController {
     func hideNavigationBar() {
         navigationController?.isNavigationBarHidden = true
     }
-    
+        
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
