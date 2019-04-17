@@ -17,6 +17,9 @@
 		A709072F225DA1510077EC20 /* CMCCoinInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709072E225DA1510077EC20 /* CMCCoinInfoRequest.swift */; };
 		A7090733225DEE280077EC20 /* EthereumMarketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7090732225DEE280077EC20 /* EthereumMarketRequest.swift */; };
 		A7090735225DEE740077EC20 /* EthereumMarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */; };
+		A709CD092264DE0A0001A309 /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709CD082264DE0A0001A309 /* TransactionRequest.swift */; };
+		A709CD0B2264DFC70001A309 /* TransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709CD0A2264DFC70001A309 /* TransactionResponse.swift */; };
+		A709CD0D2264E0330001A309 /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709CD0C2264E0330001A309 /* TransactionRepository.swift */; };
 		A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CD2256ED3F00573A5A /* AssetCell.swift */; };
 		A71402D02256F3A000573A5A /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CF2256F3A000573A5A /* AssetInfo.swift */; };
 		A71FCFD82263583B00DF2584 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */; };
@@ -97,6 +100,9 @@
 		A709072E225DA1510077EC20 /* CMCCoinInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMCCoinInfoRequest.swift; sourceTree = "<group>"; };
 		A7090732225DEE280077EC20 /* EthereumMarketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumMarketRequest.swift; sourceTree = "<group>"; };
 		A7090734225DEE740077EC20 /* EthereumMarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumMarketResponse.swift; sourceTree = "<group>"; };
+		A709CD082264DE0A0001A309 /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
+		A709CD0A2264DFC70001A309 /* TransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResponse.swift; sourceTree = "<group>"; };
+		A709CD0C2264E0330001A309 /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		A71402CD2256ED3F00573A5A /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		A71402CF2256F3A000573A5A /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				A77FD428225EEC3E006E4773 /* CronJobResponse.swift */,
 				A73E198922603CF300B9D9DF /* AssetMarketResponse.swift */,
 				A71FCFDB2263808100DF2584 /* CheckCronJobResponse.swift */,
+				A709CD0A2264DFC70001A309 /* TransactionResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 				A77FD424225ED6E5006E4773 /* CronJobRequest.swift */,
 				A73E198722603C9300B9D9DF /* AssetMarketRequest.swift */,
 				A71FCFD922637F7900DF2584 /* CheckCronJobRequest.swift */,
+				A709CD082264DE0A0001A309 /* TransactionRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 				A76C87A1225C444600E3216E /* WalletValueDataRepository.swift */,
 				A7090722225D7C680077EC20 /* AssetRepository.swift */,
 				A77FD426225EEBC8006E4773 /* CronJobRepository.swift */,
+				A709CD0C2264E0330001A309 /* TransactionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -790,10 +799,12 @@
 				A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */,
 				A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
+				A709CD0B2264DFC70001A309 /* TransactionResponse.swift in Sources */,
 				A71FCFDA22637F7900DF2584 /* CheckCronJobRequest.swift in Sources */,
 				A76C87AE225C752400E3216E /* CronJobAPI.swift in Sources */,
 				A7090723225D7C680077EC20 /* AssetRepository.swift in Sources */,
 				A77CE7812251A338001A0F43 /* ContractTransaction.swift in Sources */,
+				A709CD0D2264E0330001A309 /* TransactionRepository.swift in Sources */,
 				A7090727225D804E0077EC20 /* TokenListRequest.swift in Sources */,
 				A7FA8F4D224DBC5700952E4D /* AppDelegate.swift in Sources */,
 				A76C879A225C414E00E3216E /* BaseResult.swift in Sources */,
@@ -815,6 +826,7 @@
 				A7FA8F6B224DBDAA00952E4D /* ViewModelType.swift in Sources */,
 				A73BC082225ADA4B00D0CD00 /* DataMock.swift in Sources */,
 				A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */,
+				A709CD092264DE0A0001A309 /* TransactionRequest.swift in Sources */,
 				A76C8798225C412B00E3216E /* BaseError.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
 				A76C879E225C423F00E3216E /* BaseRequest.swift in Sources */,

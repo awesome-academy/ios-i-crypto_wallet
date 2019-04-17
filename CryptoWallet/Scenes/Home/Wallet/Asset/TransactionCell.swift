@@ -62,8 +62,10 @@ final class TransactionCell: UITableViewCell, Reusable {
                 $0.text = "+" + String(format: "%.3f", amount) + " " + symbol
             case .sent, .pending, .transferTokenTo(token: _):
                 $0.text = "-" + String(format: "%.3f", amount) + " " + symbol
+                $0.textColor = .darkGray
             default:
                 $0.text = String(format: "%.3f", amount) + " " + symbol
+                $0.textColor = .darkGray
             }
         }
     }

@@ -13,14 +13,14 @@ final class Transaction: BaseModel {
     var contractOperation: ContractOperation?
     var id = ""
     var blockNumber = 0.0
-    var timeStamp = 0.0
+    var timeStamp = ""
     var nonce = 0.0
     var from = ""
     var to = ""
-    var value = 0.0
-    var gas = 0.0
-    var gasPrice = 0.0
-    var gasUsed = 0.0
+    var value = ""
+    var gas = ""
+    var gasPrice = ""
+    var gasUsed = ""
     var input = ""
     var error = ""
 
@@ -32,7 +32,7 @@ final class Transaction: BaseModel {
     }
     
     func mapping(map: Map) {
-        contractOperation <- map["operations"]
+        contractOperation <- map["operations.0"]
         id <- map["id"]
         blockNumber <- map["blockNumber"]
         timeStamp <- map["timeStamp"]
@@ -53,17 +53,17 @@ final class Transaction: BaseModel {
         }
         var transactions = [Transaction]()
         let tx1 = Transaction()
-        tx1.timeStamp = 1_555_051_084
+        tx1.timeStamp = "1555051084"
         tx1.from = "0x5af2be193a6abca9c8817001f45744777db30756"
         tx1.to = wallet.walletAddress
-        tx1.value = 10
+        tx1.value = "10"
         let tx2 = Transaction()
-        tx2.timeStamp = 1_555_050_900
+        tx2.timeStamp = "1555050900"
         tx2.from = wallet.walletAddress
         tx2.to = "0x5af2be193a6abca9c8817001f45744777db30756"
-        tx2.value = 5
+        tx2.value = "5"
         let tx3 = Transaction()
-        tx3.timeStamp = 1_555_051_400
+        tx3.timeStamp = "1555051400"
         tx3.from = wallet.walletAddress
         tx3.to = "0x5af2be193a6abca9c8817001f45744777db30756"
         tx3.contractOperation = ContractOperation()
