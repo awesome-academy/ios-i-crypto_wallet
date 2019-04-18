@@ -19,6 +19,7 @@ final class AdvancedTransactionSettingViewController: UIViewController {
     var gasPrice = 0.0
     var gasLimit: BigUInt = 0
     var transactionData = Data()
+    var onCompletion: ((_ gasPrice: Double, _ gasLimit: BigUInt, _ transactionData: Data) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,72 @@ final class AdvancedTransactionSettingViewController: UIViewController {
     }
     
     @objc private func handleSaveButtonTapped(_ sender: Any) {
-        
+        if validate() {
+            guard let gasPriceString = gasPriceTextField.text,
+                var newGasPrice = Double(gasPriceString),
+                let gasLimitString = gasLimitTextField.text,
+                let newGasLimit = BigUInt(gasLimitString),
+                let rawDataString = transactionDataTextField.text else {
+                    return
+            }
+            newGasPrice = newGasPrice * pow(10, 9)
+            var newTransactionData = Data()
+            let hexSubString = rawDataString.split(separator: "x")
+            if hexSubString.count > 1 {
+                let hexString = String(hexSubString[1])
+                print(hexString)
+                newTransactionData = Data(hex: hexString)
+            }
+            onCompletion?(newGasPrice, newGasLimit, newTransactionData)
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func validate() -> Bool {
+        guard let gasPrice = gasPriceTextField.text,
+            let gasLimit = gasLimitTextField.text,
+            let transactionData = transactionDataTextField.text else {
+                return false
+        }
+        let numberValidator = ValidatorFactory.validatorFor(type: .number)
+        switch numberValidator.validated(gasPrice) {
+        case .valid:
+            gasPriceTextField.do {
+                $0.underlined(height: 1, color: .lightGray)
+            }
+            switch numberValidator.validated(gasLimit) {
+            case .valid:
+                gasLimitTextField.do {
+                    $0.underlined(height: 1, color: .lightGray)
+                }
+                let transactionDataValidator = ValidatorFactory.validatorFor(type: .transactionData)
+                switch transactionDataValidator.validated(transactionData) {
+                case .valid:
+                    transactionDataTextField.do {
+                        $0.underlined(height: 1, color: .lightGray)
+                    }
+                    return true
+                case .invalid(let errors):
+                    transactionDataTextField.do {
+                        $0.underlined(height: 1, color: .red)
+                    }
+                    showErrorAlert(message: errors.first?.localizedDescription)
+                    return false
+                }
+            case .invalid(let errors):
+                gasLimitTextField.do {
+                    $0.underlined(height: 1, color: .red)
+                }
+                showErrorAlert(message: errors.first?.localizedDescription)
+                return false
+            }
+        case .invalid(let errors):
+            gasPriceTextField.do {
+                $0.underlined(height: 1, color: .red)
+            }
+            showErrorAlert(message: errors.first?.localizedDescription)
+            return false
+        }
     }
 }
 

@@ -13,7 +13,7 @@ final class AssetViewController: UIViewController {
     @IBOutlet private weak var transactionTableView: UITableView!
     
     var assetInfo: AssetInfo?
-    var newTransaction: Transaction?
+    static var newTransaction: Transaction?
     private var assetHeader: AssetHeader?
     private var transactionList = [Transaction]()
     private var transactionDateList = [String]()
@@ -28,8 +28,7 @@ final class AssetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchTransactionListAndLoadData()
-        fetchAndReloadAssetInfo()
+        reloadAllData()
     }
     
     private func configView() {
@@ -83,6 +82,11 @@ final class AssetViewController: UIViewController {
                                                    target: nil,
                                                    action: nil)
         }
+    }
+    
+    private func reloadAllData() {
+        fetchTransactionListAndLoadData()
+        fetchAndReloadAssetInfo()
     }
     
     @objc private func handleAssetDetailTapped(_ sender: UIBarButtonItem) {
@@ -183,12 +187,13 @@ final class AssetViewController: UIViewController {
     }
     
     private func fetchTransactionListAndLoadData() {
+        view.showOverlayIndicator()
         self.transactionList.removeAll()
         self.transactionDateList.removeAll()
         guard let assetInfo = assetInfo, let wallet = Wallet.sharedWallet else {
             return
         }
-        if let newTransaction = newTransaction {
+        if let newTransaction = AssetViewController.newTransaction {
             self.transactionList.append(newTransaction)
         }
         if assetInfo.type == .coin {
@@ -202,19 +207,24 @@ final class AssetViewController: UIViewController {
                     guard let transactionList = transactionResponse?.transactions else {
                         return
                     }
-                    if let newTransaction = self.newTransaction {
+                    if let newTransaction = AssetViewController.newTransaction {
                         transactionList.forEach {
                             if $0.id == newTransaction.id {
-                                self.newTransaction = nil
+                                AssetViewController.newTransaction = nil
                                 self.transactionList.remove(at: 0)
                             }
                         }
                     }
                     self.transactionList += transactionList
                     self.transactionDateList = self.getTransactionDateList(transactionList: self.transactionList)
-                    self.transactionTableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.transactionTableView.reloadData()
+                    }
                 case .failure(let error):
                     self.showErrorAlert(message: error?.errorMessage)
+                }
+                DispatchQueue.main.async {
+                    self.view.hideOverlayIndicator()
                 }
             }
         } else {
@@ -232,9 +242,14 @@ final class AssetViewController: UIViewController {
                     }
                     self.transactionList += transactionList
                     self.transactionDateList = self.getTransactionDateList(transactionList: self.transactionList)
-                    self.transactionTableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.transactionTableView.reloadData()
+                    }
                 case .failure(let error):
                     self.showErrorAlert(message: error?.errorMessage)
+                }
+                DispatchQueue.main.async {
+                    self.view.hideOverlayIndicator()
                 }
             }
         }
@@ -252,9 +267,7 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionList.filter {
-            guard let timestamp = Double($0.timeStamp) else {
-                return false
-            }
+            let timestamp = Double($0.timeStamp) ?? 0
             return Date.convertTimeStampToDate(timeStamp: timestamp) == transactionDateList[section]
         }.count
     }
@@ -266,9 +279,7 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
         var amount = 0.0
         var symbol = ""
         let sectionTransactionList = transactionList.filter {
-            guard let timestamp = Double($0.timeStamp) else {
-                return false
-            }
+            let timestamp = Double($0.timeStamp) ?? 0
             return Date.convertTimeStampToDate(timeStamp: timestamp) == transactionDateList[indexPath.section]
         }
         let transaction = sectionTransactionList[indexPath.row]
@@ -308,7 +319,7 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
             }
             symbol = "ETH"
         }
-        if let newTransaction = newTransaction, transaction.id == newTransaction.id {
+        if let newTransaction = AssetViewController.newTransaction, transaction.id == newTransaction.id {
             transactionType = .pending
         }
         transactionCell.setCellValue(transactionType: transactionType, address: address, amount: amount, symbol: symbol)

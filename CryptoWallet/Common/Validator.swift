@@ -18,7 +18,8 @@ enum ValidatorType {
     case privateKey
     case mnenomicPhrase
     case walletAddress
-    case amount
+    case number
+    case transactionData
 }
 
 enum ValidatorFactory {
@@ -32,8 +33,10 @@ enum ValidatorFactory {
             return MnenomicPhraseValidator()
         case .walletAddress:
             return WalletAddressValidator()
-        case .amount:
-            return AmountValidator()
+        case .number:
+            return NumberValidator()
+        case .transactionData:
+            return TransactionDataValidator()
         }
     }
 }
@@ -80,10 +83,18 @@ final class WalletAddressValidator: ValidatorConvertible {
     }
 }
 
-final class AmountValidator: ValidatorConvertible {
+final class NumberValidator: ValidatorConvertible {
     func validated(_ value: String) -> ValidationResult {
-        let amountRule = ValidationRulePattern(pattern: "^(\\d+(\\.\\d+)?)$",
+        let numberRule = ValidationRulePattern(pattern: "^(\\d+(\\.\\d+)?)$",
                                                error: ValidationErrors.notNumber)
-        return value.validate(rule: amountRule)
+        return value.validate(rule: numberRule)
+    }
+}
+
+final class TransactionDataValidator: ValidatorConvertible {
+    func validated(_ value: String) -> ValidationResult {
+        let transactionDataRule = ValidationRulePattern(pattern: "^0x([a-fA-F0-9]){0,}$",
+                                                        error: ValidationErrors.invalidTransactionData)
+        return value.validate(rule: transactionDataRule)
     }
 }

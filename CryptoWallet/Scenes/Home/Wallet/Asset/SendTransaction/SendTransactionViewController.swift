@@ -74,7 +74,7 @@ final class SendTransactionViewController: UIViewController {
                 amountView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .red)
                 return false
             }
-            let amountValidator = ValidatorFactory.validatorFor(type: .amount)
+            let amountValidator = ValidatorFactory.validatorFor(type: .number)
             switch amountValidator.validated(amount) {
             case .valid:
                 amountView.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .darkGray)

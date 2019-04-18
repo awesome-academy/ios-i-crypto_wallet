@@ -18,6 +18,7 @@ enum ValidationErrors: Error {
     case invalidWalletAddress
     case required
     case notNumber
+    case invalidTransactionData
 }
 
 extension ValidationErrors: LocalizedError {
@@ -44,6 +45,8 @@ extension ValidationErrors: LocalizedError {
             return "Field required!"
         case .notNumber:
             return "This field must be number"
+        case .invalidTransactionData:
+            return "Invalid transaction data!"
         }
     }
 }

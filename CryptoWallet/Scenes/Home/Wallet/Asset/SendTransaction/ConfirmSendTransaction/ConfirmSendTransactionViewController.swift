@@ -96,6 +96,14 @@ final class ConfirmSendTransactionViewController: UIViewController {
             $0.gasPrice = gasPrice
             $0.gasLimit = gasLimit
             $0.transactionData = transactionData
+            $0.onCompletion = { [weak self] (gasPrice, gasLimit, transactionData) in
+                guard let self = self else {
+                    return
+                }
+                self.gasPrice = gasPrice
+                self.gasLimit = gasLimit
+                self.transactionData = transactionData
+            }
         }
         navigationController?.pushViewController(advancedTransactionSettingController, animated: true)
     }
@@ -158,7 +166,7 @@ final class ConfirmSendTransactionViewController: UIViewController {
                                     guard let assetViewController = viewController as? AssetViewController else {
                                         return
                                     }
-                                    assetViewController.newTransaction = newTransaction
+                                    AssetViewController.newTransaction = newTransaction
                                     self.navigationController?.popToViewController(assetViewController, animated: false)
                                 }
                                 break
@@ -212,7 +220,9 @@ final class ConfirmSendTransactionViewController: UIViewController {
                     }
                 }
             }
-            self.gasLimit = (assetInfo.type == .coin ? Constants.gasLimitEtherDefault : Constants.gasLimitTokenDefault)
+            self.gasLimit = self.gasLimit == 0 ?
+                (assetInfo.type == .coin ? Constants.gasLimitEtherDefault : Constants.gasLimitTokenDefault) :
+                self.gasLimit
             let fee = Double(self.gasLimit) * self.gasPrice
             self.etherPrice = self.getEtherPrice()
             if let etherFee = Web3.Utils.formatToEthereumUnits(BigInt(fee), toUnits: .eth, decimals: 6),
@@ -287,7 +297,9 @@ final class ConfirmSendTransactionViewController: UIViewController {
             group.leave()
         }
         group.wait()
-        self.gasLimit = (assetInfo.type == .coin ? Constants.gasLimitEtherDefault : Constants.gasLimitTokenDefault)
+        self.gasLimit = self.gasLimit == 0 ?
+            (assetInfo.type == .coin ? Constants.gasLimitEtherDefault : Constants.gasLimitTokenDefault) :
+            self.gasLimit
         let totalFee = (gasPrice * Double(gasLimit)) / pow(10, 18)
         print(totalFee)
         if assetInfo.type == .coin {

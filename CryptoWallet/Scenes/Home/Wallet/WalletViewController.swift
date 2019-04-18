@@ -40,6 +40,7 @@ final class WalletViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar()
+        reloadAllData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +62,9 @@ final class WalletViewController: UIViewController {
         walletNameLabel.do {
             $0.text = Wallet.sharedWallet?.walletName
         }
+    }
+    
+    private func reloadAllData() {
         handleChartTimeTapped(sixHoursChartButton)
         fetchAssetListAndLoadData()
     }
