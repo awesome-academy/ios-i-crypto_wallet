@@ -123,7 +123,10 @@ final class WalletViewController: UIViewController {
             return
         }
         walletValueDataRepository.getWalletValueData(address: address,
-                                                     from: fromTimestamp) { (result) in
+                                                     from: fromTimestamp) { [weak self] (result) in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let walletValueDataResponse):
                 guard let walletValueDataResponse = walletValueDataResponse else {
@@ -193,24 +196,33 @@ final class WalletViewController: UIViewController {
         guard let address = Wallet.sharedWallet?.walletAddress else {
             return
         }
-        assetRespository.getAssetList(address: address) { (result) in
+        assetRespository.getAssetList(address: address) { [weak self] (result) in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let tokenListResponse):
                 guard let tokenListResponse = tokenListResponse else {
                     return
                 }
-                self.allAssetList[0].amount = tokenListResponse.etherBalance
-                self.assetRespository.getEthereumInfo { (result) in
+                self.assetRespository.getEthereumInfo { [weak self] (result) in
+                    guard let self = self else {
+                        return
+                    }
                     switch result {
                     case .success(let ethereumMarketResponse):
                         if let fetchedEthereum = ethereumMarketResponse {
-                            self.allAssetList[0].name = fetchedEthereum.name
-                            self.allAssetList[0].logo = UIImage(named: "ethereum")
-                            self.allAssetList[0].symbol = fetchedEthereum.symbol
-                            self.allAssetList[0].price = fetchedEthereum.price
-                            self.allAssetList[0].twentyFourHChange = fetchedEthereum.usdPercentChange
-                            self.allAssetList[0].type = .coin
-                            self.allAssetList[0].decimals = 18
+                            self.allAssetList[0] = AssetInfo(id: 0,
+                                                             logo: UIImage(named: "ethereum"),
+                                                             name: fetchedEthereum.name,
+                                                             symbol: fetchedEthereum.symbol,
+                                                             decimals: 18,
+                                                             smartContractAddress: "",
+                                                             price: fetchedEthereum.price,
+                                                             twentyFourHChange: fetchedEthereum.usdPercentChange,
+                                                             amount: tokenListResponse.etherBalance,
+                                                             websiteSlug: "ethereum",
+                                                             type: .coin)
                             DispatchQueue.main.async {
                                 self.assetList = self.allAssetList
                                 self.assetListTableView.reloadData()
@@ -234,7 +246,10 @@ final class WalletViewController: UIViewController {
                     assetInfo.smartContractAddress = $0.address
                     self.allAssetList.append(assetInfo)
                 }
-                self.assetRespository.getCMCCoinInfo(completion: { (result) in
+                self.assetRespository.getCMCCoinInfo(completion: { [weak self] (result) in
+                    guard let self = self else {
+                        return
+                    }
                     switch result {
                     case .success(let cmcCoinInfoList):
                         for i in 0..<self.allAssetList.count {
