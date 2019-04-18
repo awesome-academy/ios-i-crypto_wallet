@@ -25,4 +25,27 @@ extension UIView {
         layer.addSublayer(underline)
         layer.masksToBounds = true
     }
+    
+    func showOverlayIndicator() {
+        let activity = UIActivityIndicatorView().then {
+            $0.style = .whiteLarge
+            $0.startAnimating()
+        }
+        let overlayView = UIView().then {
+            $0.frame = frame
+            $0.backgroundColor = .black
+            $0.alpha = 0.3
+            $0.tag = Constants.indicatorTag
+            $0.addSubview(activity)
+        }
+        activity.do {
+            $0.center = overlayView.center
+        }
+        addSubview(overlayView)
+    }
+    
+    func hideOverlayIndicator() {
+        let overlayView = viewWithTag(Constants.indicatorTag)
+        overlayView?.removeFromSuperview()
+    }
 }

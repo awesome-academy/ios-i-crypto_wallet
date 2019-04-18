@@ -31,6 +31,9 @@ final class TransactionCell: UITableViewCell, Reusable {
             switch transactionType {
             case .pending:
                 $0.image = UIImage(named: "pending-icon")
+                self.contentView.do {
+                    $0.backgroundColor = .yellowPendingColor
+                }
             case .received, .transferTokenFrom(token: _):
                 $0.image = UIImage(named: "received-icon")
             case .sent, .transferTokenTo(token: _):
@@ -44,8 +47,8 @@ final class TransactionCell: UITableViewCell, Reusable {
             $0.text = transactionType.toString()
         }
         addressLabel.do {
-            let firstEightCharacters = address.prefix(10)
-            let lastEightCharacters = address.suffix(10)
+            let firstCharacters = address.prefix(10)
+            let lastCharacters = address.suffix(10)
             var inboxType = ""
             switch transactionType {
             case .received, .transferTokenFrom(token: _):
@@ -53,7 +56,7 @@ final class TransactionCell: UITableViewCell, Reusable {
             case .sent, .transferTokenTo(token: _), .pending, .smartContractCall:
                 inboxType = "To"
             }
-            $0.text = inboxType + ": " + String(firstEightCharacters) + "..." + String(lastEightCharacters)
+            $0.text = inboxType + ": " + String(firstCharacters) + "..." + String(lastCharacters)
         }
         amountLabel.do {
             switch transactionType {

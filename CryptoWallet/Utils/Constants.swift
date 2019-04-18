@@ -14,5 +14,7 @@ enum Constants {
     static let passwordKey = "passwordKey"
     static let recoveryDataKey = "recoveryDataKey"
     static let walletNameKey = "walletNameKey"
-    static let gasLimitDefault: BigUInt = 21_000
+    static let gasLimitEtherDefault: BigUInt = 21_000
+    static let gasLimitTokenDefault: BigUInt = 100_000
+    static let indicatorTag = 100
 }

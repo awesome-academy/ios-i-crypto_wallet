@@ -12,4 +12,5 @@ import UIKit
 extension UIColor {
     static let greenColor = UIColor(red: 0.18, green: 0.80, blue: 0.44, alpha: 1.0)
     static let blueColor = UIColor(red: 0.00, green: 0.53, blue: 1.00, alpha: 1.0)
+    static let yellowPendingColor = UIColor(red: 1.00, green: 0.99, blue: 0.47, alpha: 1.0)
 }

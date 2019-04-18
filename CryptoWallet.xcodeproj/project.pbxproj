@@ -71,7 +71,10 @@
 		A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1C224E15A200718C29 /* TokenInfo.swift */; };
 		A782CD1F224E19C900718C29 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782CD1E224E19C900718C29 /* Contract.swift */; };
 		A791946F22574A63008403EC /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791946E22574A63008403EC /* ChartHelper.swift */; };
+		A7CE013B2266CC4800405833 /* AdvancedTransactionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CE013A2266CC4800405833 /* AdvancedTransactionSettingViewController.swift */; };
 		A7CE013D22671B5500405833 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CE013C22671B5500405833 /* Double+.swift */; };
+		A7CEC85722682EE3009C9F1A /* DelegateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEC85622682EE3009C9F1A /* DelegateClass.swift */; };
+		A7CEC85922684638009C9F1A /* EthereumNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEC85822684638009C9F1A /* EthereumNetwork.swift */; };
 		A7D183D422530E91009C2EE9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D322530E91009C2EE9 /* Validator.swift */; };
 		A7D183D622531A89009C2EE9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183D522531A89009C2EE9 /* Errors.swift */; };
 		A7D183DB2253317D009C2EE9 /* BackupNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */; };
@@ -157,7 +160,10 @@
 		A782CD1C224E15A200718C29 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
 		A782CD1E224E19C900718C29 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		A791946E22574A63008403EC /* ChartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHelper.swift; sourceTree = "<group>"; };
+		A7CE013A2266CC4800405833 /* AdvancedTransactionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedTransactionSettingViewController.swift; sourceTree = "<group>"; };
 		A7CE013C22671B5500405833 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		A7CEC85622682EE3009C9F1A /* DelegateClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateClass.swift; sourceTree = "<group>"; };
+		A7CEC85822684638009C9F1A /* EthereumNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumNetwork.swift; sourceTree = "<group>"; };
 		A7D183D322530E91009C2EE9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		A7D183D522531A89009C2EE9 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A7D183DA2253317D009C2EE9 /* BackupNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupNoticeViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 		A73E198F226095A500B9D9DF /* SendTransaction */ = {
 			isa = PBXGroup;
 			children = (
+				A7CE01392266CC0500405833 /* AdvancedTransactionSetting */,
 				A74E985B2265D5A700E41E26 /* ConfirmSendTransaction */,
 				A74E98582265D46700E41E26 /* ScanQR */,
 				A73E19942260964800B9D9DF /* SendTransactionViewController.swift */,
@@ -364,6 +371,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		A7CE01392266CC0500405833 /* AdvancedTransactionSetting */ = {
+			isa = PBXGroup;
+			children = (
+				A7CE013A2266CC4800405833 /* AdvancedTransactionSettingViewController.swift */,
+			);
+			path = AdvancedTransactionSetting;
+			sourceTree = "<group>";
+		};
 		A7D183D922533166009C2EE9 /* BackupNotice */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +472,7 @@
 				A7090722225D7C680077EC20 /* AssetRepository.swift */,
 				A77FD426225EEBC8006E4773 /* CronJobRepository.swift */,
 				A709CD0C2264E0330001A309 /* TransactionRepository.swift */,
+				A7CEC85622682EE3009C9F1A /* DelegateClass.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -487,6 +503,7 @@
 				A76C87AD225C752400E3216E /* CronJobAPI.swift */,
 				A7FA8F76224DBE3D00952E4D /* Constants.swift */,
 				A7D183D522531A89009C2EE9 /* Errors.swift */,
+				A7CEC85822684638009C9F1A /* EthereumNetwork.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -806,6 +823,7 @@
 				A73BC087225AEDFF00D0CD00 /* ChartType.swift in Sources */,
 				A74E9852226561FB00E41E26 /* Date+.swift in Sources */,
 				A73E198A22603CF300B9D9DF /* AssetMarketResponse.swift in Sources */,
+				A7CEC85922684638009C9F1A /* EthereumNetwork.swift in Sources */,
 				A7025CE72255FAAD00CE43C2 /* SessionManager.swift in Sources */,
 				A74E98572265BDE900E41E26 /* ValueType.swift in Sources */,
 				A7D183D622531A89009C2EE9 /* Errors.swift in Sources */,
@@ -824,6 +842,7 @@
 				A77FD435225F3186006E4773 /* AssetHeader.swift in Sources */,
 				A71FCFDC2263808100DF2584 /* CheckCronJobResponse.swift in Sources */,
 				A782CD1D224E15A200718C29 /* TokenInfo.swift in Sources */,
+				A7CEC85722682EE3009C9F1A /* DelegateClass.swift in Sources */,
 				A77FD431225F2D11006E4773 /* TransactionCell.swift in Sources */,
 				A782CD1F224E19C900718C29 /* Contract.swift in Sources */,
 				A709CD0B2264DFC70001A309 /* TransactionResponse.swift in Sources */,
@@ -858,6 +877,7 @@
 				A709CD092264DE0A0001A309 /* TransactionRequest.swift in Sources */,
 				A76C8798225C412B00E3216E /* BaseError.swift in Sources */,
 				A7FA8F79224DBE7800952E4D /* UIViewController+.swift in Sources */,
+				A7CE013B2266CC4800405833 /* AdvancedTransactionSettingViewController.swift in Sources */,
 				A76C879E225C423F00E3216E /* BaseRequest.swift in Sources */,
 				A7FE1D7B225450FB00D1587F /* BackupNewWalletViewController.swift in Sources */,
 				A77CE7832251AD14001A0F43 /* AssetMarket.swift in Sources */,

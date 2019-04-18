@@ -19,8 +19,7 @@ final class SendTransactionViewController: UIViewController {
     @IBOutlet weak var maxButton: UIButton!
     
     var assetInfo: AssetInfo?
-    private var amountEther = 0.0
-    private var amountToken = 0.0
+    private var amount = 0.0
     private var valueType: ValueType = .asset
     private var gasPrice = 0.0
     
@@ -94,7 +93,20 @@ final class SendTransactionViewController: UIViewController {
     
     @IBAction private func handleNextButtonTapped(_ sender: Any) {
         if validate() {
-            let confirmSendTransactionController = ConfirmSendTransactionViewController.instantiate()
+            guard let assetInfo = assetInfo,
+                let toAddress = recipientAddressTextField.text else {
+                return
+            }
+            if let amount = amountTextField.text,
+                let amountDouble = Double(amount) {
+                self.amount = amountDouble
+            }
+            let confirmSendTransactionController = ConfirmSendTransactionViewController.instantiate().then {
+                $0.assetInfo = assetInfo
+                $0.toAddress = toAddress
+                $0.amount = amount
+                $0.gasPrice = gasPrice
+            }
             navigationController?.pushViewController(confirmSendTransactionController, animated: true)
         }
     }
@@ -120,7 +132,7 @@ final class SendTransactionViewController: UIViewController {
         let group = DispatchGroup()
         group.enter()
         DispatchQueue.global(qos: .userInteractive).async {
-            guard let (fee, gasPrice) = EthereumInteraction.getEstimatedFee() else {
+            guard let (fee, gasPrice) = EthereumInteraction.getEstimatedFee(assetInfo.type) else {
                 group.leave()
                 return
             }
@@ -133,12 +145,6 @@ final class SendTransactionViewController: UIViewController {
                 $0.text = assetInfo.type == .coin ? "\(assetInfo.amount - estimatedFee)" : "\(assetInfo.amount)"
             }
             self.handleAmountValueChanged(self.amountTextField)
-            if assetInfo.type == .coin {
-                self.amountEther = assetInfo.amount - estimatedFee
-            } else {
-                self.amountEther = estimatedFee
-                self.amountToken = assetInfo.amount
-            }
         }
     }
     

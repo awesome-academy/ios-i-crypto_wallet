@@ -13,6 +13,7 @@ final class AssetViewController: UIViewController {
     @IBOutlet private weak var transactionTableView: UITableView!
     
     var assetInfo: AssetInfo?
+    var newTransaction: Transaction?
     private var assetHeader: AssetHeader?
     private var transactionList = [Transaction]()
     private var transactionDateList = [String]()
@@ -23,6 +24,12 @@ final class AssetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchTransactionListAndLoadData()
+        fetchAndReloadAssetInfo()
     }
     
     private func configView() {
@@ -76,8 +83,6 @@ final class AssetViewController: UIViewController {
                                                    target: nil,
                                                    action: nil)
         }
-        fetchTransactionListAndLoadData()
-        fetchAndReloadAssetInfo()
     }
     
     @objc private func handleAssetDetailTapped(_ sender: UIBarButtonItem) {
@@ -156,9 +161,8 @@ final class AssetViewController: UIViewController {
                             if let address = Wallet.sharedWallet?.walletAddress,
                                 let amount = EthereumInteraction.getERC20TokenBalance(
                                     contractAddress: assetInfo.smartContractAddress,
-                                    walletAddress: address),
-                                let amountDouble = Double(amount) {
-                                assetInfo.amount = amountDouble
+                                    walletAddress: address) {
+                                assetInfo.amount = amount / pow(10, assetInfo.decimals)
                                 group.leave()
                             } else {
                                 group.leave()
@@ -179,8 +183,13 @@ final class AssetViewController: UIViewController {
     }
     
     private func fetchTransactionListAndLoadData() {
+        self.transactionList.removeAll()
+        self.transactionDateList.removeAll()
         guard let assetInfo = assetInfo, let wallet = Wallet.sharedWallet else {
             return
+        }
+        if let newTransaction = newTransaction {
+            self.transactionList.append(newTransaction)
         }
         if assetInfo.type == .coin {
             transactionRepository.getTransactionList(walletAddress: wallet.walletAddress,
@@ -193,8 +202,16 @@ final class AssetViewController: UIViewController {
                     guard let transactionList = transactionResponse?.transactions else {
                         return
                     }
-                    self.transactionList = transactionList
-                    self.transactionDateList = self.getTransactionDateList(transactionList: transactionList)
+                    if let newTransaction = self.newTransaction {
+                        transactionList.forEach {
+                            if $0.id == newTransaction.id {
+                                self.newTransaction = nil
+                                self.transactionList.remove(at: 0)
+                            }
+                        }
+                    }
+                    self.transactionList += transactionList
+                    self.transactionDateList = self.getTransactionDateList(transactionList: self.transactionList)
                     self.transactionTableView.reloadData()
                 case .failure(let error):
                     self.showErrorAlert(message: error?.errorMessage)
@@ -213,8 +230,8 @@ final class AssetViewController: UIViewController {
                     guard let transactionList = transactionResponse?.transactions else {
                         return
                     }
-                    self.transactionList = transactionList
-                    self.transactionDateList = self.getTransactionDateList(transactionList: transactionList)
+                    self.transactionList += transactionList
+                    self.transactionDateList = self.getTransactionDateList(transactionList: self.transactionList)
                     self.transactionTableView.reloadData()
                 case .failure(let error):
                     self.showErrorAlert(message: error?.errorMessage)
@@ -290,6 +307,9 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
                 amount = value / pow(10, 18)
             }
             symbol = "ETH"
+        }
+        if let newTransaction = newTransaction, transaction.id == newTransaction.id {
+            transactionType = .pending
         }
         transactionCell.setCellValue(transactionType: transactionType, address: address, amount: amount, symbol: symbol)
         return transactionCell
