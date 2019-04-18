@@ -45,10 +45,6 @@ final class SendTransactionViewController: UIViewController {
             }
             $0.title = "Send \(assetInfo.symbol)"
             $0.rightBarButtonItem = nextBarButton
-            $0.backBarButtonItem = UIBarButtonItem(title: "Back",
-                                                   style: .plain,
-                                                   target: nil,
-                                                   action: nil)
         }
         [recipientAddressView, amountView].forEach {
             $0.setBorder(cornerRadius: 5, borderWidth: 1, borderColor: .darkGray)

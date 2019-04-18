@@ -16,7 +16,7 @@ enum URLs {
     static let cmcCoinInfoData = "https://s2.coinmarketcap.com/generated/search/quick_search.json"
     static let cronJobAPI = baseCronJobUrl + "/create_event/v1"
     static let checkCronJobAPI = baseCronJobUrl + "/get_event/v1"
-    static let totalValueChartAPI = "http://secretcat.spdns.org/wallet-tracker.php"
+    static let totalValueChartAPI = "https://secretcat.000webhostapp.com/wallet-tracker.php"
     static let transactionAPI = baseTrustUrl + "/ethereum/transactions"
     static let assetMarketAPI = baseTrustUrl + "/tickers"
     static let assetListAPI = "http://api.ethplorer.io/getAddressInfo"
