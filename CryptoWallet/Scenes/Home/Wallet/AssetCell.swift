@@ -48,7 +48,7 @@ final class AssetCell: UITableViewCell {
             $0.text = assetInfo.name
         }
         assetPriceLabel.do {
-            $0.text = "$" + String(format: "%.3f", assetInfo.price)
+            $0.text = "$" + assetInfo.price.threeDecimals()
         }
         asset24hChangeLabel.do {
             $0.textColor = assetInfo.twentyFourHChange < 0 ? .red :
@@ -58,10 +58,10 @@ final class AssetCell: UITableViewCell {
                 "+\(assetInfo.twentyFourHChange)%"
         }
         assetAmountLabel.do {
-            $0.text = String(format: "%.2f", assetInfo.amount) + " \(assetInfo.symbol)"
+            $0.text = assetInfo.amount.threeDecimals(with: assetInfo.symbol)
         }
         assetValueLabel.do {
-            $0.text = "$" +  String(format: "%.2f", assetInfo.amount * assetInfo.price)
+            $0.text = "$" +  (assetInfo.amount * assetInfo.price).twoDecimals()
         }
     }
 }

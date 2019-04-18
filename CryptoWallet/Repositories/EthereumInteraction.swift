@@ -112,7 +112,7 @@ enum EthereumInteraction {
             guard let balanceBigUInt = tokenBalance["0"] as? BigUInt else {
                 return nil
             }
-            return Web3.Utils.formatToEthereumUnits(balanceBigUInt, toUnits: .eth, decimals: 3)
+            return Web3.Utils.formatToEthereumUnits(balanceBigUInt, toUnits: .eth, decimals: 18)
         } catch {
             return nil
         }
@@ -125,7 +125,24 @@ enum EthereumInteraction {
         let web3 = Web3.InfuraMainnetWeb3()
         do {
             let balanceResult = try web3.eth.getBalance(address: walletAddress)
-            return Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 3)
+            return Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 18)
+        } catch {
+            return nil
+        }
+    }
+
+    static func getEstimatedFee() -> (estimatedFee: Double, gasPrice: Double)? {
+        let web3 = Web3.InfuraMainnetWeb3()
+        do {
+            let gasPrice = try web3.eth.getGasPrice()
+            let estimatedFee = gasPrice * Constants.gasLimitDefault
+            guard let stringFee = Web3.Utils.formatToEthereumUnits(estimatedFee,
+                                                                   toUnits: .eth,
+                                                                   decimals: 18),
+                let fee = Double(stringFee) else {
+                return nil
+            }
+            return (fee, Double(gasPrice))
         } catch {
             return nil
         }

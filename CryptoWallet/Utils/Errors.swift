@@ -15,6 +15,9 @@ enum ValidationErrors: Error {
     case invalidPrivateKey
     case invalidMnenomicPhrase
     case emptyRecoveryData
+    case invalidWalletAddress
+    case required
+    case notNumber
 }
 
 extension ValidationErrors: LocalizedError {
@@ -35,6 +38,12 @@ extension ValidationErrors: LocalizedError {
             return "Invalid mnenomic phrase! Mnenomic Phrase has 12 words separated by space"
         case .emptyRecoveryData:
             return "Mnenomic Phrase or Private Key can not be empty"
+        case .invalidWalletAddress:
+            return "Invalid wallet address"
+        case .required:
+            return "Field required!"
+        case .notNumber:
+            return "This field must be number"
         }
     }
 }

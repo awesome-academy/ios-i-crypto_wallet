@@ -316,4 +316,3 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(transactionDetailController, animated: true)
     }
 }
-

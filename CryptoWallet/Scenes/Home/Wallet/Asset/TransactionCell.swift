@@ -59,12 +59,12 @@ final class TransactionCell: UITableViewCell, Reusable {
             switch transactionType {
             case .received, .transferTokenFrom(token: _):
                 $0.textColor = .greenColor
-                $0.text = "+" + String(format: "%.3f", amount) + " " + symbol
+                $0.text = "+" + amount.threeDecimals(with: symbol)
             case .sent, .pending, .transferTokenTo(token: _):
-                $0.text = "-" + String(format: "%.3f", amount) + " " + symbol
+                $0.text = "-" + amount.threeDecimals(with: symbol)
                 $0.textColor = .darkGray
             default:
-                $0.text = String(format: "%.3f", amount) + " " + symbol
+                $0.text = amount.threeDecimals(with: symbol)
                 $0.textColor = .darkGray
             }
         }
