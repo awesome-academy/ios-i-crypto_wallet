@@ -470,7 +470,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="235" height="32"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <action selector="handleAmountValueChanged:" destination="oqw-pb-4sn" eventType="editingChanged" id="O06-ab-uMh"/>
                                                 </connections>
@@ -769,13 +769,61 @@
                     <view key="view" contentMode="scaleToFill" id="3PY-NM-hy5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0r-Tt-gph">
+                                <rect key="frame" x="0.0" y="50" width="375" height="143"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gas Price (Gwei)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DbO-Sx-0xk">
+                                        <rect key="frame" x="20" y="20" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gas Limit" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N3V-Jl-NfQ">
+                                        <rect key="frame" x="20" y="61" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Transaction Data (Optional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-78-srf">
+                                        <rect key="frame" x="20" y="102" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="N3V-Jl-NfQ" firstAttribute="top" secondItem="DbO-Sx-0xk" secondAttribute="bottom" constant="20" id="1Mh-Zi-E7D"/>
+                                    <constraint firstItem="N3V-Jl-NfQ" firstAttribute="leading" secondItem="DbO-Sx-0xk" secondAttribute="leading" id="5fJ-re-To9"/>
+                                    <constraint firstAttribute="bottom" secondItem="nGJ-78-srf" secondAttribute="bottom" constant="20" id="9mO-dw-XGE"/>
+                                    <constraint firstItem="DbO-Sx-0xk" firstAttribute="top" secondItem="i0r-Tt-gph" secondAttribute="top" constant="20" id="R1c-dt-qiI"/>
+                                    <constraint firstItem="N3V-Jl-NfQ" firstAttribute="trailing" secondItem="DbO-Sx-0xk" secondAttribute="trailing" id="azo-qo-5ca"/>
+                                    <constraint firstItem="nGJ-78-srf" firstAttribute="leading" secondItem="N3V-Jl-NfQ" secondAttribute="leading" id="hnf-k8-fS3"/>
+                                    <constraint firstItem="nGJ-78-srf" firstAttribute="top" secondItem="N3V-Jl-NfQ" secondAttribute="bottom" constant="20" id="kzz-W1-gq9"/>
+                                    <constraint firstItem="DbO-Sx-0xk" firstAttribute="leading" secondItem="i0r-Tt-gph" secondAttribute="leading" constant="20" id="qkI-j3-rS3"/>
+                                    <constraint firstAttribute="trailing" secondItem="DbO-Sx-0xk" secondAttribute="trailing" constant="20" id="u7M-q9-1n5"/>
+                                    <constraint firstItem="nGJ-78-srf" firstAttribute="trailing" secondItem="N3V-Jl-NfQ" secondAttribute="trailing" id="zoD-4W-sFM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i0r-Tt-gph" firstAttribute="leading" secondItem="jAK-fV-trY" secondAttribute="leading" id="bUA-LZ-HMI"/>
+                            <constraint firstItem="i0r-Tt-gph" firstAttribute="top" secondItem="jAK-fV-trY" secondAttribute="top" constant="30" id="f5q-NV-B2u"/>
+                            <constraint firstItem="i0r-Tt-gph" firstAttribute="trailing" secondItem="jAK-fV-trY" secondAttribute="trailing" id="hF3-TI-GU7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jAK-fV-trY"/>
                     </view>
+                    <connections>
+                        <outlet property="gasLimitTextField" destination="N3V-Jl-NfQ" id="3c9-Rt-5wb"/>
+                        <outlet property="gasPriceTextField" destination="DbO-Sx-0xk" id="rnp-XC-gYo"/>
+                        <outlet property="transactionDataTextField" destination="nGJ-78-srf" id="zfp-IL-o1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAm-vl-Gtn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4262" y="-1057"/>
+            <point key="canvasLocation" x="4261.6000000000004" y="-1057.4212893553224"/>
         </scene>
         <!--Transaction Detail View Controller-->
         <scene sceneID="NgM-28-Jp4">

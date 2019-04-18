@@ -32,6 +32,7 @@ final class ConfirmSendTransactionViewController: UIViewController {
     var gasLimit: BigUInt = 0
     var toAddress = ""
     var etherPrice = 0.0
+    var transactionData = Data()
     private var assetRepository: AssetRepository = AssetRepositoryImpl(api: APIService.share)
     
     override func viewDidLoad() {
@@ -91,7 +92,11 @@ final class ConfirmSendTransactionViewController: UIViewController {
     }
     
     @objc private func handleAdvancedSettingButtonTapped(_ sender: Any) {
-        let advancedTransactionSettingController = AdvancedTransactionSettingViewController.instantiate()
+        let advancedTransactionSettingController = AdvancedTransactionSettingViewController.instantiate().then {
+            $0.gasPrice = gasPrice
+            $0.gasLimit = gasLimit
+            $0.transactionData = transactionData
+        }
         navigationController?.pushViewController(advancedTransactionSettingController, animated: true)
     }
     
@@ -119,12 +124,14 @@ final class ConfirmSendTransactionViewController: UIViewController {
                                                           value: self.amount,
                                                           gasPrice: self.gasPrice,
                                                           gasLimit: Double(self.gasLimit),
+                                                          data: self.transactionData,
                                                           password: password) :
                         try EthereumInteraction.sendERC20Token(smartContract: assetInfo.smartContractAddress,
                                                                toAddress: self.toAddress,
                                                                value: self.amount,
                                                                gasPrice: self.gasPrice,
                                                                gasLimit: Double(self.gasLimit),
+                                                               data: self.transactionData,
                                                                password: password))
                     if let result = result {
                         guard let wallet = Wallet.sharedWallet else {
