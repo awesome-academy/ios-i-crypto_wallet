@@ -53,18 +53,62 @@ final class ReceiveTransactionViewController: UIViewController {
         }
         qrCodeImage.do {
             $0.contentMode = .scaleToFill
-            $0.image = generateQRCode(address: wallet.walletAddress, amount: "1")
+            $0.image = generateQRCode(address: wallet.walletAddress)
         }
-        addAmountToQRCode(amount: 1)
+        copyButton.do {
+            $0.setBorder(cornerRadius: 5, borderWidth: 0, borderColor: .white)
+        }
     }
     
     @IBAction private func handleEnterAmountButtonTapped(_ sender: Any) {
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "Enter Amount", message: nil, preferredStyle: .alert).then {
+            $0.addTextField { (textField) in
+                textField.placeholder = "Amount"
+                textField.keyboardType = .decimalPad
+            }
+            $0.addAction(cancelButton)
+        }
+        let confirmButton = UIAlertAction(title: "Confirm", style: .default) { [weak self] (_) in
+            guard let self = self,
+                let amountString = alert.textFields?[0].text,
+                let amount = Double(amountString),
+                let wallet = Wallet.sharedWallet else {
+                return
+            }
+            self.qrCodeImage.do {
+                $0.image = self.generateQRCode(address: wallet.walletAddress, amount: amountString)
+            }
+            self.addAmountToQRCode(amount: amount)
+        }
+        alert.addAction(confirmButton)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction private func handleCopyButtonTapped(_ sender: Any) {
+        guard let address = Wallet.sharedWallet?.walletAddress else {
+            return
+        }
+        UIPasteboard.general.string = address
+        view.makeToast("Address copied")
     }
     
     @objc private func handleShareButtonTapped(_ sender: Any) {
+        guard let assetInfo = assetInfo, let wallet = Wallet.sharedWallet else {
+            return
+        }
+        let stringItem = """
+                         My Public Address to Receive \(assetInfo.symbol):
+                         \(wallet.walletAddress)
+                         """
+        
+        var imageItem = UIImage()
+        if let image = qrCodeImage.image {
+            imageItem = image
+        }
+        let items: [Any] = [stringItem, imageItem]
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityController, animated: true)
     }
     
     private func addAmountToQRCode(amount: Double) {
@@ -84,7 +128,7 @@ final class ReceiveTransactionViewController: UIViewController {
     private func generateQRCode(address: String, amount: String? = nil) -> UIImage? {
         var combineString = address
         if let amount = amount {
-            combineString += "&amount=\(amount)"
+            combineString += "?amount=\(amount)"
         }
         let data = combineString.data(using: String.Encoding.ascii)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
