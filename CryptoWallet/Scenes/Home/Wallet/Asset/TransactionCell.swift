@@ -31,9 +31,6 @@ final class TransactionCell: UITableViewCell, Reusable {
             switch transactionType {
             case .pending:
                 $0.image = UIImage(named: "pending-icon")
-                self.contentView.do {
-                    $0.backgroundColor = .yellowPendingColor
-                }
             case .received, .transferTokenFrom(token: _):
                 $0.image = UIImage(named: "received-icon")
             case .sent, .transferTokenTo(token: _):
@@ -42,6 +39,16 @@ final class TransactionCell: UITableViewCell, Reusable {
                 $0.image = UIImage(named: "contract-icon")
             }
             $0.contentMode = .center
+        }
+        switch transactionType {
+        case .pending:
+            self.contentView.do {
+                $0.backgroundColor = .yellowPendingColor
+            }
+        default:
+            self.contentView.do {
+                $0.backgroundColor = .white
+            }
         }
         transactionTypeLabel.do {
             $0.text = transactionType.toString()
