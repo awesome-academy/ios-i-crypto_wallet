@@ -113,8 +113,12 @@ final class SendTransactionViewController: UIViewController {
     
     @IBAction private func handlePasteButtonTapped(_ sender: Any) {
         if let copiedAddress = UIPasteboard.general.string {
-            recipientAddressTextField.do {
-                $0.text = copiedAddress
+            if copiedAddress.isEmpty {
+                view.makeToast("Nothing to paste")
+            } else {
+                recipientAddressTextField.do {
+                    $0.text = copiedAddress
+                }
             }
         }
     }
