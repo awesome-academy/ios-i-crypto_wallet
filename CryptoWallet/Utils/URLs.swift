@@ -20,4 +20,5 @@ enum URLs {
     static let transactionAPI = baseTrustUrl + "/ethereum/transactions"
     static let assetMarketAPI = baseTrustUrl + "/tickers"
     static let assetListAPI = "http://api.ethplorer.io/getAddressInfo"
+    static let etherScanTransaction = "https://etherscan.io/tx"
 }

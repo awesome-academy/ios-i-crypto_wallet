@@ -89,8 +89,8 @@ final class RecoverWalletViewController: UIViewController {
     }
     
     @IBAction private func handleGuideTapped(_ sender: Any) {
-        let guideController = GuideViewController.instantiate()
-        navigationController?.pushViewController(guideController, animated: true)
+        let webViewController = WebViewController.instantiate()
+        navigationController?.pushViewController(webViewController, animated: true)
     }
     
     @IBAction func handleRecoverMethodTabChanged(_ sender: UISegmentedControl) {

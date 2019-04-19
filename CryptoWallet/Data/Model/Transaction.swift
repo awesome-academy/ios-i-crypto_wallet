@@ -14,7 +14,7 @@ final class Transaction: BaseModel {
     var id = ""
     var blockNumber = 0.0
     var timeStamp = ""
-    var nonce = 0.0
+    var nonce = 0
     var from = ""
     var to = ""
     var value = ""
