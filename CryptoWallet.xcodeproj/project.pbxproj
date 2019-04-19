@@ -23,6 +23,7 @@
 		A710FB222269804D001A4AED /* TransactionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A710FB212269804D001A4AED /* TransactionDetailCell.swift */; };
 		A710FB2422699C33001A4AED /* TransactionDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A710FB2322699C33001A4AED /* TransactionDetailHeader.swift */; };
 		A710FB2622699C48001A4AED /* TransactionDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A710FB2522699C48001A4AED /* TransactionDetailHeader.xib */; };
+		A710FB282269C793001A4AED /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A710FB272269C793001A4AED /* WebKit.framework */; };
 		A71402CE2256ED3F00573A5A /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CD2256ED3F00573A5A /* AssetCell.swift */; };
 		A71402D02256F3A000573A5A /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71402CF2256F3A000573A5A /* AssetInfo.swift */; };
 		A71FCFD82263583B00DF2584 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */; };
@@ -115,6 +116,7 @@
 		A710FB212269804D001A4AED /* TransactionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailCell.swift; sourceTree = "<group>"; };
 		A710FB2322699C33001A4AED /* TransactionDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailHeader.swift; sourceTree = "<group>"; };
 		A710FB2522699C48001A4AED /* TransactionDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionDetailHeader.xib; sourceTree = "<group>"; };
+		A710FB272269C793001A4AED /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A71402CD2256ED3F00573A5A /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		A71402CF2256F3A000573A5A /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		A71FCFD72263583B00DF2584 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A710FB282269C793001A4AED /* WebKit.framework in Frameworks */,
 				68F7C22A04902E8A138B88A5 /* Pods_CryptoWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +631,7 @@
 		B4A7A68FF8C4F868A5426D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A710FB272269C793001A4AED /* WebKit.framework */,
 				CEFF4078B9713276CA701A74 /* Pods_CryptoWallet.framework */,
 			);
 			name = Frameworks;

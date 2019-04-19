@@ -22,7 +22,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var oneMonthChartButton: UIButton!
     @IBOutlet private weak var oneYearChartButton: UIButton!
     @IBOutlet private weak var allChartButton: UIButton!
-    @IBOutlet weak var assetPriceChartLabel: UILabel!
+    @IBOutlet private weak var assetPriceChartLabel: UILabel!
     
     private var assetList = [AssetInfo]()
     private var allAssetList = [AssetInfo()]
@@ -88,6 +88,9 @@ final class WalletViewController: UIViewController {
     }
     
     private func fetchDataAndDrawChart(currentChartType: String) {
+        guard let address = Wallet.sharedWallet?.walletAddress else {
+            return
+        }
         var fromTimestamp = 0.0
         var numberXPoint = 6
         switch currentChartType {
@@ -122,9 +125,6 @@ final class WalletViewController: UIViewController {
             if let pastTime = Calendar.current.date(byAdding: .hour, value: -6, to: Date()) {
                 fromTimestamp = pastTime.timeIntervalSince1970
             }
-        }
-        guard let address = Wallet.sharedWallet?.walletAddress else {
-            return
         }
         walletValueDataRepository.getWalletValueData(address: address,
                                                      from: fromTimestamp) { [weak self] (result) in

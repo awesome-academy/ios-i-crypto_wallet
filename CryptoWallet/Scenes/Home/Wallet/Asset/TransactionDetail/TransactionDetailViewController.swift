@@ -166,7 +166,13 @@ final class TransactionDetailViewController: UIViewController {
     }
     
     @objc private func handleMoreDetailButtonTapped(_ sender: Any) {
-        let webViewController = WebViewController.instantiate()
+        guard let transaction = transaction else {
+            return
+        }
+        let webViewController = WebViewController.instantiate().then {
+            $0.titleString = "Etherscan"
+            $0.urlString = URLs.etherScanTransaction + "/" + transaction.id
+        }
         navigationController?.pushViewController(webViewController, animated: true)
     }
     
