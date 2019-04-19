@@ -50,7 +50,12 @@ final class AssetViewController: UIViewController {
                 self?.navigationController?.pushViewController(sendTransactionController, animated: true)
             }
             $0.receiveButtonTapped = { [weak self] in
-                let receiveTransactionController = ReceiveTransactionViewController.instantiate()
+                let receiveTransactionController = ReceiveTransactionViewController.instantiate().then {
+                    guard let assetInfo = self?.assetInfo else {
+                        return
+                    }
+                    $0.assetInfo = assetInfo
+                }
                 self?.navigationController?.pushViewController(receiveTransactionController, animated: true)
             }
         }
