@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vDx-Oa-Ehg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vDx-Oa-Ehg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,10 +101,10 @@ Own Ethereum Wallet</string>
             </objects>
             <point key="canvasLocation" x="-2162.4000000000001" y="-230.73463268365819"/>
         </scene>
-        <!--Guide View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="FUt-Ts-8PD">
             <objects>
-                <viewController storyboardIdentifier="GuideViewController" id="KOp-F0-DIo" customClass="GuideViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="KOp-F0-DIo" customClass="WebViewController" customModule="CryptoWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WhN-CJ-cVQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -565,10 +565,10 @@ CryptoWallet will not able to access accounts, recover keys, reset passwords nor
         </scene>
     </scenes>
     <resources>
-        <image name="backup-icon" width="512" height="512"/>
-        <image name="note-icon" width="384" height="384"/>
+        <image name="backup-icon" width="256" height="256"/>
+        <image name="note-icon" width="256" height="256"/>
         <image name="settings" width="30" height="30"/>
         <image name="wallet" width="30" height="30"/>
-        <image name="wallet-icon" width="512" height="512"/>
+        <image name="wallet-icon" width="256" height="256"/>
     </resources>
 </document>

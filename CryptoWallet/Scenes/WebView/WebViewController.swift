@@ -1,5 +1,5 @@
 //
-//  GuideViewController.swift
+//  WebViewController.swift
 //  CryptoWallet
 //
 //  Created by Phan Dinh Van on 4/2/19.
@@ -9,12 +9,12 @@
 import UIKit
 import Reusable
 
-final class GuideViewController: UIViewController {    
+final class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
 
-extension GuideViewController: StoryboardSceneBased {
+extension WebViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.main
 }

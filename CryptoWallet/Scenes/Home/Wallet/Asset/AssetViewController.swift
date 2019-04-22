@@ -348,7 +348,18 @@ extension AssetViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let transactionDetailController = TransactionDetailViewController.instantiate()
+        guard let assetInfo = assetInfo else {
+            return
+        }
+        let transactionDetailController = TransactionDetailViewController.instantiate().then {
+            let sectionTransactionList = transactionList.filter {
+                let timestamp = Double($0.timeStamp) ?? 0
+                return Date.convertTimeStampToDate(timeStamp: timestamp) == transactionDateList[indexPath.section]
+            }
+            let transaction = sectionTransactionList[indexPath.row]
+            $0.transaction = transaction
+            $0.assetInfo = assetInfo
+        }
         navigationController?.pushViewController(transactionDetailController, animated: true)
     }
 }

@@ -249,4 +249,20 @@ enum EthereumInteraction {
             print(error.localizedDescription)
         }
     }
+    
+    static func getTransactionByHash(txHash: String) throws -> TransactionDetails? {
+//        guard let web3 = web3 else {
+//            return nil
+//        }
+        let web3 = Web3.InfuraMainnetWeb3()
+        return (try web3.eth.getTransactionDetails(txHash))
+    }
+    
+    static func getBlockNumber() throws -> BigUInt? {
+//        guard let web3 = web3 else {
+//            return nil
+//        }
+        let web3 = Web3.InfuraMainnetWeb3()
+        return (try web3.eth.getBlockNumber())
+    }
 }

@@ -40,8 +40,8 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func handleShowGuideTapped(_ sender: Any) {
-        let importGuideController = GuideViewController.instantiate()
-        navigationController?.pushViewController(importGuideController, animated: true)
+        let webViewController = WebViewController.instantiate()
+        navigationController?.pushViewController(webViewController, animated: true)
     }
     
     private func configView() {

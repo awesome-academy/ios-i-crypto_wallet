@@ -9,19 +9,19 @@
 import Foundation
 
 extension Date {
-    static func convertTimeStampToDate(timeStamp: Double) -> String {
+    static func convertTimeStampToDate(timeStamp: Double, format: String? = nil) -> String {
         let date = Date(timeIntervalSince1970: timeStamp)
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC+7")
-        dateFormatter.dateFormat = "MMM dd, yyyy"
+        dateFormatter.dateFormat = format ?? "MMM dd, yyyy"
         dateFormatter.locale = NSLocale.current
         return dateFormatter.string(from: date)
     }
     
-    static func convertDateToString(date: Date) -> String {
+    static func convertDateToString(date: Date, format: String? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC+7")
-        dateFormatter.dateFormat = "MMM dd, yyyy"
+        dateFormatter.dateFormat = format ?? "MMM dd, yyyy"
         dateFormatter.locale = NSLocale.current
         return dateFormatter.string(from: date)
     }
