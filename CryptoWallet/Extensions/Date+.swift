@@ -13,7 +13,7 @@ extension Date {
         let date = Date(timeIntervalSince1970: timeStamp)
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC+7")
-        dateFormatter.dateFormat = format == nil ? "MMM dd, yyyy" : format
+        dateFormatter.dateFormat = format ?? "MMM dd, yyyy"
         dateFormatter.locale = NSLocale.current
         return dateFormatter.string(from: date)
     }
@@ -21,7 +21,7 @@ extension Date {
     static func convertDateToString(date: Date, format: String? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC+7")
-        dateFormatter.dateFormat = format == nil ? "MMM dd, yyyy" : format
+        dateFormatter.dateFormat = format ?? "MMM dd, yyyy"
         dateFormatter.locale = NSLocale.current
         return dateFormatter.string(from: date)
     }

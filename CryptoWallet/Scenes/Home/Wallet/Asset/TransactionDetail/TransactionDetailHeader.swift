@@ -10,9 +10,9 @@ import UIKit
 import Reusable
 
 final class TransactionDetailHeader: UIView, NibOwnerLoadable {
-    @IBOutlet weak var transactionTypeImage: UIImageView!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet private weak var transactionTypeImage: UIImageView!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var valueLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
