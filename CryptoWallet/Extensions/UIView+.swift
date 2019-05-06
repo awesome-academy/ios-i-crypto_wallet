@@ -26,9 +26,9 @@ extension UIView {
         layer.masksToBounds = true
     }
     
-    func showOverlayIndicator() {
+    func showOverlayIndicator(style: UIActivityIndicatorView.Style = .whiteLarge) {
         let activity = UIActivityIndicatorView().then {
-            $0.style = .whiteLarge
+            $0.style = style
             $0.startAnimating()
         }
         let overlayView = UIView().then {

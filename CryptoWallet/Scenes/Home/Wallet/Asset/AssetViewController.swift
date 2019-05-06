@@ -199,7 +199,9 @@ final class AssetViewController: UIViewController {
             return
         }
         if let newTransaction = AssetViewController.newTransaction {
-            self.transactionList.append(newTransaction)
+            if newTransaction.to == assetInfo.smartContractAddress || assetInfo.type == .coin {
+                self.transactionList.append(newTransaction)
+            }
         }
         if assetInfo.type == .coin {
             transactionRepository.getTransactionList(walletAddress: wallet.walletAddress,

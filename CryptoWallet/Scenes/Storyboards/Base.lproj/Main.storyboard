@@ -108,9 +108,28 @@ Own Ethereum Wallet</string>
                     <view key="view" contentMode="scaleToFill" id="WhN-CJ-cVQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBN-KG-fZb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UBN-KG-fZb" firstAttribute="top" secondItem="HvN-g1-FlG" secondAttribute="top" id="NPz-Z2-tpQ"/>
+                            <constraint firstItem="HvN-g1-FlG" firstAttribute="bottom" secondItem="UBN-KG-fZb" secondAttribute="bottom" id="YlQ-xy-jyI"/>
+                            <constraint firstItem="UBN-KG-fZb" firstAttribute="leading" secondItem="HvN-g1-FlG" secondAttribute="leading" id="bxk-sv-eiw"/>
+                            <constraint firstItem="HvN-g1-FlG" firstAttribute="trailing" secondItem="UBN-KG-fZb" secondAttribute="trailing" id="ufe-SB-1gQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HvN-g1-FlG"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="UBN-KG-fZb" id="dX8-Sl-goG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZb-fF-uEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

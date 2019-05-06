@@ -246,20 +246,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="liI-JI-Xxk" firstAttribute="leading" secondItem="wM3-Q0-7n8" secondAttribute="leading" id="FQh-fX-1Ab"/>
+                            <constraint firstItem="liI-JI-Xxk" firstAttribute="leading" secondItem="wM3-Q0-7n8" secondAttribute="leading" id="35B-pD-ngN"/>
+                            <constraint firstItem="liI-JI-Xxk" firstAttribute="top" secondItem="18z-dw-BjU" secondAttribute="bottom" id="IQ9-BY-ipo"/>
                             <constraint firstItem="18z-dw-BjU" firstAttribute="leading" secondItem="wM3-Q0-7n8" secondAttribute="leading" id="IUn-LQ-itg"/>
                             <constraint firstItem="DPz-G3-qK7" firstAttribute="top" secondItem="seu-QO-U4a" secondAttribute="bottom" id="KPL-Y7-TEn"/>
                             <constraint firstItem="18z-dw-BjU" firstAttribute="top" secondItem="DPz-G3-qK7" secondAttribute="bottom" id="KW8-qA-f3c"/>
+                            <constraint firstItem="liI-JI-Xxk" firstAttribute="bottom" secondItem="wM3-Q0-7n8" secondAttribute="bottom" id="NsD-zW-nTV"/>
                             <constraint firstItem="seu-QO-U4a" firstAttribute="leading" secondItem="wM3-Q0-7n8" secondAttribute="leading" id="X5x-bJ-fDQ"/>
-                            <constraint firstItem="liI-JI-Xxk" firstAttribute="trailing" secondItem="wM3-Q0-7n8" secondAttribute="trailing" id="XQg-2b-sXB"/>
                             <constraint firstItem="seu-QO-U4a" firstAttribute="top" secondItem="Ull-5T-UJW" secondAttribute="top" id="XwD-LI-7r9"/>
                             <constraint firstItem="seu-QO-U4a" firstAttribute="height" secondItem="Ull-5T-UJW" secondAttribute="height" multiplier="1:10" id="ZW7-RB-pcx"/>
                             <constraint firstItem="DPz-G3-qK7" firstAttribute="trailing" secondItem="wM3-Q0-7n8" secondAttribute="trailing" id="efr-eB-h9q"/>
                             <constraint firstItem="wM3-Q0-7n8" firstAttribute="trailing" secondItem="seu-QO-U4a" secondAttribute="trailing" id="iVG-Cl-I9k"/>
                             <constraint firstItem="DPz-G3-qK7" firstAttribute="leading" secondItem="wM3-Q0-7n8" secondAttribute="leading" id="iu5-Pf-MCB"/>
                             <constraint firstItem="18z-dw-BjU" firstAttribute="trailing" secondItem="wM3-Q0-7n8" secondAttribute="trailing" id="j6f-u2-05m"/>
-                            <constraint firstItem="liI-JI-Xxk" firstAttribute="top" secondItem="18z-dw-BjU" secondAttribute="bottom" id="jpg-8r-D8e"/>
-                            <constraint firstItem="liI-JI-Xxk" firstAttribute="bottom" secondItem="wM3-Q0-7n8" secondAttribute="bottom" id="qqt-M9-53b"/>
+                            <constraint firstItem="liI-JI-Xxk" firstAttribute="trailing" secondItem="wM3-Q0-7n8" secondAttribute="trailing" id="sQf-Hw-nMt"/>
                             <constraint firstItem="18z-dw-BjU" firstAttribute="centerY" secondItem="wM3-Q0-7n8" secondAttribute="centerY" id="z8b-po-2Rd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wM3-Q0-7n8"/>
